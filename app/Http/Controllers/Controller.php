@@ -13,11 +13,12 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     
+
      function __construct(){
-        $this->dangnhap();
+        $this->check();
      }
 
-     function dangnhap()
+     function check()
      {
          if(Auth::check())
          {
