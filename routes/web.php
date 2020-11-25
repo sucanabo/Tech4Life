@@ -26,3 +26,17 @@ Route::group(['prefix'=>'admin'],function(){
     Route::get('register','App\Http\Controllers\logout_admin@index');
     Route::get('logout','App\Http\Controllers\logout_admin@checkLogout');
 });
+
+Route::group(['prefix'=>'categories'],function(){
+    Route::get('/','App\Http\Controllers\category_controller@index');
+
+    Route::get('create','App\Http\Controllers\category_controller@create');
+
+    Route::post('store', 'App\Http\Controllers\category_controller@store');
+
+    Route::DELETE('delete/{id}', 'App\Http\Controllers\category_controller@destroy');
+
+    Route::get('edit/{id}', 'App\Http\Controllers\category_controller@edit');
+
+    Route::POST('edit/update/{id}', 'App\Http\Controllers\category_controller@update');
+});
