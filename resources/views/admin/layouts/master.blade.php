@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-
 @include('admin/layouts/components/head')
 <body>
   @include('admin/layouts/components/preloader')
