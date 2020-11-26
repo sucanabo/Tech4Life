@@ -36,9 +36,9 @@ class image_controller extends Controller
 
      public function destroy($id)
     {
-        $category = category::find($id);
+        $image = post_image::find($id);
 
-        $category->delete();
+        $image->delete();
         return redirect()->action('App\Http\Controllers\image_controller@index')->with('success','Dữ liệu xóa thành công.');
     }
 

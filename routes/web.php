@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\PostController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,9 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix'=>'admin'],function(){
     Route::get('/', function () {
         return view('admin/home/index');
-    });
-    Route::get('posts', function () {
-        return view('admin/posts/index');
     });
     Route::get('login', 'App\Http\Controllers\login_admin@index' );
     Route::post('login', 'App\Http\Controllers\login_admin@checkLogin' );
@@ -59,4 +56,6 @@ Route::group(['prefix'=>'images'],function(){
     Route::POST('edit/update/{id}', 'App\Http\Controllers\image_controller@update');
 });
 
+
+Route::get('posts', 'App\Http\Controllers\post_controller@index');
 
