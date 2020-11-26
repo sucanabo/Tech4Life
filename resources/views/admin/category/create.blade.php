@@ -1,4 +1,4 @@
-@extends('master')
+@extends('admin/layouts/master')
 @section('title','All Post - Index')
 @section('content')
 <h1>Create</h1>

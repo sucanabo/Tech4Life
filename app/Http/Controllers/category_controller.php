@@ -18,11 +18,11 @@ class category_controller extends Controller
        
         $categories = DB::select('select * from category', [1]);
 
-        return view('layouts/category/categories', ['category' => $categories]);
+        return view('admin/category/categories', ['category' => $categories]);
     }
 
     public function create(){
-       return view('layouts/category/create');
+       return view('admin/category/create');
     }
 
     public function store(Request $request){
@@ -51,7 +51,7 @@ class category_controller extends Controller
     public function edit($id)
     {
         $category = category::findOrFail($id);
-        return view('layouts/category/update', compact('category'));
+        return view('admin/category/update', compact('category'));
     }
 
     public function update(Request $request, $id)

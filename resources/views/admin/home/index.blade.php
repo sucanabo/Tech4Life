@@ -1,5 +1,6 @@
-@extends('master')
+@extends('admin.layouts.master')
 @section('title','Adminmart Template - The Ultimate Multipurpose admin template')
+@section('home-active','active')
 @section('content')
 <!-- *************************************************************** -->
                 <!-- Start First Cards -->

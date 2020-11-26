@@ -1,7 +1,12 @@
-@extends('master')
+@extends('admin/layouts/master')
 @section('title','All Post - Index')
 @section('content')
 <div class="table-responsive">
+
+    <form method="get" action="categories/create" style="margin-bottom:10px">
+        <button type="submit" class="btn btn-primary btn-rounded btn-sm"><i class="fas fa-plus"></i> Add a category</button>
+    </form>
+
     <table class="table">
         <thead class="bg-primary text-white">
             <tr>
@@ -10,7 +15,6 @@
                 <th>image</th>
                 <th>status</th>
                 <th>owned by</th>
-
                 <th>&nbsp;</th>
                 <th>&nbsp;</th>
             </tr>
@@ -41,18 +45,7 @@
                 
             </tr>
         @endforeach 
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>
-                    <form method="get" action="categories/create">
-                       <button type="submit" class="btn btn-primary btn-rounded btn-sm"><i class="fas fa-plus"></i> Add a category</button>
-                    </form>
-                <td>
-            </tr>   
+               
         </tbody>      
     </table>
     

@@ -7,7 +7,7 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="index.html"
+                    <li class="sidebar-item"> <a class="sidebar-link sidebar-link @yield('home-active')" href="index.html"
                                 aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span
                                     class="hide-menu">Dashboard</span></a></li>
                         <li class="list-divider"></li>
@@ -24,7 +24,7 @@
                                             class="hide-menu"> Category
                                         </span></a>
                                 </li>
-                                <li class="sidebar-item"><a href="form-checkbox-radio.html" class="sidebar-link"><span
+                                <li class="sidebar-item"><a href="form-checkbox-radio.html" class="sidebar-link @yield('post-active')"><span
                                             class="hide-menu"> Post
                                         </span></a>
                                 </li>
