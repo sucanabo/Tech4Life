@@ -22,6 +22,37 @@ Route::group(['prefix'=>'admin'],function(){
     Route::post('login', 'App\Http\Controllers\login_admin@checkLogin' );
     Route::get('register','App\Http\Controllers\logout_admin@index');
     Route::get('logout','App\Http\Controllers\logout_admin@checkLogout');
+
+
+    Route::group(['prefix'=>'categories'],function(){
+        Route::get('/','App\Http\Controllers\category_controller@index');
+    
+        Route::get('create','App\Http\Controllers\category_controller@create');
+    
+        Route::post('store', 'App\Http\Controllers\category_controller@store');
+    
+        Route::DELETE('delete/{id}', 'App\Http\Controllers\category_controller@destroy');
+    
+        Route::get('edit/{id}', 'App\Http\Controllers\category_controller@edit');
+    
+        Route::POST('edit/update/{id}', 'App\Http\Controllers\category_controller@update');
+    });
+
+    Route::group(['prefix'=>'images'],function(){
+        Route::get('/','App\Http\Controllers\image_controller@index');
+    
+        Route::get('create','App\Http\Controllers\image_controller@create');
+    
+        Route::post('store', 'App\Http\Controllers\image_controller@store');
+    
+        Route::DELETE('delete/{id}', 'App\Http\Controllers\image_controller@destroy');
+    
+        Route::get('edit/{id}', 'App\Http\Controllers\image_controller@edit');
+    
+        Route::POST('edit/update/{id}', 'App\Http\Controllers\image_controller@update');
+    });
+
 });
 
-Route::resource('posts', 'App\Http\Controllers\PostController@index');
+Route::get('posts', 'App\Http\Controllers\post_controller@index');
+
