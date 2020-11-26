@@ -34,7 +34,7 @@ class image_controller extends Controller
          
      }
 
-     public function destroy($id)
+    public function destroy($id)
     {
         $image = post_image::find($id);
 

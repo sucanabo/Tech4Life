@@ -5,7 +5,6 @@
 <form method="post" action="update/{{ $image->id }}">
     @method('POST')
     @csrf
-
     <input type="hidden" name="id" value="{{ $image->id }}">
 
     <p>

@@ -51,7 +51,7 @@ Route::group(['prefix'=>'admin'],function(){
     
         Route::POST('edit/update/{id}', 'App\Http\Controllers\image_controller@update');
     });
-    
+
 });
 
 Route::get('posts', 'App\Http\Controllers\post_controller@index');
