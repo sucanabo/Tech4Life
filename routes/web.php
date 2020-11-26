@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::group(['prefix'=>'admin'],function(){
-    Route::get('', function () {
+    Route::get('/', function () {
         return view('admin/home/index');
     });
     Route::get('posts', function () {
