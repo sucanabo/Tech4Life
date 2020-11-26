@@ -10,7 +10,7 @@
    //admin foler
     
     define('ad', 'admin/');
-    define('ad_l', 'layouts/');
+    define('ad_l', 'admin/layouts/');
     define('ad_master', 'admin.layouts.master');
     define('ad_comp', 'admin/layouts/components/');
 
