@@ -44,8 +44,8 @@ class image_controller extends Controller
 
     public function edit($id)
     {
-        $category = category::findOrFail($id);
-        return view('admin/image/update', compact('post_image'));
+        $image = post_image::findOrFail($id);
+        return view('admin/image/update', compact('image'));
     }
 
     public function update(Request $request, $id)
