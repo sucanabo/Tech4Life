@@ -37,24 +37,26 @@ Route::group(['prefix'=>'admin'],function(){
     
         Route::POST('edit/update/{id}', 'App\Http\Controllers\category_controller@update');
     });
+
+    Route::group(['prefix'=>'images'],function(){
+        Route::get('/','App\Http\Controllers\image_controller@index');
+    
+        Route::get('create','App\Http\Controllers\image_controller@create');
+    
+        Route::post('store', 'App\Http\Controllers\image_controller@store');
+    
+        Route::DELETE('delete/{id}', 'App\Http\Controllers\image_controller@destroy');
+    
+        Route::get('edit/{id}', 'App\Http\Controllers\image_controller@edit');
+    
+        Route::POST('edit/update/{id}', 'App\Http\Controllers\image_controller@update');
+    });
+    
 });
 
 
 
 
-Route::group(['prefix'=>'images'],function(){
-    Route::get('/','App\Http\Controllers\image_controller@index');
-
-    Route::get('create','App\Http\Controllers\image_controller@create');
-
-    Route::post('store', 'App\Http\Controllers\image_controller@store');
-
-    Route::DELETE('delete/{id}', 'App\Http\Controllers\image_controller@destroy');
-
-    Route::get('edit/{id}', 'App\Http\Controllers\image_controller@edit');
-
-    Route::POST('edit/update/{id}', 'App\Http\Controllers\image_controller@update');
-});
 
 
 Route::get('posts', 'App\Http\Controllers\post_controller@index');
