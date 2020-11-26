@@ -1,5 +1,6 @@
 @extends('master')
 @section('title','All Post - Index')
+@section('post-active','active')
 @section('content')
 <div class="table-responsive">
     <table class="table">
