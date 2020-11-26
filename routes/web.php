@@ -13,16 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('layouts.home');
-});
-Route::get('/posts', function () {
-    return view('layouts.posts');
-});
 
-Route::group(['prefix'=>'admin'],function(){
+Route::group(['prefix'=>''],function(){
+    Route::get('', function () {
+        return view('admin/home/index');
+    });
+    Route::get('posts', function () {
+        return view('layouts.posts');
+    });
     Route::get('login', 'App\Http\Controllers\login_admin@index' );
     Route::post('login', 'App\Http\Controllers\login_admin@checkLogin' );
     Route::get('register','App\Http\Controllers\logout_admin@index');
     Route::get('logout','App\Http\Controllers\logout_admin@checkLogout');
 });
+

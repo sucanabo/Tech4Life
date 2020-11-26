@@ -16,7 +16,7 @@ class login_admin extends Controller
     public function index()
     {
         //
-        return view('admin/login');
+        return view('admin/login/login');
     }
 
     // check login 
