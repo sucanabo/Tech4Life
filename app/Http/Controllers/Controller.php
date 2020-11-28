@@ -12,17 +12,15 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-    
+        
+    function __construct(){
+        $this->ktra();
+    }
 
-     function __construct(){
-        $this->check();
-     }
-
-     function check()
-     {
-         if(Auth::check())
-         {
-             view()->share('user_login',Auth::Header());
-         }
-     }
+    function ktra(){
+        if(Auth::check())
+            {
+                view()->share('user_login',Auth::user());
+            }
+    }
 }
