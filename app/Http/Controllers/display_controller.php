@@ -1,11 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-class display_admin extends Controller
+use Illuminate\Support\Facades\Validator;
+class display_controller extends Controller
 {
+    //
+     //
+    
     /**
      * Display a listing of the resource.
      *
@@ -14,9 +20,10 @@ class display_admin extends Controller
     public function index()
     {
         //
-        return view('admin/index');
+        return view ('admin/home/index');
     }
 
+   
     /**
      * Show the form for creating a new resource.
      *

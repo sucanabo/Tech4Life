@@ -1,11 +1,8 @@
-@extends('Master_Display.master_display_admin1')
-@section('title', 'Page Title')
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
 
- @section('sidebar')
-   @parent
-   @endsection
-
-      @section('content')
+@include('admin/layouts/components/head')
+<body>
       <div class="main-wrapper">
         <!-- ============================================================== -->
         <!-- Preloader - style you can find in spinners.css -->
@@ -24,7 +21,7 @@
         <!-- ============================================================== -->
    
         <div class="auth-wrapper d-flex no-block justify-content-center align-items-center position-relative"
-            style="background:url({{ URL::asset('admin/assets/images/big/auth-bg.jpg') }}) no-repeat center center;">
+            style="background:url({{ URL::asset('layout_admin/assets/images/big/auth-bg.jpg') }}) no-repeat center center;">
             @if(count($errors) > 0)
                 <div class="alert alert-danger">
                     @foreach($errors->all() as $err)
@@ -39,22 +36,22 @@
             @endif
             <div class="auth-box row">
            
-                <div class="col-lg-7 col-md-5 modal-bg-img" style="background-image: url({{ URL::asset('admin/assets/images/big/3.jpg') }});">
+                <div class="col-lg-7 col-md-5 modal-bg-img" style="background-image: url({{ URL::asset('layout_admin/assets/images/big/3.jpg') }});">
                 </div>
                 <div class="col-lg-5 col-md-7 bg-white">
                     <div class="p-3">
                         <div class="text-center">
-                            <img src="{{ URL::asset('admin/assets/images/big/icon.png') }}" alt="wrapkit">
+                            <img src="{{ URL::asset('layout_admin/assets/images/big/icon.png') }}" alt="wrapkit">
                         </div>
                         <h2 class="mt-3 text-center">Sign In</h2>
                         <p class="text-center">Enter your email address and password to access admin panel.</p>
                         <form class="mt-4" action="{{URL::asset('admin/login') }}" method="post">
-                        @csrf
+                            @csrf
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group">
-                                        <label class="text-dark" for="uname">Username</label>
-                                        <input class="form-control" id="uname" name="username" type="text"
+                                        <label class="text-dark" for="uname">Email</label>
+                                        <input class="form-control" id="uname" name="email" type="text"
                                             placeholder="enter your username">
                                     </div>
                                 </div>
@@ -81,4 +78,7 @@
         <!-- Login box.scss -->
         <!-- ============================================================== -->
     </div>
-      @endsection
+    @include('admin/layouts/components/scripts')
+</body>
+
+</html>
