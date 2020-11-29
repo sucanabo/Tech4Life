@@ -54,5 +54,3 @@ Route::group(['prefix'=>'admin'],function(){
 
 });
 
-Route::get('posts', 'App\Http\Controllers\post_controller@index');
-
