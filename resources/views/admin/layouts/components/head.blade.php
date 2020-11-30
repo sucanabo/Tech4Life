@@ -7,14 +7,14 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('assets/images/favicon.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('layout_admin/assets/images/favicon.png')}}">
     <title>Adminmart Template - The Ultimate Multipurpose admin template</title>
     <!-- Custom CSS -->
-    <link href="{{asset('assets/extra-libs/c3/c3.min.css')}}" rel="stylesheet">
-    <link href="{{asset('assets/libs/chartist/dist/chartist.min.css')}}" rel="stylesheet">
-    <link href="{{asset('assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css')}}" rel="stylesheet" />
+    <link href="{{asset('layout_admin/assets/extra-libs/c3/c3.min.css')}}" rel="stylesheet">
+    <link href="{{asset('layout_admin/assets/libs/chartist/dist/chartist.min.css')}}" rel="stylesheet">
+    <link href="{{asset('layout_admin/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css')}}" rel="stylesheet" />
     <!-- Custom CSS -->
-    <link href="{{asset('dist/css/style.min.css')}}" rel="stylesheet">
+    <link href="{{asset('layout_admin/dist/css/style.min.css')}}" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
