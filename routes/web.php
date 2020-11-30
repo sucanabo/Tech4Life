@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Api\Controller;
 use App\Http\Controllers\PostController;
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +16,12 @@ use App\Http\Controllers\PostController;
 */
 
 
+Route::get('admin/login', 'App\Http\Controllers\loginController@index' );
+Route::post('admin/login', 'App\Http\Controllers\loginController@checkLogin' );
+Route::get('admin/logout','App\Http\Controllers\logoutController@checkLogout');
+
+Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function(){
+    Route::get('index', 'App\Http\Controllers\display_admin@index');
 Route::group(['prefix'=>'admin'],function(){
     Route::get('/', function () {
         return view('admin/home/index');

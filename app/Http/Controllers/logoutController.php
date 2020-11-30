@@ -7,9 +7,10 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-class logout_admin extends Controller
+class logoutController extends Controller
 {
-    /**
+    //
+        /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -88,6 +89,6 @@ class logout_admin extends Controller
 
     public function checkLogout(){
         Auth::logout();
-        return View('admin/login');
-    } 
+        return View('admin/login/login');
+    }
 }
