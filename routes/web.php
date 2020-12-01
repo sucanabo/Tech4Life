@@ -25,9 +25,9 @@ use App\Http\Controllers\PostController;
     Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function(){
 
         Route::get('index', 'App\Http\Controllers\display_controller@index');
-
-    });
-    // Bảng category thêm , xóa ,sửa
+            //Post
+        Route::resource('posts', PostController::class);
+        // Bảng category thêm , xóa ,sửa
     Route::group(['prefix'=>'categories','middleware'=>'adminLogin'],function(){
 
         Route::get('/','App\Http\Controllers\category_controller@index');
@@ -69,6 +69,8 @@ use App\Http\Controllers\PostController;
         route::get('edit/{id}','App\Http\Controllers\user_controller@edit');
 
         route::post('edit/{id}','App\Http\Controllers\user_controller@postEdit');
+    });
 
     });
+    
 
