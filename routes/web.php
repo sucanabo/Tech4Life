@@ -14,16 +14,22 @@ use App\Http\Controllers\PostController;
 */
 
 
+    // Chức năng login và logout
     Route::get('admin/login', 'App\Http\Controllers\login_controller@index' );
+
     Route::post('admin/login', 'App\Http\Controllers\login_controller@checkLogin' );
+
     Route::get('admin/logout','App\Http\Controllers\logout_controller@checkLogout');
   
     Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function(){
+
         Route::get('index', 'App\Http\Controllers\display_controller@index');
+
     });
 
-
+    // Bảng category thêm , xóa ,sửa
     Route::group(['prefix'=>'categories','middleware'=>'adminLogin'],function(){
+
         Route::get('/','App\Http\Controllers\category_controller@index');
     
         Route::get('create','App\Http\Controllers\category_controller@create');
@@ -37,7 +43,9 @@ use App\Http\Controllers\PostController;
         Route::POST('edit/update/{id}', 'App\Http\Controllers\category_controller@update');
     });
 
+    // Bảng images thêm , xóa ,sửa
     Route::group(['prefix'=>'images','middleware'=>'adminLogin'],function(){
+
         Route::get('/','App\Http\Controllers\image_controller@index');
     
         Route::get('create','App\Http\Controllers\image_controller@create');
@@ -49,6 +57,19 @@ use App\Http\Controllers\PostController;
         Route::get('edit/{id}', 'App\Http\Controllers\image_controller@edit');
     
         Route::POST('edit/update/{id}', 'App\Http\Controllers\image_controller@update');
+    });
+
+    // Bảng users thêm , xóa ,sửa
+    Route::group(['prefix'=>'users'],function(){
+
+        route::get('index','App\Http\Controllers\user_controller@index');
+
+        route::get('detail/{id}','App\Http\Controllers\user_controller@show');
+
+        route::get('edit/{id}','App\Http\Controllers\user_controller@edit');
+
+        route::post('edit/{id}','App\Http\Controllers\user_controller@postEdit');
+
     });
 
 Route::get('posts', 'App\Http\Controllers\post_controller@index');
