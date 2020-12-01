@@ -13,11 +13,8 @@
                 <th>#</th>
                 <th>Display_Name</th>
                 <th>User_name</th>
-                <th>Password</th>
                 <th>Email</th>
                 <th>Phone_Number</th>
-                <th>Avartar</th>
-                <th>View</th>
                 <th>&nbsp;</th>
                 <th>&nbsp;</th>
                 <th>&nbsp;</th>
@@ -30,11 +27,8 @@
                 <td>{{$us -> id}}</td>
                 <td>{{$us -> display_name}}</td>
                 <td>{{$us -> username}}</td>
-                <td>{{$us -> password}}</td>
                 <td>{{$us -> email}}</td>
                 <td>{{$us -> phone_number}}</td>
-                <td>{{$us -> avatar}}</td>
-                <td>{{$us -> view}}</td>
                 
                 <td class="d-inline-block float-right">
                     <a href="detail/{{$us -> id}}"><button type="submit" class="btn btn-primary btn-rounded btn-sm"><i class="fas fa-eye"></i> </button></a>

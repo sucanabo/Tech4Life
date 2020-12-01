@@ -14,15 +14,26 @@ use Illuminate\Support\Facades\Auth;
 
 class category_controller extends Controller
 {
-     public function index(){
+    //index
+    public function index(){
        
-        $categories = DB::select('select * from category', [1]);
-
-        return view('admin/category/categories', ['category' => $categories]);
+        $categories = category::latest()->paginate(5);
+        return view('admin.category.index',compact('categories'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
     }
+    
+    //show
+    public function create()
+    {
+        return view('admin.category.create');
+    }
+    //delete
+    public function destroy(category $category)
+    {
+        $category->delete();
 
-    public function create(){
-       return view('admin/category/create');
+        return redirect()->route('categories.index')
+            ->with('success', 'Category deleted successfully');
     }
 
     public function store(Request $request){
@@ -40,18 +51,10 @@ class category_controller extends Controller
         
     }
 
-    public function destroy($id)
-    {
-        $category = category::find($id);
-
-        $category->delete();
-        return redirect()->action('App\Http\Controllers\category_controller@index')->with('success','Dữ liệu xóa thành công.');
-    }
-
     public function edit($id)
     {
         $category = category::findOrFail($id);
-        return view('admin/category/update', compact('category'));
+        return view('admin.category.update', compact('category'));
     }
 
     public function update(Request $request, $id)

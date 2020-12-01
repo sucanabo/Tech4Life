@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\Controller;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\category_controller;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,52 +26,38 @@ use App\Http\Controllers\PostController;
     Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function(){
 
         Route::get('index', 'App\Http\Controllers\display_controller@index');
-            //Post
+        //Post
         Route::resource('posts', PostController::class);
         // Bảng category thêm , xóa ,sửa
-    Route::group(['prefix'=>'categories','middleware'=>'adminLogin'],function(){
+        Route::resource('categories', category_controller::class);
+        //Xoa bang
+        // Bảng images thêm , xóa ,sửa
+        Route::group(['prefix'=>'images','middleware'=>'adminLogin'],function(){
 
-        Route::get('/','App\Http\Controllers\category_controller@index');
-    
-        Route::get('create','App\Http\Controllers\category_controller@create');
-    
-        Route::post('store', 'App\Http\Controllers\category_controller@store');
-    
-        Route::DELETE('delete/{id}', 'App\Http\Controllers\category_controller@destroy');
-    
-        Route::get('edit/{id}', 'App\Http\Controllers\category_controller@edit');
-    
-        Route::POST('edit/update/{id}', 'App\Http\Controllers\category_controller@update');
-    });
+            Route::get('/','App\Http\Controllers\image_controller@index');
+        
+            Route::get('create','App\Http\Controllers\image_controller@create');
+        
+            Route::post('store', 'App\Http\Controllers\image_controller@store');
+        
+            Route::DELETE('delete/{id}', 'App\Http\Controllers\image_controller@destroy');
+        
+            Route::get('edit/{id}', 'App\Http\Controllers\image_controller@edit');
+        
+            Route::POST('edit/update/{id}', 'App\Http\Controllers\image_controller@update');
+        });
 
-    // Bảng images thêm , xóa ,sửa
-    Route::group(['prefix'=>'images','middleware'=>'adminLogin'],function(){
+        // Bảng users thêm , xóa ,sửa
+        Route::group(['prefix'=>'users'],function(){
 
-        Route::get('/','App\Http\Controllers\image_controller@index');
-    
-        Route::get('create','App\Http\Controllers\image_controller@create');
-    
-        Route::post('store', 'App\Http\Controllers\image_controller@store');
-    
-        Route::DELETE('delete/{id}', 'App\Http\Controllers\image_controller@destroy');
-    
-        Route::get('edit/{id}', 'App\Http\Controllers\image_controller@edit');
-    
-        Route::POST('edit/update/{id}', 'App\Http\Controllers\image_controller@update');
-    });
+            route::get('','App\Http\Controllers\user_controller@index');
 
-    // Bảng users thêm , xóa ,sửa
-    Route::group(['prefix'=>'users'],function(){
+            route::get('detail/{id}','App\Http\Controllers\user_controller@show');
 
-        route::get('index','App\Http\Controllers\user_controller@index');
+            route::get('edit/{id}','App\Http\Controllers\user_controller@edit');
 
-        route::get('detail/{id}','App\Http\Controllers\user_controller@show');
-
-        route::get('edit/{id}','App\Http\Controllers\user_controller@edit');
-
-        route::post('edit/{id}','App\Http\Controllers\user_controller@postEdit');
-    });
-
+            route::post('edit/{id}','App\Http\Controllers\user_controller@postEdit');
+        });
     });
     
 
