@@ -15,20 +15,18 @@ class adminLoginMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
+        
         if(Auth::check())
         {
-            $user=Auth::user();
+            $user =Auth::user();
             if($user->permission==1){
-                return $next($request); 
+                return $next($request);
             }
-            else
-            {
+            else{
                 return redirect('admin/login');
             }
         }
-        else{
-            return redirect('admin/login');
-        }
-       
+        else
+             return redirect('admin/login');
     }
 }

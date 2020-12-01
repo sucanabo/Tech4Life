@@ -15,23 +15,21 @@ use App\Http\Controllers\PostController;
 |
 */
 
+    // Chức năng login và logout
+    Route::get('admin/login', 'App\Http\Controllers\login_controller@index' );
 
-Route::get('admin/login', 'App\Http\Controllers\loginController@index' );
+    Route::post('admin/login', 'App\Http\Controllers\login_controller@checkLogin' );
 
-Route::post('admin/login', 'App\Http\Controllers\loginController@checkLogin' );
+    Route::get('admin/logout','App\Http\Controllers\logout_controller@checkLogout');
+  
+    Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function(){
 
-Route::get('admin/logout','App\Http\Controllers\logoutController@checkLogout');
+        Route::get('index', 'App\Http\Controllers\display_controller@index');
 
-Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function(){
+    });
+    // Bảng category thêm , xóa ,sửa
+    Route::group(['prefix'=>'categories','middleware'=>'adminLogin'],function(){
 
-    Route::get('index', 'App\Http\Controllers\display_admin@index');
-    Route::resource('posts', PostController::class);
-    Route::get('login', 'App\Http\Controllers\login_admin@index' );
-    Route::post('login', 'App\Http\Controllers\login_admin@checkLogin' );
-    Route::get('register','App\Http\Controllers\logout_admin@index');
-    Route::get('logout','App\Http\Controllers\logout_admin@checkLogout');
-
-    Route::group(['prefix'=>'categories'],function(){
         Route::get('/','App\Http\Controllers\category_controller@index');
     
         Route::get('create','App\Http\Controllers\category_controller@create');
@@ -45,7 +43,9 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function(){
         Route::POST('edit/update/{id}', 'App\Http\Controllers\category_controller@update');
     });
 
-    Route::group(['prefix'=>'images'],function(){
+    // Bảng images thêm , xóa ,sửa
+    Route::group(['prefix'=>'images','middleware'=>'adminLogin'],function(){
+
         Route::get('/','App\Http\Controllers\image_controller@index');
     
         Route::get('create','App\Http\Controllers\image_controller@create');
@@ -59,5 +59,16 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function(){
         Route::POST('edit/update/{id}', 'App\Http\Controllers\image_controller@update');
     });
 
-});
+    // Bảng users thêm , xóa ,sửa
+    Route::group(['prefix'=>'users'],function(){
+
+        route::get('index','App\Http\Controllers\user_controller@index');
+
+        route::get('detail/{id}','App\Http\Controllers\user_controller@show');
+
+        route::get('edit/{id}','App\Http\Controllers\user_controller@edit');
+
+        route::post('edit/{id}','App\Http\Controllers\user_controller@postEdit');
+
+    });
 
