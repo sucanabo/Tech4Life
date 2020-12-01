@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Api\Controller;
 use App\Http\Controllers\PostController;
 /*
 |--------------------------------------------------------------------------
@@ -71,6 +73,4 @@ use App\Http\Controllers\PostController;
         route::post('edit/{id}','App\Http\Controllers\user_controller@postEdit');
 
     });
-
-Route::get('posts', 'App\Http\Controllers\post_controller@index');
 
