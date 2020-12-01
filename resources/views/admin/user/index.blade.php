@@ -18,9 +18,9 @@
                 <th>Phone_Number</th>
                 <th>Avartar</th>
                 <th>View</th>
-                <th>&nbsp;</th>
-                <th>&nbsp;</th>
-                <th>&nbsp;</th>
+                <th>Detail</th>
+                <th>Edit</th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody>
@@ -33,7 +33,7 @@
                 <td>{{$us -> password}}</td>
                 <td>{{$us -> email}}</td>
                 <td>{{$us -> phone_number}}</td>
-                <td>{{$us -> avatar}}</td>
+                <td><img style="width:100px ; height:90px" src="layout_admin/img/{{$us->avatar}}" alt="avatar"></td>
                 <td>{{$us -> view}}</td>
                 
                 <td class="d-inline-block float-right">

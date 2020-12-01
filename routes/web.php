@@ -62,7 +62,7 @@ use App\Http\Controllers\PostController;
     // Bảng users thêm , xóa ,sửa
     Route::group(['prefix'=>'users'],function(){
 
-        route::get('index','App\Http\Controllers\user_controller@index');
+        route::get('/','App\Http\Controllers\user_controller@index');
 
         route::get('detail/{id}','App\Http\Controllers\user_controller@show');
 
