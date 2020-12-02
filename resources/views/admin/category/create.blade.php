@@ -2,7 +2,7 @@
 @section('title','All Post - Index')
 @section('content')
 <h1>Create</h1>
-<form method="post" action="store">
+<form method="post" action="store" >
     @method('POST')
     @csrf
     <p>

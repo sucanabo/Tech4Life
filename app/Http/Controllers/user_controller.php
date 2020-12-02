@@ -29,6 +29,7 @@ class user_controller extends Controller
     public function create()
     {
         //
+        return view('admin/user/create');
     }
 
     /**
@@ -40,6 +41,7 @@ class user_controller extends Controller
     public function store(Request $request)
     {
         //
+       
     }
 
     /**
@@ -77,6 +79,7 @@ class user_controller extends Controller
     public function update(Request $request, $id)
     {
         //
+        
     }
 
     /**
@@ -88,5 +91,29 @@ class user_controller extends Controller
     public function destroy($id)
     {
         //
+        $User=User::find($id);
+        $User->delete();
+        return redirect('admin/users')->with('thongbao','Xóa thành công');
     }
+
+    public function postAddUser(Request $request){
+        if($request->hasFile('avatar')){
+            $file= $request->file('avatar');
+            $file->move('img',str_random(4)."_".$request->username.'.jpg');
+        }
+         $User=new User;
+         $User->display_name=$request->display_name;
+         $User->username=$request->username;
+         $User->password =bcrypt($request->password) ;
+         $User->email =$request->email; 
+         $User->phone_number =$request->phone_number; 
+         $User->display_name =$request->display_name; 
+         $User->avatar =$request->username.'.jpg'; 
+         $User->view =$request->view; 
+         $User->gender =$request->gender; 
+         $User->status =$request->status; 
+         $User->permission =$request->permission; 
+         $User->save();
+         return redirect('admin/users')->with('thongbao','Thêm thành công');
+     }
 }

@@ -1,163 +1,62 @@
 @extends('admin/layouts/master')
 @section('title','All Post - Index')
 @section('content')
- <div class="row">
+<h1>Create</h1>
+<form method="post" action="create" enctype="multipart/form-data">
+    @method('POST')
+    @csrf
+    <p>
+        <label for="name">display_name</label><br>
+        <input type="text" name="display_name" value="">
+    </p>
 
-    <div class="col-12">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">Horizontal Grid</h4>
-                <form action="#" >
-                    <div class="form-body">
-                        <div class="row">
-                            <div class="col-md-2">
-                                <label for="name" style="color:black;style-font:bold">Dislay_name:
-                            </div>
-                            <div class="col-md-8">
-                                <div class="form-group">
-                                    </label>
-                                    <input type="text" class="form-control" placeholder="col-md-8" value="{{ $user->display_name }}">
-                                </div>
-                            </div>
-                        </div>                 
-                    </div>
+    <p>
+        <label for="name">username</label><br>
+        <input type="text" name="username" value="">
+    </p>
 
-                    <div class="form-body">
-                        <div class="row">
-                            <div class="col-md-2">
-                                <label for="name" style="color:black;style-font:bold">User_name:
-                            </div>
-                            <div class="col-md-8">
-                                <div class="form-group">
-                                    </label>
-                                    <input type="text" class="form-control" placeholder="col-md-8" value="{{ $user->username }}">
-                                </div>
-                            </div>
-                        </div>                 
-                    </div>
+    <p>
+        <label for="name">password</label><br>
+        <input type="password" name="password" value="">
+    </p>
 
-                    <div class="form-body">
-                        <div class="row">
-                            <div class="col-md-2">
-                                <label for="name" style="color:black;style-font:bold">Password:
-                            </div>
-                            <div class="col-md-8">
-                                <div class="form-group">
-                                    </label>
-                                    <input type="text" class="form-control" placeholder="col-md-8" value="{{ $user->password }}">
-                                </div>
-                            </div>
-                        </div>                 
-                    </div>
+    <p>
+        <label for="name">email</label><br>
+        <input type="text" name="email" value="">
+    </p>
 
-                    <div class="form-body">
-                        <div class="row">
-                            <div class="col-md-2">
-                                <label for="name" style="color:black;style-font:bold">Email:
-                            </div>
-                            <div class="col-md-8">
-                                <div class="form-group">
-                                    </label>
-                                    <input type="text" class="form-control" placeholder="col-md-8" value="{{ $user->email }}">
-                                </div>
-                            </div>
-                        </div>                 
-                    </div>
+    <p>
+        <label for="name">phone_number</label><br>
+        <input type="text" name="phone_number" value="">
+    </p>
 
+    <p>
+        <label for="image">avatar</label><br>
+        <input type="file" name="avatar" value="">
+    </p>
 
-                    <div class="form-body">
-                        <div class="row">
-                            <div class="col-md-2">
-                                <label for="name" style="color:black;style-font:bold">Phone_number:
-                            </div>
-                            <div class="col-md-8">
-                                <div class="form-group">
-                                    </label>
-                                    <input type="text" class="form-control" placeholder="col-md-8" value="{{ $user->phone_number }}">
-                                </div>
-                            </div>
-                        </div>                 
-                    </div>
+    <p>
+        <label for="status">view</label><br>
+        <input type="text" name="view" value="">
+    </p>
 
-                    <div class="form-body">
-                        <div class="row">
-                            <div class="col-md-2">
-                                <label for="name" style="color:black;style-font:bold">Avatar:
-                            </div>
-                            <div class="col-md-8">
-                                <div class="form-group">
-                                    </label>
-                                    <input type="text" class="form-control" placeholder="col-md-8" value="{{ $user->avatar }}">
-                                </div>
-                            </div>
-                        </div>                 
-                    </div>
+    <p>
+        <label for="status">gender</label><br>
+        <input type="text" name="gender" value="">
+    </p>
 
-                    <div class="form-body">
-                        <div class="row">
-                            <div class="col-md-2">
-                                <label for="name" style="color:black;style-font:bold">View:
-                            </div>
-                            <div class="col-md-8">
-                                <div class="form-group">
-                                    </label>
-                                    <input type="text" class="form-control" placeholder="col-md-8" value="{{ $user->view }}">
-                                </div>
-                            </div>
-                        </div>                 
-                    </div>
+    <p>
+        <label for="status">status</label><br>
+        <input type="text" name="status" value="">
+    </p>
 
-                    <div class="form-body">
-                        <div class="row">
-                            <div class="col-md-2">
-                                <label for="name" style="color:black;style-font:bold">Gender:
-                            </div>
-                            <div class="col-md-8">
-                                <div class="form-group">
-                                    </label>
-                                    <input type="text" class="form-control" placeholder="col-md-8" value="{{ $user->gender }}">
-                                </div>
-                            </div>
-                        </div>                 
-                    </div>
-                    <div class="form-body">
-                        <div class="row">
-                            <div class="col-md-2">
-                                <label for="name" style="color:black;style-font:bold">Status:
-                            </div>
-                            <div class="col-md-8">
-                                <div class="form-group">
-                                    </label>
-                                    <input type="text" class="form-control" placeholder="col-md-8" value="{{ $user->status }}">
-                                </div>
-                            </div>
-                        </div>                 
-                    </div>
-                    <div class="form-body">
-                        <div class="row">
-                            <div class="col-md-2">
-                                <label for="name" style="color:black;style-font:bold">Permission:
-                            </div>
-                            <div class="col-md-8">
-                                <div class="form-group">
-                                    </label>
-                                    <input type="text" class="form-control" placeholder="col-md-8" value="{{ $user->permission }}">
-                                </div>
-                            </div>
-                        </div>                 
-                    </div>
-                    <div class="form-actions">
-                        <div class="col-md-8">
-                            <button type="submit" class="btn btn-info">Submit</button>
-                            <button type="reset" class="btn btn-dark">Reset</button>
-                        </div>
-                    </div>
+    <p>
+        <label for="owned_by">permission</label><br>
+        <input type="text" name="permission" value="">
+    </p>
 
-                    
-                </form>
-            </div>
-        </div>
-    </div>
-    
-</div>
+    <p>
+    <button type="submit" class="btn btn-primary btn-rounded btn-sm" > Create </button>
+    </p>
+</form>
 @endsection
