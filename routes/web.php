@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\Controller;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\category_controller;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,29 +24,14 @@ use App\Http\Controllers\PostController;
     Route::get('admin/logout','App\Http\Controllers\logout_controller@checkLogout');
   
     Route::group(['prefix'=>'admin',],function(){
-
-            Route::get('index', 'App\Http\Controllers\display_controller@index');
-                //Post
-            Route::resource('posts', PostController::class);
-            // Bảng category thêm , xóa ,sửa
-            
-        Route::group(['prefix'=>'categories',],function(){
-
-            Route::get('/','App\Http\Controllers\category_controller@index');
-        
-            Route::get('create','App\Http\Controllers\category_controller@create');
-        
-            Route::post('store', 'App\Http\Controllers\category_controller@store');
-        
-            Route::DELETE('delete/{id}', 'App\Http\Controllers\category_controller@destroy');
-        
-            Route::get('edit/{id}', 'App\Http\Controllers\category_controller@edit');
-        
-            Route::POST('edit/update/{id}', 'App\Http\Controllers\category_controller@update');
-        });
-
+        Route::get('index', 'App\Http\Controllers\display_controller@index');
+        //Post
+        Route::resource('posts', PostController::class);
+        // Bảng category thêm , xóa ,sửa
+        Route::resource('categories', category_controller::class);
+        //Xoa bang
         // Bảng images thêm , xóa ,sửa
-        Route::group(['prefix'=>'images',],function(){
+        Route::group(['prefix'=>'images','middleware'=>'adminLogin'],function(){
 
             Route::get('/','App\Http\Controllers\image_controller@index');
         
@@ -62,43 +48,12 @@ use App\Http\Controllers\PostController;
 
         // Bảng users thêm , xóa ,sửa
         Route::group(['prefix'=>'users'],function(){
-
-            route::get('/','App\Http\Controllers\user_controller@index');
-
-            route::get('create','App\Http\Controllers\user_controller@create');
-
-            route::post('create','App\Http\Controllers\user_controller@postAddUser');
-
-            route::delete('delete/{id}','App\Http\Controllers\user_controller@destroy');
+            route::get('','App\Http\Controllers\user_controller@index');
 
             route::get('detail/{id}','App\Http\Controllers\user_controller@show');
 
             route::get('edit/{id}','App\Http\Controllers\user_controller@edit');
 
             route::post('edit/{id}','App\Http\Controllers\user_controller@postEdit');
-
-           
         });
-
-        Route::group(['prefix'=>'anouncement'],function(){
-
-            route::get('/','App\Http\Controllers\user_controller@index');
-
-            route::get('create','App\Http\Controllers\user_controller@create');
-
-            route::post('create','App\Http\Controllers\user_controller@postAddUser');
-
-            route::delete('delete/{id}','App\Http\Controllers\user_controller@destroy');
-
-            route::get('detail/{id}','App\Http\Controllers\user_controller@show');
-
-            route::get('edit/{id}','App\Http\Controllers\user_controller@edit');
-
-            route::post('edit/{id}','App\Http\Controllers\user_controller@postEdit');
-
-           
-        });
-
-});
-    
-
+    });
