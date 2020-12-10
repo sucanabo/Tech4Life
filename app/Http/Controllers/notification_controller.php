@@ -1,9 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-
+use App\Http\Controllers\Controller;
+use App\Models\notifications;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 class notification_controller extends Controller
 {
     /**
@@ -14,6 +17,8 @@ class notification_controller extends Controller
     public function index()
     {
         //
+        $notification= DB::table('notification')->paginate(12);
+        return view('admin/notifacation/index',['notification'=>$notification]);
     }
 
     /**
@@ -24,6 +29,7 @@ class notification_controller extends Controller
     public function create()
     {
         //
+        return view('admin/notifacation/create');
     }
 
     /**
@@ -35,6 +41,21 @@ class notification_controller extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request,[
+            'title'=>'required',
+            'content'=>'required',
+        ],
+        [
+            'title.required'=>'Bạn chưa nhập title',
+            'content.required'=>'Bạn chưa nhập content',
+        ]);
+        $notification = new notifications;
+        $notification->user_id= $request->user_id;
+        $notification->title= $request->title;
+        $notification->content= $request->content;
+        $notification->status= 1;
+        $notification->save();
+        return redirect('admin/notifications/')->with('thongbao','Thêm thành công');
     }
 
     /**
@@ -57,6 +78,8 @@ class notification_controller extends Controller
     public function edit($id)
     {
         //
+        $notification= notifications::find($id);
+        return view('admin/notifacation/edit',['notification'=>$notification]);
     }
 
     /**
@@ -69,6 +92,21 @@ class notification_controller extends Controller
     public function update(Request $request, $id)
     {
         //
+        $this->validate($request,[
+            'title'=>'required',
+            'content'=>'required',
+        ],
+        [
+            'title.required'=>'Bạn chưa nhập title',
+            'content.required'=>'Bạn chưa nhập content',
+        ]);
+        $notification= notifications::find($id);
+        $notification->user_id= $request->user_id;
+        $notification->title= $request->title;
+        $notification->content= $request->content;
+        $notification->status= 1;
+        $notification->save();
+        return redirect('admin/notifications/')->with('thongbao','Sửa thành công');
     }
 
     /**
@@ -80,5 +118,8 @@ class notification_controller extends Controller
     public function destroy($id)
     {
         //
+        $notification=notifications::find($id);
+        $notification->delete();
+        return redirect('admin/notifications/')->with('thongbao','Xóa thành công');
     }
 }

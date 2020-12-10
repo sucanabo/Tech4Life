@@ -15,8 +15,8 @@
             {{session('thongbao')}}
         </div>
     @endif
-    <form method="get" action="categories/create" style="margin-bottom:10px">
-    <a href="users/add"><button type="submit" class="btn btn-primary btn-rounded btn-sm"><i class="fas fa-plus"></i> Add a category</button>
+    <form method="get" action="users/create" style="margin-bottom:10px">
+    <button type="submit" class="btn btn-primary btn-rounded btn-sm"><i class="fas fa-plus"></i> Add a category</button>
     </form>
 
     <table class="table">
@@ -27,9 +27,10 @@
                 <th>User_name</th>
                 <th>Email</th>
                 <th>Phone_Number</th>
-                <th>&nbsp;</th>
-                <th>&nbsp;</th>
-                <th>&nbsp;</th>
+                <th>Avatar</th>
+                <th>Detail</th>
+                <th>Edit</th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody>
@@ -41,7 +42,7 @@
                 <td>{{$us -> username}}</td>
                 <td>{{$us -> email}}</td>
                 <td>{{$us -> phone_number}}</td>
-                
+                <td> <img style="height:100px;width:100px" src="{{ URL::asset('img') }}/{{$us -> avatar}}" alt="wrapkit"></td>
                 <td class="d-inline-block float-right">
                     <a href="users/detail/{{$us -> id}}"><button type="submit" class="btn btn-primary btn-rounded btn-sm"><i class="fas fa-eye"></i> </button></a>
                 </td>

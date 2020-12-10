@@ -15,6 +15,6 @@ class conversation extends Model
         } 
         // n-n
     public function post_comment(){
-        return $this->hasMany('App\Models\post_comment','conversation_id','id');
+        return $this->hasManyTo('App\Models\post_comment','conversation_id','id');
         } 
 }

@@ -1,9 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-
+use App\Http\Controllers\Controller;
+use App\Models\announcement;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 class announcements_controller extends Controller
 {
     /**
@@ -14,6 +17,8 @@ class announcements_controller extends Controller
     public function index()
     {
         //
+        $announcement= DB::table('announcement')->paginate(15);
+        return view('admin/annountcements/index',['announcement'=>$announcement]);
     }
 
     /**
@@ -24,6 +29,7 @@ class announcements_controller extends Controller
     public function create()
     {
         //
+        return view('admin/annountcements/create');
     }
 
     /**
@@ -35,6 +41,19 @@ class announcements_controller extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request,[
+            'title'=>'required',
+            'content'=>'required', 
+        ],
+        [
+            'title.required'=>'Bạn chưa nhập title',
+            'content.required'=>'Bạn chưa nhập content',
+        ]);
+        $annountcement = new announcement;
+        $annountcement->title = $request->title;
+        $annountcement->content = $request->content;
+        $annountcement->save();
+        return redirect('admin/announcements/')->with('thongbao','Thêm thành công');
     }
 
     /**
@@ -57,6 +76,8 @@ class announcements_controller extends Controller
     public function edit($id)
     {
         //
+        $announcement= announcement::find($id);
+        return view('admin/annountcements/edit',['announcement'=>$announcement]);
     }
 
     /**
@@ -69,6 +90,19 @@ class announcements_controller extends Controller
     public function update(Request $request, $id)
     {
         //
+        $this->validate($request,[
+            'title'=>'required',
+            'content'=>'required', 
+        ],
+        [
+            'title.required'=>'Bạn chưa nhập title',
+            'content.required'=>'Bạn chưa nhập content',
+        ]);
+        $annountcement= announcement::find($id);
+        $annountcement->title = $request->title;
+        $annountcement->content = $request->content;
+        $annountcement->save();
+        return redirect('admin/announcements/')->with('thongbao','Sửa thành công');
     }
 
     /**
@@ -80,5 +114,8 @@ class announcements_controller extends Controller
     public function destroy($id)
     {
         //
+        $announcement=announcement::find($id);
+        $announcement->delete();
+        return redirect('admin/annountcements/')->with('thongbao','Xóa thành công');
     }
 }

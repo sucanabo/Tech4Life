@@ -1,9 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-
+use App\Http\Controllers\Controller;
+use App\Models\series;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 class series_controller extends Controller
 {
     /**
@@ -14,6 +18,8 @@ class series_controller extends Controller
     public function index()
     {
         //
+        $series= DB::table('series')->paginate(15);
+        return view('admin/series/index',['series'=>$series]);
     }
 
     /**
@@ -24,6 +30,7 @@ class series_controller extends Controller
     public function create()
     {
         //
+        return view('admin/series/create');
     }
 
     /**
@@ -35,6 +42,23 @@ class series_controller extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request,[
+            'title'=>'required',
+            'description'=>'required', 
+        ],
+        [
+            'title.required'=>'Bạn chưa nhập title',
+            'description.required'=>'Bạn chưa nhập description',
+        ]);
+        $series = new series;
+        $series->title = $request->title;
+        $series->description = $request->description;
+        $series->user_id= $request->user_id;
+        $series->vote=0;
+        $series->view=0;
+        $series->status=1;
+        $series->save();
+        return redirect('admin/series/')->with('thongbao','Thêm thành công');
     }
 
     /**
@@ -46,6 +70,8 @@ class series_controller extends Controller
     public function show($id)
     {
         //
+        $series= series::find($id);
+        return view('admin/series/show',['series'=>$series]);
     }
 
     /**
@@ -57,6 +83,8 @@ class series_controller extends Controller
     public function edit($id)
     {
         //
+        $series= series::find($id);
+        return view('admin/series/edit',['series'=>$series]);
     }
 
     /**
@@ -68,7 +96,39 @@ class series_controller extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // 
+        $this->validate($request,[
+            'title'=>'required',
+            'description'=>'required', 
+            'vote'=>'required',
+            'view'=>'required',
+            'user_id'=>'required',
+            'status'=>'required',
+        ],
+        [
+            'title.required'=>'Bạn chưa nhập title',
+            'description.required'=>'Bạn chưa nhập description',
+            'vote.required'=>" Ô vote bị chưa có dữ liệu",
+            'view.required'=>" Ô view chưa có dữ liệu ",
+            'user_id.required'=>" Ô user_id chưa có sữ liệu ",
+            'status.required'=>" Ô status chưa có dữ liệu ",
+        ]); 
+        echo $request->title;
+        echo $request->description;
+        echo $request->user_id;
+        echo $request->vote;
+        echo $request->view;
+        echo $request->status;
+
+        $series=series::find($id);
+        $series->title = $request->title;
+        $series->description = $request->description;
+        $series->user_id= $request->user_id;
+        $series->vote=$request->vote;
+        $series->view=$request->view;
+        $series->status=$request->status;
+        $series->save();
+        return redirect('admin/series/')->with('thongbao','sửa thành công');
     }
 
     /**
@@ -80,5 +140,8 @@ class series_controller extends Controller
     public function destroy($id)
     {
         //
+        $Series=series::find($id);
+        $Series->delete();
+        return redirect('admin/series/')->with('thongbao','Xóa thành công');
     }
 }

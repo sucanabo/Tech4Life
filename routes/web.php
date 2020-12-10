@@ -23,15 +23,17 @@ use App\Http\Controllers\category_controller;
 
     Route::get('admin/logout','App\Http\Controllers\logout_controller@checkLogout');
   
-    Route::group(['prefix'=>'admin',],function(){
+    Route::group(['prefix'=>'admin', 'middleware'=>'adminLogin'],function(){
         Route::get('index', 'App\Http\Controllers\display_controller@index');
         //Post
         Route::resource('posts', PostController::class);
         // Bảng category thêm , xóa ,sửa
         Route::resource('categories', category_controller::class);
+
+        Route::resource('users', user_Controller::class);
         //Xoa bang
         // Bảng images thêm , xóa ,sửa
-        Route::group(['prefix'=>'images','middleware'=>'adminLogin'],function(){
+        Route::group(['prefix'=>'images'],function(){
 
             Route::get('/','App\Http\Controllers\image_controller@index');
         
@@ -50,10 +52,81 @@ use App\Http\Controllers\category_controller;
         Route::group(['prefix'=>'users'],function(){
             route::get('','App\Http\Controllers\user_controller@index');
 
+            route::get('create','App\Http\Controllers\user_controller@create');
+
+            route::post('create','App\Http\Controllers\user_controller@postAddUser');
+
             route::get('detail/{id}','App\Http\Controllers\user_controller@show');
 
             route::get('edit/{id}','App\Http\Controllers\user_controller@edit');
 
-            route::post('edit/{id}','App\Http\Controllers\user_controller@postEdit');
+            route::post('edit/{id}','App\Http\Controllers\user_controller@update');
+
+            route::get('delete/{id}','App\Http\Controllers\user_controller@destroy');
         });
+
+        Route::group(['prefix'=>'series'],function(){
+            route::get('','App\Http\Controllers\series_controller@index');
+
+            route::get('create','App\Http\Controllers\series_controller@create');
+
+            route::post('create','App\Http\Controllers\series_controller@store');
+
+            route::get('show/{id}','App\Http\Controllers\series_controller@show');
+
+            route::get('edit/{id}','App\Http\Controllers\series_controller@edit');
+
+            route::post('edit/{id}','App\Http\Controllers\series_controller@update');
+
+            route::get('delete/{id}','App\Http\Controllers\series_controller@destroy');
+        });
+
+        Route::group(['prefix'=>'announcements'],function(){
+            route::get('','App\Http\Controllers\announcements_controller@index');
+
+            route::get('create','App\Http\Controllers\announcements_controller@create');
+
+            route::post('create','App\Http\Controllers\announcements_controller@store');
+
+            route::get('edit/{id}','App\Http\Controllers\announcements_controller@edit');
+
+            route::post('edit/{id}','App\Http\Controllers\announcements_controller@update');
+
+            route::get('delete/{id}','App\Http\Controllers\announcements_controller@destroy');
+        });
+
+        Route::group(['prefix'=>'notifications'],function(){
+            route::get('','App\Http\Controllers\notification_controller@index');
+
+            route::get('create','App\Http\Controllers\notification_controller@create');
+
+            route::post('create','App\Http\Controllers\notification_controller@store');
+
+            route::get('show/{id}','App\Http\Controllers\notification_controller@show');
+
+            route::get('edit/{id}','App\Http\Controllers\notification_controller@edit');
+
+            route::post('edit/{id}','App\Http\Controllers\notification_controller@update');
+
+            route::get('delete/{id}','App\Http\Controllers\notification_controller@destroy');
+        });
+
+
+        Route::group(['prefix'=>'conversations'],function(){
+            route::get('','App\Http\Controllers\conversation_controller@index');
+
+            route::get('create','App\Http\Controllers\conversation_controller@create');
+
+            route::post('create','App\Http\Controllers\conversation_controller@store');
+
+            route::get('show/{id}','App\Http\Controllers\conversation_controller@show');
+
+            route::get('edit/{id}','App\Http\Controllers\conversation_controller@edit');
+
+            route::post('edit/{id}','App\Http\Controllers\conversation_controller@update');
+
+            route::get('delete/{id}','App\Http\Controllers\conversation_controllerr@destroy');
+        });
+
+        
     });
