@@ -13,9 +13,9 @@ or cp .env.example .env if using terminal, Ubuntu
 
 - Open your .env file and change the database name (DB_DATABASE) to whatever you have, username (DB_USERNAME) and password (DB_PASSWORD) field correspond to your configuration.
 
-- By default, the username is root and you can leave the password field empty. (This is for Xampp)
-
-- By default, the username is root and password is also root. (This is for Lamp)
+- Change port to 3308 in env.
+- Change port 3306 to 3308 in my.ini in config MySQL (XAMPP)
+- Into XAMPP folder search "config.inc.php", add this code: $cfg['Servers'][$i]['port'] = '3308';
 
 - Run php artisan key:generate
 
