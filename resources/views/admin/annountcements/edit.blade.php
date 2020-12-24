@@ -29,7 +29,7 @@
 
             <div class="form-group p-0">
                 <label for="my-input">Content :</label>
-                <input id="my-input" class="form-control " value="{{$announcement->content}}" type="text" name="content">
+                <textarea id="editor" class="form-control " type="text" name="content" value="{{$announcement->content}}"></textarea>
             </div>
 
             <button type="submit" class="btn btn-primary btn-rounded btn-lg" > Update </button>

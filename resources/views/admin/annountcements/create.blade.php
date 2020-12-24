@@ -29,7 +29,7 @@
 
             <div class="form-group p-0">
                 <label for="my-input">Content :</label>
-                <input id="my-input" class="form-control " type="text" name="content">
+                <textarea id="editor" class="form-control " type="text" name="content"></textarea>
             </div>
            
             <button type="submit" class="btn btn-primary btn-rounded btn-lg" > Create </button>
@@ -37,4 +37,6 @@
         </div>
     </div>   
 </form>
+
+
 @endsection

@@ -20,7 +20,7 @@ class Post extends Migration
             $table->text('content');
             $table->integer('vote');
             $table->integer('view');
-
+            $table->string('image_title');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
             

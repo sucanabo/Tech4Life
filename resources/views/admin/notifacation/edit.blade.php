@@ -34,7 +34,7 @@
 
             <div class="form-group p-0">
                 <label for="my-input">Content :</label>
-                <input id="my-input" class="form-control " type="text" name="content"  value="{{ $notification->content }}">
+                <textarea id="editor" class="form-control " type="text" name="content" value="{{ $notification->content }}"></textarea>
             </div>
 
             <div class="form-group mb-4 p-0">

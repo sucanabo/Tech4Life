@@ -16,15 +16,15 @@
                                 aria-expanded="false"><i data-feather="file-text" class="feather-icon"></i><span
                                     class="hide-menu">Forum Infomations</span></a>
                             <ul aria-expanded="false" class="collapse  first-level base-level-line">
-                                <li class="sidebar-item"><a href="form-inputs.html" class="sidebar-link"><span
+                                <li class="sidebar-item"><a href="series" class="sidebar-link"><span
                                             class="hide-menu"> Series
                                         </span></a>
                                 </li>
-                                <li class="sidebar-item"><a href="form-input-grid.html" class="sidebar-link"><span
+                                <li class="sidebar-item"><a href="categories" class="sidebar-link"><span
                                             class="hide-menu"> Category
                                         </span></a>
                                 </li>
-                                <li class="sidebar-item"><a href="form-checkbox-radio.html" class="sidebar-link @yield('post-active')"><span
+                                <li class="sidebar-item"><a href="posts" class="sidebar-link @yield('post-active')"><span
                                             class="hide-menu"> Post
                                         </span></a>
                                 </li>
@@ -34,27 +34,27 @@
                             aria-expanded="false"><i data-feather="bell" class="feather-icon"></i><span
                                 class="hide-menu">System</span></a>
                         <ul aria-expanded="false" class="collapse  first-level base-level-line">
-                            <li class="sidebar-item"><a href="form-inputs.html" class="sidebar-link"><span
+                            <li class="sidebar-item"><a href="announcements" class="sidebar-link"><span
                                         class="hide-menu"> Announcements
                                     </span></a>
                             </li>
-                            <li class="sidebar-item"><a href="form-input-grid.html" class="sidebar-link"><span
+                            <li class="sidebar-item"><a href="notifications" class="sidebar-link"><span
                                         class="hide-menu"> Notifications
                                     </span></a>
                             </li>
                         </ul>
                     </li>
-                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="ui-cards.html"
-                                aria-expanded="false"><i data-feather="users" class="feather-icon"></i><span
-                                    class="hide-menu">Members
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="users"
+                                aria-expanded="false"><i data-feather="message-circle" class="feather-icon"></i><span
+                                    class="users">Members
                                 </span></a>
                         </li>
-                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="ui-cards.html"
-                            aria-expanded="false"><i data-feather="image" class="feather-icon"></i><span
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="images"
+                            aria-expanded="false"><i data-feather="message-circle" class="feather-icon"></i><span
                                 class="hide-menu">Images
                             </span></a>
                     </li>
-                    <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="ui-cards.html"
+                    <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="conversations"
                         aria-expanded="false"><i data-feather="message-circle" class="feather-icon"></i><span
                             class="hide-menu">Conversation
                         </span></a>

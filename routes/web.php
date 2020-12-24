@@ -15,6 +15,10 @@ use App\Http\Controllers\category_controller;
 | contains the "web" middleware group. Now create something great!
 |
 */
+    //user
+    route::get('','App\Http\Controllers\Home\home_controller@index');
+
+
 
     // Chức năng login và logout
     Route::get('admin/login', 'App\Http\Controllers\login_controller@index' );
@@ -23,17 +27,33 @@ use App\Http\Controllers\category_controller;
 
     Route::get('admin/logout','App\Http\Controllers\logout_controller@checkLogout');
   
-    Route::group(['prefix'=>'admin', 'middleware'=>'adminLogin'],function(){
+    Route::group(['prefix'=>'admin', 'middleware'=>'checkLogin'],function(){
         Route::get('index', 'App\Http\Controllers\display_controller@index');
         //Post
-        Route::resource('posts', PostController::class);
         // Bảng category thêm , xóa ,sửa
         Route::resource('categories', category_controller::class);
 
         Route::resource('users', user_Controller::class);
-        //Xoa bang
+        //Bảng posts
+        Route::group(['prefix'=>'posts', 'middleware'=>'checkLogin'],function(){
+
+            Route::get('/','App\Http\Controllers\post_controller@index');
+        
+            Route::get('create','App\Http\Controllers\post_controller@create');
+        
+            Route::post('store', 'App\Http\Controllers\post_controller@store');
+
+            route::get('show/{id}','App\Http\Controllers\post_controller@show');
+        
+            Route::DELETE('delete/{id}', 'App\Http\Controllers\post_controller@destroy');
+        
+            Route::get('edit/{id}', 'App\Http\Controllers\post_controller@edit');
+        
+            Route::POST('edit/{id}', 'App\Http\Controllers\post_controller@update');
+        });
         // Bảng images thêm , xóa ,sửa
-        Route::group(['prefix'=>'images'],function(){
+
+        Route::group(['prefix'=>'images', 'middleware'=>'checkLogin'],function(){
 
             Route::get('/','App\Http\Controllers\image_controller@index');
         
@@ -49,7 +69,7 @@ use App\Http\Controllers\category_controller;
         });
 
         // Bảng users thêm , xóa ,sửa
-        Route::group(['prefix'=>'users'],function(){
+        Route::group(['prefix'=>'users', 'middleware'=>'checkLogin'],function(){
             route::get('','App\Http\Controllers\user_controller@index');
 
             route::get('create','App\Http\Controllers\user_controller@create');
@@ -65,7 +85,7 @@ use App\Http\Controllers\category_controller;
             route::get('delete/{id}','App\Http\Controllers\user_controller@destroy');
         });
 
-        Route::group(['prefix'=>'series'],function(){
+        Route::group(['prefix'=>'series', 'middleware'=>'checkLogin'],function(){
             route::get('','App\Http\Controllers\series_controller@index');
 
             route::get('create','App\Http\Controllers\series_controller@create');
@@ -81,7 +101,7 @@ use App\Http\Controllers\category_controller;
             route::get('delete/{id}','App\Http\Controllers\series_controller@destroy');
         });
 
-        Route::group(['prefix'=>'announcements'],function(){
+        Route::group(['prefix'=>'announcements', 'middleware'=>'checkLogin'],function(){
             route::get('','App\Http\Controllers\announcements_controller@index');
 
             route::get('create','App\Http\Controllers\announcements_controller@create');
@@ -95,7 +115,7 @@ use App\Http\Controllers\category_controller;
             route::get('delete/{id}','App\Http\Controllers\announcements_controller@destroy');
         });
 
-        Route::group(['prefix'=>'notifications'],function(){
+        Route::group(['prefix'=>'notifications', 'middleware'=>'checkLogin'],function(){
             route::get('','App\Http\Controllers\notification_controller@index');
 
             route::get('create','App\Http\Controllers\notification_controller@create');
@@ -112,7 +132,7 @@ use App\Http\Controllers\category_controller;
         });
 
 
-        Route::group(['prefix'=>'conversations'],function(){
+        Route::group(['prefix'=>'conversations', 'middleware'=>'checkLogin'],function(){
             route::get('','App\Http\Controllers\conversation_controller@index');
 
             route::get('create','App\Http\Controllers\conversation_controller@create');
@@ -125,8 +145,10 @@ use App\Http\Controllers\category_controller;
 
             route::post('edit/{id}','App\Http\Controllers\conversation_controller@update');
 
-            route::get('delete/{id}','App\Http\Controllers\conversation_controllerr@destroy');
+            route::get('delete/{id}','App\Http\Controllers\conversation_controller@destroy');
         });
 
-        
+
+        route::get('research','App\Http\Controllers\research_controller@search');
+        route::post('research','App\Http\Controllers\research_controller@getSearchAjax')->name('search');
     });

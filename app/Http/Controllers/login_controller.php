@@ -47,7 +47,7 @@ class login_controller extends Controller
             {
                 view()->share('user_login',Auth::user());
             }
-            return view ('admin/home/index');
+            return redirect ('admin/index');
         }
         else{
             //false
