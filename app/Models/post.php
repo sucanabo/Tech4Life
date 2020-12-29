@@ -9,16 +9,13 @@ class post extends Model
 {
     use HasFactory;
     protected $table="post";
-
+    protected $primaryKey = 'id';
     // 1-1
     public function User(){
         return $this->belongsTo('App\Models\User','user_id','id');
     }
 
     // 1-n
-    public function  post_comment(){
-        return $this->hasMany('App\Models\post_comment','post_id','id');
-    }
 
      // 1-n
      public function  post_clip(){
@@ -33,12 +30,13 @@ class post extends Model
     public function  series_post(){
         return $this->hasMany('App\Models\series_post','post_id','id');
     }
-      // 1-n
-    public function conversation(){
-        return $this->hasMany('App\Models\conversation','post_id','id');
-    }
+    
      // 1-n
     public function post_image(){
         return $this->hasMany('App\Models\post_image','post_id','id');
+    }
+
+    public function comment(){
+        return $this->hasMany('App\Models\comment','post_id','id');
     }
 }

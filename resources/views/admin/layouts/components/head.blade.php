@@ -14,7 +14,7 @@
     <link href="{{asset('layout_admin/assets/libs/chartist/dist/chartist.min.css')}}" rel="stylesheet">
     <link href="{{asset('layout_admin/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css')}}" rel="stylesheet" />
     <!-- Custom CSS -->
-    <link href="{{asset('layout_admin/dist/css/style.min.css')}}" rel="stylesheet">\
+    <link href="{{asset('layout_admin/dist/css/style.min.css')}}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
     <!-- Styles -->

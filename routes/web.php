@@ -152,3 +152,14 @@ use App\Http\Controllers\category_controller;
         route::get('research','App\Http\Controllers\research_controller@search');
         route::post('research','App\Http\Controllers\research_controller@getSearchAjax')->name('search');
     });
+
+    Route::group(['prefix'=>'user'],function(){
+        route::get('write_post','App\Http\Controllers\User\write_post_controller@index');
+        route::get('post_detail/{id}','App\Http\Controllers\User\post_detail_controller@show');
+        route::get('followings','App\Http\Controllers\User\followings_controller@index');
+        route::get('followings1','App\Http\Controllers\User\followings_controller@create');
+        route::get('login','App\Http\Controllers\User\login_controller@index');
+        route::get('register','App\Http\Controllers\User\register_controller@index');
+    });   
+
+    

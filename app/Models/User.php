@@ -17,6 +17,7 @@ class User extends Authenticatable
      *
      * @var array
      */
+    protected $primaryKey = 'id';
     protected $fillable = [
         'username',
         'password',
@@ -85,10 +86,9 @@ class User extends Authenticatable
     public function post(){
         return $this->hasMany('App\Models\post','user_id','id');
     }
+    
     // 1-n
-    public function post_comment(){
-        return $this->hasMany('App\Models\post_comment','user_id','id');
-    }
+   
     // 1-n
     public function post_clip(){
         return $this->hasMany('App\Models\post_clip','user_id','id');
@@ -124,5 +124,9 @@ class User extends Authenticatable
 
     public function SessionUser(){
         return $this->hasOne('App\Models\SessionUser','user_id','id');
+    }
+
+    public function commemt(){
+        return $this->hasOne('App\Models\comment','user_id','id');
     }
 }

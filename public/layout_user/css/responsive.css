@@ -1,198 +1,93 @@
-/**************************************
 
-    File Name: responsive.css
-    Template Name: Tech Blog
-    Created By: HTML.Design
-    http://themeforest.net/user/wpdestek
-
-**************************************/
-
-
-/* RESPONSIVE 
-**************************************/
-
-@media (max-width: 1156px) {
-    .small-box .shadow-desc h4 {
-        font-size: 14px;
+/* ==========REPONSIVE============== */
+@media screen and (max-width:1200px)
+{
+    .qr{
+        display: none;
+    }
+    .post-actions--res{
+        display: block;
     }
 }
-
-@media (max-width: 1047px) {
-    .topbar-section .list-inline-item {
-        padding: 0 0.2rem !important;
+@media screen and (max-width:990px)
+{
+    .main-menu{
+        display: none;
     }
-}
-
-@media (max-width: 989px) {
-    .search-form .btn:hover,
-    .search-form .btn:focus,
-    .search-form .btn {
-        position: relative;
+    .feed-bar + a{
+        display: none;
     }
-    .custombox .blog-list-widget,
-    .custombox .blog-box {
-        margin: 1rem 0;
+    #content-right{
+        display: none;
     }
-    .sidebar,
-    .footer .widget {
-        margin: 1.5rem 0;
+    .main-navbar__left {
+        flex-basis: 30%;
     }
-    .center-side,
-    .left-side,
-    .right-side {
-        float: left;
-        width: 50%;
-    }
-}
-
-@media (max-width: 768px) {
-    .post-sharing .btn {
-        padding: 0.6rem !important;
-    }
-    .blog-custom-build .down-mobile,
-    .blog-title-area .down-mobile {
+    .post-actions{
         display: none !important;
     }
-    .newsletter-widget .form-inline .form-control {
-        width: 100%;
+    .sticky-sidebar{
+        display: none !important;
     }
-    .newsletter-widget .btn {
-        display: block;
-        width: 100%;
-        margin-top: 0.5rem;
+}  
+@media screen and (max-width:768px){
+    .second-nav .container {
+        margin-right: 30px;
     }
-    .blog-list .blog-meta.big-meta h4 {
-        background-color: #ffffff;
-        margin-left: 0;
-        margin-top: 1rem;
-        padding: 1rem 0;
+    .second-nav .container > div{
+        justify-content: flex-end!important;
     }
-}
-
-@media (max-width: 728px) {
-    .center-side,
-    .left-side,
-    .right-side {
-        float: left;
-        width: 100%;
+    .hamburger{
+        cursor: pointer;
+        visibility: unset;
     }
-    .shadow-desc {
-        bottom: 0;
-        padding: 1rem 0.8rem;
-        position: absolute;
+    .close-btn{display: inline;}
+    .nav-line{
+        width: 30px;
+        height: 3px;
+        background:#fff;
+        margin: 5px;
     }
-    .blog-meta h4 {
-        font-size: 18px;
-    }
-}
-
-@media (max-width: 590px) {
-    .comment-list .media {
-        float: none !important;
-        width: 100%;
-        display: block;
-    }
-    .blog-title-area {
-        text-align: center;
-    }
-    .pp .float-right,
-    .pp .float-left {
-        width: 100%;
-        margin: 1rem 0;
-    }
-    .blog-title-area h3 {
-        font-size: 34px;
-    }
-    .section-title {
-        margin-top: 1rem;
-    }
-    .footer-text img,
-    .small-box {
-        float: none;
-        width: 100%;
-    }
-    .topbar-section .text-right {
-        text-align: center !important;
-    }
-    .blog-meta.big-meta h4 {
-        font-size: 21px;
-    }
-    .top-search .newsletter-widget .form-inline .form-control {
-        font-size: 16px;
-    }
-    .card-block {
-        padding: 1rem 0.5rem;
-    }
-    .newsletter-widget .btn:hover,
-    .newsletter-widget .btn:focus,
-    .newsletter-widget .btn {
-        border: 0 none !important;
-        font-size: 17px !important;
-        padding: 1.3rem 1rem !important;
-    }
-}
-
-@media (min-width: 992px) {
-    .header .dropdown-menu {
-        margin-top: 13px;
-    }
-    .header .navbar-nav .has-submenu {
-        position: relative;
-    }
-    .header .navbar-nav .has-submenu:hover > ul {
-        visibility: visible;
-        opacity: 1;
-        top: 100%;
-    }
-    .header .navbar-nav .has-submenu:hover > ul li ul {
-        margin-top: -1px;
-    }
-    .header .navbar-nav .has-submenu ul {
-        -webkit-transition: visibility 0.35s ease-in-out, opacity 0.35s ease-in-out, top 0.35s ease-in-out, bottom 0.35s ease-in-out, left 0.35s ease-in-out, right 0.35s ease-in-out;
-        -moz-transition: visibility 0.35s ease-in-out, opacity 0.35s ease-in-out, top 0.35s ease-in-out, bottom 0.35s ease-in-out, left 0.35s ease-in-out, right 0.35s ease-in-out;
-        -o-transition: visibility 0.35s ease-in-out, opacity 0.35s ease-in-out, top 0.35s ease-in-out, bottom 0.35s ease-in-out, left 0.35s ease-in-out, right 0.35s ease-in-out;
-        transition: visibility 0.35s ease-in-out, opacity 0.35s ease-in-out, top 0.35s ease-in-out, bottom 0.35s ease-in-out, left 0.35s ease-in-out, right 0.35s ease-in-out;
-    }
-    .header .navbar-nav .has-submenu .dropdown-menu {
-        min-width: 220px;
-        padding: 0;
-        -webkit-border-radius: 0;
-        -moz-border-radius: 0;
-        border-radius: 0;
-    }
-    .header .navbar-nav .has-submenu > ul {
-        position: absolute;
-        top: 130%;
-        visibility: hidden;
-        display: block;
-        opacity: 0;
-        left: 0;
-    }
-    .header .navbar-nav .has-submenu > ul.start-right {
-        right: 0;
-        left: auto;
-    }
-    .header .navbar-nav .has-submenu > ul li {
-        position: relative;
-    }
-    .header .navbar-nav .has-submenu > ul li:hover > ul {
-        visibility: visible;
-        opacity: 1;
-        left: 100%;
-    }
-    .header .navbar-nav .has-submenu > ul li:hover > ul.show-right {
-        right: 100%;
-    }
-    .header .navbar-nav .has-submenu > ul li ul {
-        position: absolute;
+    .feed-links{
+        position: fixed;
+        background: #0b1a33;
+        height: 100vh;
+        width: 100vw;
+        z-index: 1000;
         top: 0;
-        visibility: hidden;
-        display: block;
-        opacity: 0;
-        left: 130%;
+        left: 0;
+        flex-direction: column;
+        clip-path: circle(100px at 100% -15%);
+        -webkit-clip-path:circle(100px at 90% -20%);
+        transition: all 1s ease ;
     }
-    .header .navbar-nav .has-submenu > ul li ul.show-right {
-        right: 130%;
-        left: auto;
+    .feed-links.open{
+        clip-path: circle(1200px at 100% -15%);
+        -webkit-clip-path:circle(1200px at 90% -15%);
+    }
+    .feed-links li{
+        line-height:30px;
+        margin: 30px 0;
+    }
+    .close-btn{
+        position: absolute;
+        top: 30px;
+        right: 50px;
+        font-size: 30px;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    nav{
+        display: block;
+        justify-content: space-between!important;
+        max-width: 100% !important;
+        margin: 0!important;
+    }
+    footer .service-badges{
+        flex-direction: row;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
     }
 }
