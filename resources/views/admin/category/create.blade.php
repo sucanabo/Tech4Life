@@ -55,8 +55,6 @@
                 <img class="w-100 h-auto" src="{{asset('layout_admin/assets/images/no-image.jpg')}}" alt="no-img">
             </div>
         </div>
-    </div>
-    
-    
+    </div>   
 </form>
 @endsection

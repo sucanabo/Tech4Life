@@ -3737,7 +3737,13 @@ input[type="button"].btn-block {
   a.badge-warning:focus, a.badge-warning.focus {
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgba(253, 193, 106, 0.5); }
-
+.content{ 
+  text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+}
 .badge-danger {
   color: #fff;
   background-color: #ff4f70; }
@@ -3747,7 +3753,6 @@ input[type="button"].btn-block {
   a.badge-danger:focus, a.badge-danger.focus {
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgba(255, 79, 112, 0.5); }
-
 .badge-light {
   color: #212529;
   background-color: #e8eaec; }

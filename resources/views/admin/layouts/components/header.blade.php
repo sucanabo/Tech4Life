@@ -174,7 +174,7 @@
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
-                        @if(isset($user_login))
+                       
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
@@ -182,7 +182,7 @@
                                     width="40">
                                    
                                 <span class="ml-2 d-none d-lg-inline-block"><span>Hello,</span> <span
-                                        class="text-dark">{{$user_login->username}}</span> <i data-feather="chevron-down"
+                                        class="text-dark">{{ auth()->user()->username }}</span> <i data-feather="chevron-down"
                                         class="svg-icon"></i></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
@@ -209,7 +209,7 @@
                             </div>
                         </li>
 
-                        @endif  
+                      
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->

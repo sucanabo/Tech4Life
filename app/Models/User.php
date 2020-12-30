@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+    
     use HasFactory, Notifiable;
 
     /**
@@ -16,6 +17,7 @@ class User extends Authenticatable
      *
      * @var array
      */
+    protected $primaryKey = 'id';
     protected $fillable = [
         'username',
         'password',
@@ -40,11 +42,41 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    protected function fullTextWildcards($term)
+    {
+        // removing symbols used by MySQL
+        $reservedSymbols = ['-', '+', '<', '>', '@', '(', ')', '~'];
+        $term = str_replace($reservedSymbols, '', $term);
+ 
+        $words = explode(' ', $term);
+ 
+        foreach ($words as $key => $word) {
+            /*
+             * applying + operator (required word) only big words
+             * because smaller ones are not indexed by mysql
+             */
+            if (strlen($word) >= 1) {
+                $words[$key] = '+' . $word  . '*';
+            }
+        }
+        
+        $searchTerm = implode(' ', $words);
+ 
+        return $searchTerm;
+    }
+ 
+    public function scopeFullTextSearch($query, $columns, $term)
+    {
+        $query->whereRaw("MATCH ({$columns}) AGAINST (? IN BOOLEAN MODE)", $this->fullTextWildcards($term));
+ 
+        return $query;
+    }
     /**
      * The attributes that should be cast to native types.
      *
      * @var array
      */
+
     protected $casts = [
         'email_verified_at' => 'datetime',
         
@@ -54,10 +86,9 @@ class User extends Authenticatable
     public function post(){
         return $this->hasMany('App\Models\post','user_id','id');
     }
+    
     // 1-n
-    public function post_comment(){
-        return $this->hasMany('App\Models\post_comment','user_id','id');
-    }
+   
     // 1-n
     public function post_clip(){
         return $this->hasMany('App\Models\post_clip','user_id','id');
@@ -89,5 +120,13 @@ class User extends Authenticatable
      // 1-n
      public function notifications(){
          return $this->hasMany('App\Models\notifications','user_id','id');
+    }
+
+    public function SessionUser(){
+        return $this->hasOne('App\Models\SessionUser','user_id','id');
+    }
+
+    public function commemt(){
+        return $this->hasOne('App\Models\comment','user_id','id');
     }
 }

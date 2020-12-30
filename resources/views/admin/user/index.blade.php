@@ -2,9 +2,21 @@
 @section('title','All Post - Index')
 @section('content')
 <div class="table-responsive">
+    @if(count($errors)>0)
+        <div class="alert alert-danger">
+            @foreach($errors->all() as $err)
+                {{$err}}<br>
+            @endforeach
+        </div>
+    @endif
 
-    <form method="get" action="categories/create" style="margin-bottom:10px">
-        <button type="submit" class="btn btn-primary btn-rounded btn-sm"><i class="fas fa-plus"></i> Add a category</button>
+    @if(session('thongbao'))
+        <div class="alert alert-success">
+            {{session('thongbao')}}
+        </div>
+    @endif
+    <form method="get" action="users/create" style="margin-bottom:10px">
+    <button type="submit" class="btn btn-primary btn-rounded btn-sm"><i class="fas fa-plus"></i> Add a category</button>
     </form>
 
     <table class="table">
@@ -15,9 +27,10 @@
                 <th>User_name</th>
                 <th>Email</th>
                 <th>Phone_Number</th>
-                <th>&nbsp;</th>
-                <th>&nbsp;</th>
-                <th>&nbsp;</th>
+                <th>Avatar</th>
+                <th>Detail</th>
+                <th>Edit</th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody>
@@ -29,21 +42,21 @@
                 <td>{{$us -> username}}</td>
                 <td>{{$us -> email}}</td>
                 <td>{{$us -> phone_number}}</td>
-                
+                <td> <img style="height:100px;width:100px" src="{{ URL::asset('img') }}/{{$us -> avatar}}" alt="wrapkit"></td>
                 <td class="d-inline-block float-right">
-                    <a href="detail/{{$us -> id}}"><button type="submit" class="btn btn-primary btn-rounded btn-sm"><i class="fas fa-eye"></i> </button></a>
+                    <a href="users/detail/{{$us -> id}}"><button type="submit" class="btn btn-primary btn-rounded btn-sm"><i class="fas fa-eye"></i> </button></a>
                 </td>
                 <td> 
-                    <a href="edit/{{$us -> id}}"><button type="submit" class="btn btn-primary btn-rounded btn-sm"><i class="fas fa-edit"></i></button></a>
+                    <a href="users/edit/{{$us -> id}}"><button type="submit" class="btn btn-primary btn-rounded btn-sm"><i class="fas fa-edit"></i></button></a>
                 </td>
                 <td> 
-                    <button type="submit" class="btn btn-primary btn-rounded btn-sm"><i class="fas fa-trash-alt"></i></button>
+                <a href="users/delete/{{$us -> id}}"><button type="submit" class="btn btn-primary btn-rounded btn-sm"><i class="fas fa-trash-alt"></i></button></a>
                 </td>
                 
             </tr>
-        @endforeach 
-               
-        </tbody>      
+        @endforeach
+  
+        </tbody>     
     </table>
     
 </div>

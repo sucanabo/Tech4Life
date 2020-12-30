@@ -21,5 +21,7 @@ class DatabaseSeeder extends Seeder
         $this->call([postSeeder::class]);
         $this->call([categorySeeder::class]);
         $this->call([announcementSeeder::class]);
+        $this->call([conversationSeeder::class]);
+        $this->call([notificationSeeder::class]);
     }
 }
