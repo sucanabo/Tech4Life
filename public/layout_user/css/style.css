@@ -219,6 +219,10 @@ nav .el-button{
     color: #5488C7;
     border: 1px solid #5488C7;
 }
+#post_form .ck-editor__editable{
+    min-height: 500px !important;
+    overflow-y: scroll !important;
+} 
 .form-item .el-button{
     padding:10px;
 }

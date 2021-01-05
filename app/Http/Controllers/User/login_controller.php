@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\User;
-
-use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-
+use App\Http\Controllers\Controller;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 class login_controller extends Controller
 {
     /**
@@ -17,7 +19,33 @@ class login_controller extends Controller
         //
         return view("user/login");
     }
+    
+    public function checkLogin(Request $request){
+        $this->validate($request,[
+            'email'=>'required|email',
+            'password'=>'required|min:6|max:20'
+        ],
+        [
+            'email.required'=>'Bạn chưa nhập Username',
+            'email.email'=>'Email phải có  @ ',
+            'password.min'=>'Password không được nhỏ hơn 6 ký tự',
+            'password.max'=>'Password không được lơn hơn 20 ký tự',
+        ]);
+       var_dump($request->email,$request->password);
+       if(Auth::attempt(['email'=>$request->email,'password'=>$request->password])){
+           //true
+            return redirect("user/followings");
+       }
+       else{
+        //false
+        return redirect('user/login')->with('thongbao','Đăng nhập không thành công');
+    }
+    }
 
+    public function checkLogout(){
+        Auth::logout();
+        return redirect('user/followings');
+    }
     /**
      * Show the form for creating a new resource.
      *

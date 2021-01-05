@@ -18,9 +18,10 @@ class followings_controller extends Controller
     public function index()
     {
         //
-        $post = post::all();
-        $data = post::find(8)->user->get();
-        return view("user/followings",['post'=>$post,'data'=>$data]);
+        $post = post::paginate(10);
+        $users = DB::table('users')->limit(5)->get();
+        
+        return view("user/followings",['post'=>$post,'user'=>$users]);
     }
 
    
