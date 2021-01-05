@@ -1,29 +1,43 @@
-@extends('user/layouts/masterdisplay_two')
+@extends('user/layouts/master1')
 @section('title','All Post - Index')
 @section('content')
 <div class="form-wrapper">
+            @if(count($errors) > 0)
+                <div class="alert alert-danger">
+                    @foreach($errors->all() as $err)
+                        {{$err}}<br>
+                    @endforeach
+                </div>
+            @endif
+            @if(session('thongbao'))
+            <div class="alert alert-success">
+                {{session('thongbao')}}
+            </div>
+            @endif
         <div class="form-container--center">
             <div class="form-logo"> <a href=""><img src="{{asset('layout_user/img/logo.fbfe575.svg')}}" alt="logo"></a></div>
             <div class="form-title text-center mt-5 mb-5">
                 <h3>Login to Viblo</h3>
             </div>
-            <form>
+            <form class="mt-4" action="{{URL::asset('user/checkLogin') }}" method="post">
+                @csrf
                 <div class="input-group mb-5">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroup-sizing-default"><i class="fas fa-user"></i></span>
                     </div>
-                    <input type="text" class="form-control" aria-label="Sizing example input"
+                    <input type="text" name="email" class="form-control" aria-label="Sizing example input"
                         aria-describedby="inputGroup-sizing-default" placeholder="User name or email">
                 </div>
                 <div class="input-group mb-5">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroup-sizing-default"><i class="fas fa-lock"></i></span>
                     </div>
-                    <input type="text" class="form-control" aria-label="Sizing example input"
+                    <input type="password" name="password" class="form-control" aria-label="Sizing example input"
                         aria-describedby="inputGroup-sizing-default" placeholder="Password">
                 </div>
+                <button id="login-btn"type="submit" class="btn btn-primary btn-md btn-block">Login</button>
             </form>
-            <button id="login-btn"type="button" class="btn btn-primary btn-md btn-block">Login</button>
+         
             <div class="d-flex justify-content-between mt-3 mb-3">
                 <a href="">Forgot your password?</a>
                 <a href="">Create account</a>

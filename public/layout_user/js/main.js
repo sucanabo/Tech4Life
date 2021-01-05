@@ -80,10 +80,17 @@ ClassicEditor
   } );
 
 ClassicEditor
-  .create( document.querySelector("#post__editor"))
+
+  .create( document.querySelector("#post__editor"),{
+    editorConfig:{
+      height:"500px"
+    }
+  })
   .catch( error => {
     console.log(error);
-});
+  }
+  
+);
 
 
 // //====================Editor==============================

@@ -37,7 +37,7 @@
                             <li class="feed-item"><a href="./followings.html" class="link">my clips</a></li>
                         </ul>
                     </div>
-                    <a href="publish/post" class="btn btn-primary float-right text-uppercase hidden-md-down">
+                    <a href="write_post" class="btn btn-primary float-right text-uppercase hidden-md-down">
                         <span><i class="fas fa-pencil-alt"></i></span>&nbsp;CREATE POST
                     </a>
                 </div>
@@ -64,7 +64,6 @@
                         </div>
                     </div>
                 @foreach($post as $p)
-               
                     <div class="post-feed-item bg-highlight">
                         <div class="d-flex">
                             <a href="#" class="mr-3">
@@ -96,8 +95,7 @@
                                         </a>
                                     </div>
                                     <div class="d-inline-flex flex-wrap align-items-center">
-                                        <span class="text-muted mr-2">about 22 hours ago</span>
-                                        <span class="text-muted mr-2 post-reading_time">- 3 min read</span>
+                                        <span class="text-muted mr-2">{{$p->created_at}}</span>
                                         <button class="icon-btn"><i class="fa fa-link"></i></button>
                                     </div>
                                 </div>
@@ -309,14 +307,15 @@
                                         <hr class="section-title__filler ml-3">
                                     </div>
                                     <div class="top-author__container">
+                                    @foreach($user as $us)
                                         <div class="top-author__item mt-4">
                                             <div class="top-author__info d-flex">
                                                 <a href="#">
-                                                    <img src="{{asset('layout_user/img/avartar/pi.jpg')}}" alt="pi">
+                                                    <img src="{{ URL::asset('img') }}/{{$us -> avatar}}" alt="pi">
                                                 </a>
                                                 <div class="d-flex flex-column justify-content-center ml-4  ">
-                                                    <a href="#">Pi</a>
-                                                    <span class="d-block">@sucanabo</span>
+                                                    <a href="#">{{$us->username}}</a>
+                                                    <span class="d-block">@ {{$us->username}}</span>
                                                 </div>
                                             </div>
                                             <div class="top-author__stats d-flex">
@@ -333,54 +332,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="top-author__item mt-4">
-                                            <div class="top-author__info d-flex">
-                                                <a href="#">
-                                                    <img src="{{asset('layout_user/img/avartar/dustin.jpg')}}" alt="dustin">
-                                                </a>
-                                                <div class="d-flex flex-column justify-content-center ml-4  ">
-                                                    <a href="#">Dustin Dinh</a>
-                                                    <span class="d-block">@dustindinh263</span>
-                                                </div>
-                                            </div>
-                                            <div class="top-author__stats d-flex">
-                                                <div class="follow-author">
-                                                    <button class="btn btn-follow">Follow</button>
-                                                </div>
-                                                <div class="stats d-flex justify-content-between text-nowrap w-100">
-                                                    <span class="stat-item text-muted" data-toggle="tooltip"
-                                                        title="Reputations: 394"><i class="fas fa-star"></i>394</span>
-                                                    <span class="stat-item text-muted" data-toggle="tooltip"
-                                                        title="Posts: 14"><i class="fas fa-pencil-alt"></i>14</span>
-                                                    <span class="stat-item text-muted" data-toggle="tooltip"
-                                                        title="Followers: 691"><i class="fas fa-user-plus"></i>9</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="top-author__item mt-4">
-                                            <div class="top-author__info d-flex">
-                                                <a href="#">
-                                                    <img src="{{asset('layout_user/img/avartar/springloc.jpg')}}" alt="springloc">
-                                                </a>
-                                                <div class="d-flex flex-column justify-content-center ml-4  ">
-                                                    <a href="#">Pi</a>
-                                                    <span class="d-block">@xloc0811</span>
-                                                </div>
-                                            </div>
-                                            <div class="top-author__stats d-flex">
-                                                <div class="follow-author">
-                                                    <button class="btn btn-follow">Follow</button>
-                                                </div>
-                                                <div class="stats d-flex justify-content-between text-nowrap w-100">
-                                                    <span class="stat-item text-muted" data-toggle="tooltip"
-                                                        title="Reputations: 92"><i class="fas fa-star"></i>91</span>
-                                                    <span class="stat-item text-muted" data-toggle="tooltip"
-                                                        title="Posts: 3"><i class="fas fa-pencil-alt"></i>2</span>
-                                                    <span class="stat-item text-muted" data-toggle="tooltip"
-                                                        title="Followers: 1"><i class="fas fa-user-plus"></i>1</span>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    @endforeach
+                                     
                                     </div>
                                 </div>
                             </div>
