@@ -1,4 +1,4 @@
-@extends('user/layouts/masterdisplay_two')
+@extends('user/layouts/master1')
 @section('title','All Post - Index')
 @section('content')
 <div class="form-wrapper">

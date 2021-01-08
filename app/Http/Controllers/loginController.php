@@ -41,13 +41,14 @@ class loginController extends Controller
             'password.min'=>'Password không được nhỏ hơn 6 ký tự',
             'password.max'=>'Password không được lơn hơn 20 ký tự',
         ]);
+        var_dump($request->email,$request->password);
         if(Auth::attempt(['email'=>$request->email,'password'=>$request->password])){
             //true
             if(Auth::check())
             {
                 view()->share('user_login',Auth::user());
             }
-            return view ('admin/home/index');
+            return redirect('admin/home/index');
         }
         else{
             //false

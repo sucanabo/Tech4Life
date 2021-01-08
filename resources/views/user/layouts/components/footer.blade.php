@@ -22,9 +22,9 @@
                     <div class="mb-1 mb-md-0 col-md-3 offset-xl-1">
                         <h4 class="footer__header">Services</h4>
                         <ul class="list-unstyled footer__links service-badges">
-                            <li class="footer__links__external-link"><a href="/posts" class="link"><img src="./img/services/viblo-code.svg" class="link-icon"  alt="Code">Viblo Code</a></li>
-                            <li class="footer__links__external-link"><a href="/posts"  class="link"><img src="./img/services/viblo-cv.svg" class="link-icon" alt="CV">Viblo CV</a></li>
-                            <li class="footer__links__external-link"><a href="/posts"  class="link"><img src="./img/services/viblo-ctf.png"  class="link-icon" alt="CTF">Viblo CTF</a></li>
+                            <li class="footer__links__external-link"><a href="/posts" class="link"><img src="{{asset('layout_user/img/services/viblo-code.svg')}}" class="link-icon"  alt="Code">Viblo Code</a></li>
+                            <li class="footer__links__external-link"><a href="/posts"  class="link"><img src="{{asset('layout_user/img/services/viblo-cv.svg')}}" class="link-icon" alt="CV">Viblo CV</a></li>
+                            <li class="footer__links__external-link"><a href="/posts"  class="link"><img src="{{asset('layout_user/img/services/viblo-ctf.png')}}"  class="link-icon" alt="CTF">Viblo CTF</a></li>
                         </ul>
                     </div>
                     <div class="mb-1 mb-md-0 col-md-3 offset-md-1">
