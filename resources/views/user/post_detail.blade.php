@@ -15,7 +15,7 @@
             <div class="row">
                 <div class="p-0 col-lg-1">
                     <div class="post-actions d-flex flex-column align-items-center mx-auto">
-                        <span class="avatar--side"><a href="/user"><img src="{{asset('layout_user/img/avartar/pi.jpg')}}" alt="avatar"
+                        <span class="avatar--side"><a href="/user"><img src="{{ URL::asset('img') }}/{{$user->avatar}}" alt="avatar"
                                     class="avatar--lg"></a></span>
                         <div class="votes  votes--side post-actions__vote mb-1">
                             <button class="icon-btn vote" data-toggle="tooltip" title="Up vote"><i
@@ -25,8 +25,8 @@
                                     class="fas fa-caret-down"></i></button>
                         </div>
                         <div class="clip mb-4">
-                            <button class="el-button post-actions__clip el-button--default" data-toggle="tooltip"
-                                title="Clip this post"><i class="fas fa-paperclip"></i></button>
+                        <a  href="{{ URL::asset('user/post_clip') }}/{{$post->id}}" ><button id="clip-btn" class="el-button post-actions__clip el-button--default" data-toggle="tooltip"
+                                title="Clip this post"><i class="fas fa-paperclip"></i></button></a>
                         </div>
                         <div class="social-sharing mb-2 social-sharing--horizontal social-sharing--small">
                             <a href="#" tooltip-placement="right" class="link link--muted"
@@ -46,13 +46,13 @@
                             <div class="d-flex align-items-start mb-5">
                                 <div class="post-author mb-2 mb-sm-0">
                                 
-                                    <a href="/user" class="d-fex mr-5"><img src="{{asset('layout_user/img/avartar/pi.jpg')}}" alt="pi-avt"
+                                    <a href="/user" class="d-fex mr-5"><img src="{{ URL::asset('img') }}/{{$user->avatar}}" alt="pi-avt"
                                             class="avatar avatar--lg"></a>
                                     <div class="post-author__info mr-1">
                                         <div class="d-flex">
                                             <div class="d-lex mr-3">
-                                                <a href="/user" class="text-bold post-author__name">marykyle</a>
-                                                <span class="text-muted">@marykyle</span>
+                                                <a href="/user" class="text-bold post-author__name">{{$user->username}}</a>
+                                                <span class="text-muted">@ {{$user->username}}</span>
                                             </div>
                                             <div class="follow">
                                                 <button class="el-button el-button--mini-mini is-plain">Follow</button>
@@ -74,7 +74,7 @@
                                     </div>
                                     <div class="stats">
                                         <span class="stat-item text-muted" data-toggle="tooltip" title="Views: 1K"><i
-                                                class="far fa-eye mr-1"></i>1K</span>
+                                                class="far fa-eye mr-1"></i>{{$post->view}}</span>
                                         <span class="stat-item text-muted" data-toggle="tooltip" title="Comments: 50"><i
                                                 class="fas fa-comments mr-1"></i>50</span>
                                         <span class="stat-item text-muted" data-toggle="tooltip" title="Clips: 153"><i
@@ -694,8 +694,8 @@
                     </div>
                 </div>
                 <div class="post-action--res__right d-flex">
-                        <button class="el-button post-actions__clip el-button--default" data-toggle="tooltip"
-                            title="Clip this post"><i class="fas fa-paperclip"></i></button>
+                        <button href="#" class=" el-button post-actions__clip el-button--default"
+                            title="Clip this post"><i  href="#" class="fas fa-paperclip"></i></button>
                         <button href="#" class="el-button post-actions__clip el-button--default"
                             title="Share a link to this page on Facebook">
                             <i class="fab fa-facebook-f"></i>

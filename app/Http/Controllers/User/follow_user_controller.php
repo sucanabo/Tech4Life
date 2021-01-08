@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\user;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\post;
+use App\Models\user_follow;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-class post_detail_controller extends Controller
+
+class follow_user_controller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +18,6 @@ class post_detail_controller extends Controller
     public function index()
     {
         //
-        return view("user/post_detail");
     }
 
     /**
@@ -25,6 +25,23 @@ class post_detail_controller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function createUserFollow($id)
+    {
+        $user_follow = new user_follow;
+        $user_follow->user_id= auth()->user()->id;
+        $user_follow->user_following_id=$id;
+        if (post_clip::where('post_id',$id )->first()){
+            if(post_clip::where('user_id', auth()->user()->id )->first()){
+                echo " bản ghi đã tồn tại ";
+            } 
+        }
+        else
+        {
+            
+        }  
+    }
+
     public function create()
     {
         //
@@ -50,12 +67,6 @@ class post_detail_controller extends Controller
     public function show($id)
     {
         //
-        $post=post::find($id);
-        $user=$post->User;
-        $query = post::findOrFail($id);
-        $query->increment('view');
-        $query->save();
-        return view('user/post_detail',['post'=>$post,'user'=>$user]);
     }
 
     /**
