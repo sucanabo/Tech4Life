@@ -16,7 +16,7 @@ use App\Http\Controllers\category_controller;
 |
 */
     //user
-    route::get('','App\Http\Controllers\Home\home_controller@index');
+    
 
 
 
@@ -132,6 +132,8 @@ use App\Http\Controllers\category_controller;
         });
 
 
+       
+
         Route::group(['prefix'=>'conversations', 'middleware'=>'checkLogin'],function(){
             route::get('','App\Http\Controllers\conversation_controller@index');
 
@@ -153,13 +155,11 @@ use App\Http\Controllers\category_controller;
         route::post('research','App\Http\Controllers\research_controller@getSearchAjax')->name('search');
     });
 
-    Route::group(['prefix'=>'user'],function(){
-        route::get('write_post','App\Http\Controllers\User\write_post_controller@index');
-        route::get('post_detail/{id}','App\Http\Controllers\User\post_detail_controller@show');
-        route::get('followings','App\Http\Controllers\User\followings_controller@index');
-        route::get('followings1','App\Http\Controllers\User\followings_controller@create');
-        route::get('login','App\Http\Controllers\User\login_controller@index');
-        route::get('register','App\Http\Controllers\User\register_controller@index');
-    });   
+    //route::get('','App\Http\Controllers\Home\Home@index');
+        route::get('/','App\Http\Controllers\User\followings_controller@index');
+        // route::get('/write-post','App\Http\Controllers\User\write_post_controller@index');
+        // route::get('/post-detail/{id}','App\Http\Controllers\User\post_detail_controller@show');
+        // route::get('/login','App\Http\Controllers\User\login_controller@index');
+        // route::get('/register','App\Http\Controllers\User\register_controller@index');   
 
     

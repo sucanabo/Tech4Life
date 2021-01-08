@@ -18,53 +18,40 @@
             @endif
 
 <div class="container">
-<h1 class="pb-5">Detail Post : </h1>
-<form method="post" action="store" enctype="multipart/form-data" >
-    @method('POST')
-    @csrf
+<h3 class="pb-5">Detail post : {{$post->id}}</h3>
     <div class="row">
         <div class="col-lg-12">
             <div class="form-group p-0">
                 <input id="my-input" class="form-control " type="text" name="user_id" hidden="hidden" value="{{ $post->user_id }}">
             </div>
+            <div>
+                <h2><strong>Title: </strong>{{$post->title}}</h2>
+            </div>
+            <div class="row">
+                <span class="col-md-1">
+                    <i class="far fa-eye mr-1"></i>
+                    {{$post->view}}
+                </span>
+                <span class="col-md-1">
+                    <i class="fas fa-sort-up"></i>
+                    {{$post->vote}}
+                </span>
+                <span class="col-md-2">
+                    Status: <?php if($post->status == 0) echo "Deactive"; else echo "Active";?>
+                </span>
+            </div>
+            <div>
+                <h2>Thumbnail</h2>
+                <img  id="thumbnil" src="{{ URL::asset('img/img_post') }}/{{ $post->image_title }}"  alt="no-img">
+            </div>
+            
             <div class="form-group p-0">
-                <label for="my-input">Title :</label>
-                <input id="my-input" class="form-control " type="text" name="title" value="{{ $post->title }}">
+                <h2>Content</h2>
+                <div class="post-show-content">{!!$post->content!!}</div>
             </div>
-
-            <div class="imgPreview p-0">
-                <label for="my-input">Image_Title :</label>
-                <img  id="thumbnil" class="w-100 h-auto" src="{{ URL::asset('img/img_post') }}/{{ $post->image_title }}"  alt="no-img">
             </div>
-
-            <div class="form-group p-0">
-                <label for="my-input">Content:</label>
-                <textarea id="editor" class="form-control " type="text" name="content" value="{!!$post->content !!}"></textarea>
-            </div>
-           
-           
-            <div class="form-group p-0">
-                <label for="my-input">Vote :</label>
-                <input id="my-input" class="form-control " type="text" name="title" value="{{ $post->vote }}">
-            </div>
-            <div class="form-group p-0">
-                <label for="my-input">View :</label>
-                <input id="my-input" class="form-control " type="text" name="title" value="{{ $post->view }}">
-            </div>
-
-            <div class="form-group mb-4 p-0">
-                <label class="mr-sm-2" for="inlineFormCustomSelect">Status</label>
-                <select class="custom-select mr-sm-2" name="gender"   id="inlineFormCustomSelect">
-                    <option <?php if($post -> status == 1) echo "selected"; ?> value ="1">Active</option>
-                    <option <?php if($post -> status == 0) echo "selected"; ?> value ="0">UnActive</option>
-                </select>
-            </div>
-
-            <p></p>
-            <button type="submit" class="btn btn-primary btn-rounded btn-lg" > Close </button> 
         </div>
         </div>
     </div>   
-</form>
 </div>
 @endsection

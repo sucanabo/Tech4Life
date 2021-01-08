@@ -20,7 +20,7 @@ class followings_controller extends Controller
         //
         $post = post::all();
         $data = post::find(8)->user->get();
-        return view("user/followings",['post'=>$post,'data'=>$data]);
+        return view("user/followings",['post'=>$post]);
     }
 
    
