@@ -4,10 +4,11 @@ namespace App\Http\Controllers\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\post;
+use App\Models\post_clip;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-class post_detail_controller extends Controller
+
+class post_clip_controller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +18,24 @@ class post_detail_controller extends Controller
     public function index()
     {
         //
-        return view("user/post_detail");
+    }
+
+    public function createPostClip($id)
+    {
+        //
+        $post_clip = new post_clip;
+        $post_clip->user_id= auth()->user()->id;
+        $post_clip->post_id=$id;
+        if (post_clip::where('post_id',$id )->first()){
+            if(post_clip::where('user_id', auth()->user()->id )->first()){
+                $post_clip->delete();
+            } 
+        }
+        else
+        {
+            $post_clip->save();
+            return redirect("user/followings"); 
+        }  
     }
 
     /**
@@ -50,12 +68,6 @@ class post_detail_controller extends Controller
     public function show($id)
     {
         //
-        $post=post::find($id);
-        $user=$post->User;
-        $query = post::findOrFail($id);
-        $query->increment('view');
-        $query->save();
-        return view('user/post_detail',['post'=>$post,'user'=>$user]);
     }
 
     /**

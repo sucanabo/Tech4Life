@@ -15,9 +15,11 @@ class UserFollow extends Migration
     {
         //
         Schema::create('user_follow', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->increments('user_following_id');
+            $table->integer('post_id')->unsigned();
+            $table->foreign('post_id')->references('id')->on('post');
             $table->timestamps();
         });
     }
@@ -30,6 +32,5 @@ class UserFollow extends Migration
     public function down()
     {
         //
-        Schema::drop('user_follow');
     }
 }
