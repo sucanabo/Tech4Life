@@ -18,9 +18,13 @@ class post_controller extends Controller
     public function index()
     {
         //
-            $post = post::all();
-    
-            return response()->json([$post]);
+            //$post = post::all();
+            $post = DB::table('post')
+            ->join('users', 'post.user_id', '=', 'users.id')
+            ->select('post.*', 'users.display_name', 'users.avatar')
+            ->get();
+
+            return response()->json($post);
     }
 
     /**
