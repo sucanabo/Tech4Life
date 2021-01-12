@@ -9,8 +9,6 @@
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('layout_admin/assets/images/favicon.png')}}">
     <title>Adminmart Template - The Ultimate Multipurpose admin template</title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
-        integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <!-- Custom CSS -->
     <link href="{{asset('layout_admin/assets/extra-libs/c3/c3.min.css')}}" rel="stylesheet">
     <link href="{{asset('layout_admin/assets/libs/chartist/dist/chartist.min.css')}}" rel="stylesheet">

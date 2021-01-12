@@ -13,10 +13,24 @@
                         </div>
                         <div class="form-group p-0">
                             <label for="my-input">Title :</label>
-                            <input id="my-input" class="form-control " type="text" name="title">
+                            
+                            <div class="d-flex">
+                                <input id="my-input" class="form-control mr-5" type="text" name="title" placeholder="Title" style="width:90%,padding:10px">
+                                <select name="" id="" class="form-control" style="height: 100%; width:10%">
+                                    <option value="1" selected>Publish</option>
+                                    <option value="0">Private</option>
+                                    
+                                </select>
+                            </div>
+                            
                         </div>
+                        {{-- <div class="main-button form-item d-flex"> --}}
+                    {{-- <label for="tag">Tag :</label> --}}
+                    {{-- <input type="text" class="post__title" placeholder="Add tags!" style="width:90%"> --}}
+                    
+                {{-- </div> --}}
                         <div class="form-group">
-                            <label for="my-input">Upload Avatar :</label>
+                            <label for="my-input">Choose thumbnail:</label>
                             <div class="input-group p-0 mb-4">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Upload</span>
@@ -27,10 +41,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-12">
-                        <div class="imgPreview p-0">
-                            <img  id="thumbnil" style="height:500px;padding-left:500px" src="{{asset('layout_admin/assets/images/no-image.jpg')}}" alt="no-img">
-                        </div>
+
                         <div class="form-group p-0">
                             <label for="my-input">Content :</label>
                             <textarea class="form-item" id="post__editor" type="text" name="content"></textarea>
@@ -41,7 +52,6 @@
                             <button type="reset" class="btn btn-primary btn-rounded btn-lg" > Reset Post</button>
                         </div>
                         <p></p>
-                    </div>
                     </div>
                 </div>   
             </form>

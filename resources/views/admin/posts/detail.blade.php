@@ -6,7 +6,7 @@
         <h2>  </h2>
     </div>
     <div class="pull-right">
-        <a class="btn btn-primary btn-rounded mb-5" href="{{ route('categories.index') }}" title="Go back"><i class="fas fa-long-arrow-alt-left"></i>&nbsp;Go Back</a>
+        <a class="btn btn-primary btn-rounded mb-5" href="{{ route('admin') }}" title="Go back"><i class="fas fa-long-arrow-alt-left"></i>&nbsp;Go Back</a>
     </div>
 </div>
             @if(count($errors) > 0)
