@@ -169,6 +169,7 @@ use App\Http\Controllers\category_controller;
         route::get('register','App\Http\Controllers\User\register_controller@index');
         route::post('checkLogin','App\Http\Controllers\User\login_controller@checkLogin');
         route::get('checkLogout','App\Http\Controllers\User\login_controller@checkLogout');
+        route::get('post_clip/{id}','App\Http\Controllers\User\post_clip_controller@createPostClip');
     });   
 
     Route::get('ajax', 'App\Http\Controllers\User\followings_controller@get_home');
