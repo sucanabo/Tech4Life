@@ -24,7 +24,7 @@ Route::post("register", "App\Http\Controllers\Api\RegisterController@store");
 //login_token
 Route::post("login", "App\Http\Controllers\Api\login_Controller@login");
 //show_token
-Route::get("series", "App\Http\Controllers\Api\series_Controller@index");
+Route::get("series", "App\Http\Controllers\Api\series_Controller@getAPI");
 //refresh_token
 Route::post("refresh_token", "App\Http\Controllers\Api\series_Controller@refreshToken");
 //post

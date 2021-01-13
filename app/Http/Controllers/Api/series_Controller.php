@@ -56,4 +56,13 @@ class series_Controller extends Controller
             'data' => "Refresh_token thành công"
         ],200); 
     }
+
+    public function getAPI(){
+        $s = DB::table('series')
+            ->join('users', 'series.user_id', '=', 'users.id')
+            ->select('series.*', 'users.username', 'users.avatar')
+            ->get();
+
+            return response()->json($s);
+    }
 }
