@@ -26,7 +26,14 @@ class post_controller extends Controller
 
             return response()->json($post);
     }
-
+    public function searchpost($search){
+        $post = DB::table('post')
+        ->join('users', 'post.user_id', '=', 'users.id')
+        ->where('title','like','%'.$search.'%')
+        ->select('post.*', 'users.display_name', 'users.avatar')
+        ->get();
+        return response()->json($post);
+    }
     /**
      * Store a newly created resource in storage.
      *

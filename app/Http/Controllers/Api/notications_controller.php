@@ -19,5 +19,4 @@ class notications_controller extends Controller
 
         return response()->json($notifications);
     }
-
 }

@@ -28,5 +28,7 @@ Route::get("series", "App\Http\Controllers\Api\series_Controller@index");
 Route::post("refresh_token", "App\Http\Controllers\Api\series_Controller@refreshToken");
 //post
 Route::get("post", "App\Http\Controllers\Api\post_controller@index");
+//searchpost
+Route::get("searchpost/{search}","App\Http\Controllers\Api\post_controller@searchpost");
 //notifications
 Route::get("notifications", "App\Http\Controllers\Api\user_controller@notifications");
