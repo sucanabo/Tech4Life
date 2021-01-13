@@ -117,6 +117,7 @@ class User extends Authenticatable
      public function post_report(){
         return $this->hasMany('App\Models\post_report','user_id','id');
     }
+
      // 1-n
      public function notifications(){
          return $this->hasMany('App\Models\notifications','user_id','id');
@@ -129,4 +130,7 @@ class User extends Authenticatable
     public function commemt(){
         return $this->hasOne('App\Models\comment','user_id','id');
     }
+    
+   
+   
 }

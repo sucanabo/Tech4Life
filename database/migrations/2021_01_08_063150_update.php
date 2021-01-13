@@ -14,8 +14,13 @@ class Update extends Migration
     public function up()
     {
         //
-        Schema::dropIfExists('conversation');
+        Schema::table('post_report', function ($table) {
+            $table->increments('id');
+        });
 
+        Schema::table('user_report', function ($table) {
+            $table->increments('id');
+        });
     }
 
     /**

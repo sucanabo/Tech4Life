@@ -58,6 +58,6 @@
   
         </tbody>     
     </table>
-    
+    {{ $series->links() }}
 </div>
 @endsection

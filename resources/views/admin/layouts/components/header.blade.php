@@ -178,7 +178,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
-                                <img src="{{asset('layout_admin/assets/images/users/profile-pic.jpg')}}" alt="user" class="rounded-circle"
+                                <img src="{{ URL::asset('img') }}/{{ auth()->user()->avatar }}" alt="user" class="rounded-circle"
                                     width="40">
                                    
                                 <span class="ml-2 d-none d-lg-inline-block"><span>Hello,</span> <span

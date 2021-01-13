@@ -16,7 +16,7 @@ use App\Http\Controllers\category_controller;
 |
 */
     //user
-    route::get('','App\Http\Controllers\Home\home_controller@index');
+   
 
 
 
@@ -101,6 +101,16 @@ use App\Http\Controllers\category_controller;
             route::get('delete/{id}','App\Http\Controllers\series_controller@destroy');
         });
 
+
+        
+        Route::group(['prefix'=>'post_report', 'middleware'=>'checkLogin'],function(){
+            route::get('','App\Http\Controllers\post_report_controller@index');          
+        });
+
+        Route::group(['prefix'=>'user_report', 'middleware'=>'checkLogin'],function(){
+            route::get('','App\Http\Controllers\user_report_controller@index');          
+        });
+
         Route::group(['prefix'=>'announcements', 'middleware'=>'checkLogin'],function(){
             route::get('','App\Http\Controllers\announcements_controller@index');
 
@@ -148,6 +158,8 @@ use App\Http\Controllers\category_controller;
             route::get('delete/{id}','App\Http\Controllers\conversation_controller@destroy');
         });
 
+        
+
 
         route::get('research','App\Http\Controllers\research_controller@search');
         route::post('research','App\Http\Controllers\research_controller@getSearchAjax')->name('search');
@@ -155,13 +167,13 @@ use App\Http\Controllers\category_controller;
 
 
    
+   
 
     Route::group(['prefix'=>'user'],function(){
         route::get('write_post','App\Http\Controllers\User\write_post_controller@index');
         route::post('create_post','App\Http\Controllers\User\write_post_controller@createPost');
         route::get('post_detail/{id}','App\Http\Controllers\User\post_detail_controller@show');
         route::get('followings','App\Http\Controllers\User\followings_controller@index');
-        route::get('followings1','App\Http\Controllers\User\followings_controller@create');  
         route::get('login','App\Http\Controllers\User\login_controller@index');
         route::get('register','App\Http\Controllers\User\register_controller@index');
         route::post('checkLogin','App\Http\Controllers\User\login_controller@checkLogin');
@@ -169,6 +181,7 @@ use App\Http\Controllers\category_controller;
         route::get('post_clip/{id}','App\Http\Controllers\User\post_clip_controller@createPostClip');
     });   
 
+    Route::get('test', 'App\Http\Controllers\User\test_controller@index');
     Route::get('ajax', 'App\Http\Controllers\User\followings_controller@get_home');
 
     

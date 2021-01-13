@@ -3,7 +3,7 @@
     <script src="{{asset('layout_user/vendor/ckeditor5-build-classic/ckeditor.js')}}"></script>
     <script src="{{asset('layout_user/js/main.js')}}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-
+    
     <script>
                 function showMyImage(fileInput) { 
                     var files = fileInput.files; 

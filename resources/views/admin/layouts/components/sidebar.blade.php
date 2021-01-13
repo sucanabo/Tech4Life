@@ -54,11 +54,11 @@
                                         class="hide-menu"> Notifications
                                     </span></a>
                             </li>
-                            <li class="sidebar-item"><a href="#" class="sidebar-link"><span
+                            <li class="sidebar-item"><a href="{{asset('admin/post_report')}}" class="sidebar-link"><span
                                             class="hide-menu"> Post_report
                                         </span></a>
                             </li>
-                            <li class="sidebar-item"><a href="#" class="sidebar-link"><span
+                            <li class="sidebar-item"><a href="{{asset('admin/user_report')}}" class="sidebar-link"><span
                                             class="hide-menu"> User_report
                                         </span></a>
                             </li>

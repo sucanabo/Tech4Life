@@ -10,4 +10,8 @@ class sessionUser extends Model
     use HasFactory;
     protected $table="session_users";
     protected $guarded =[];
+
+    public function User(){
+        return $this->belongsTo('App\Models\User','user_id','id');
+    }
 }
