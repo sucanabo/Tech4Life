@@ -19,10 +19,21 @@ class post_controller extends Controller
     {
         //
             //$post = post::all();
-            $post = DB::table('post')
-            ->join('users', 'post.user_id', '=', 'users.id')
-            ->select('post.*', 'users.display_name', 'users.avatar')
-            ->get();
+            $post = DB::select('
+            SELECT post.title, post.vote, post.view, post.image_title,
+                   post.created_at, users.display_name, users.avatar,
+                   users.username,
+                   count(post_clip.post_id) as clipped,
+                   count(comments.post_id) as comment,
+                   post.content
+                   
+            FROM users, post
+                LEFT JOIN post_clip ON post_clip.post_id = post.id
+                LEFT JOIN comments ON comments.post_id = post.id
+                LEFT JOIN comments ON comments.post_id = post.id
+            WHERE users.id = post.user_id
+            GROUP BY post.id
+            ');
 
             return response()->json($post);
     }
