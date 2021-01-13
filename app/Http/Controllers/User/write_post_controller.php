@@ -19,7 +19,7 @@ class write_post_controller extends Controller
     public function index()
     {
         //
-        return view("user/write_post");
+        return view("user/write-post");
     }
 
     /**

@@ -10,7 +10,9 @@
     <link rel="stylesheet" href="{{asset('layout_user/css/responsive.css')}}">
     <!-- Favicon -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!--Lib-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
     <link rel="shortcut icon" type="image/png" href="{{asset('layout_user/img/favicon.ico')}}" />
     <title>Newset post- Viblo</title>

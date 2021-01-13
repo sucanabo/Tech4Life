@@ -13,7 +13,6 @@
                         </div>
                         <div class="form-group p-0">
                             <label for="my-input">Title :</label>
-                            
                             <div class="d-flex">
                                 <input id="my-input" class="form-control mr-5" type="text" name="title" placeholder="Title" style="width:90%,padding:10px">
                                 <select name="" id="" class="form-control" style="height: 100%; width:10%">
@@ -58,4 +57,5 @@
         </div>
     </main> 
     <p></p>
+    <script>$('select').selectpicker();</script>
 @endsection

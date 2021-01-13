@@ -19,7 +19,7 @@
             <div class="form-title text-center mt-5 mb-5">
                 <h3>Login to Viblo</h3>
             </div>
-            <form class="mt-4" action="{{URL::asset('user/checkLogin') }}" method="post">
+            <form class="mt-4" action="{{URL::asset('/checkLogin') }}" method="post">
                 @csrf
                 <div class="input-group mb-5">
                     <div class="input-group-prepend">

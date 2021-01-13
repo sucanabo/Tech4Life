@@ -30,7 +30,6 @@ class post_controller extends Controller
             FROM users, post
                 LEFT JOIN post_clip ON post_clip.post_id = post.id
                 LEFT JOIN comments ON comments.post_id = post.id
-                LEFT JOIN comments ON comments.post_id = post.id
             WHERE users.id = post.user_id
             GROUP BY post.id
             ');

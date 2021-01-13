@@ -37,7 +37,7 @@
                             <li class="feed-item"><a href="./followings.html" class="link">my clips</a></li>
                         </ul>
                     </div>
-                    <a href="write_post" class="btn btn-primary float-right text-uppercase hidden-md-down">
+                    <a href="{{asset('write-post')}}" class="btn btn-primary float-right text-uppercase hidden-md-down">
                         <span><i class="fas fa-pencil-alt"></i></span>&nbsp;CREATE POST
                     </a>
                 </div>

@@ -156,13 +156,16 @@ use App\Http\Controllers\category_controller;
     });
 
 
-
+    
    
 
-    Route::group(['prefix'=>'/'],function(){
-        route::get('','App\Http\Controllers\User\followings_controller@index');
+    
+        route::get('followings','App\Http\Controllers\User\followings_controller@index');
+
         route::get('write-post','App\Http\Controllers\User\write_post_controller@index');
+
         route::post('create_post','App\Http\Controllers\User\write_post_controller@createPost');
+        
         route::get('post-detail/{id}','App\Http\Controllers\User\post_detail_controller@show');
         route::get('followings1','App\Http\Controllers\User\followings_controller@create');  
         route::get('login','App\Http\Controllers\User\login_controller@index');
@@ -170,7 +173,7 @@ use App\Http\Controllers\category_controller;
         route::post('checkLogin','App\Http\Controllers\User\login_controller@checkLogin');
         route::get('checkLogout','App\Http\Controllers\User\login_controller@checkLogout');
         route::get('post_clip/{id}','App\Http\Controllers\User\post_clip_controller@createPostClip');
-    });   
+     
 
     Route::get('ajax', 'App\Http\Controllers\User\followings_controller@get_home');
 

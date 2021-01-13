@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\post;
+use App\Models\category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 class followings_controller extends Controller
@@ -21,8 +22,9 @@ class followings_controller extends Controller
 
         $post = post::paginate(10);
         $users = DB::table('users')->limit(5)->get();
+        $tags = category::all();
         
-        return view("user/followings",['post'=>$post,'user'=>$users]);
+        return view("user/followings",['post'=>$post,'user'=>$users,'tags'=>$tags]);
     }
 
    
