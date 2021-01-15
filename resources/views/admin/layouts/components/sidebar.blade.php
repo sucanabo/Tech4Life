@@ -69,11 +69,7 @@
                                     class="users">Members
                                 </span></a>
                         </li>
-                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="images"
-                            aria-expanded="false"><i data-feather="message-circle" class="feather-icon"></i><span
-                                class="hide-menu">Images
-                            </span></a>
-                    </li>
+                       
                 </li>
                         <li class="list-divider"></li>
                         <li class="nav-small-cap"><span class="hide-menu">Extra</span></li>

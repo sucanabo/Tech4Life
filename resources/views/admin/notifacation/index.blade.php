@@ -54,6 +54,6 @@
                
         </tbody>      
     </table>
-    {{ $series->links() }}
+    {{$notification->links() }}
 </div>
 @endsection

@@ -33,15 +33,30 @@ class login_Controller extends Controller
             }
             else{
                 $userSession = $checkTokenExit;
-            }    
+            } 
+        $data = sessionUser::select('token')->where('user_id','=',auth()->user()->id)->first();
+
          return response()->json([
-             'code'=> 200,
-             'data'=> $userSession,
-             'data1'=> $check
-         ],200);
+             'status'=>'success',
+             'token'=>$data->token,
+             'username'=> auth()->user()->username,
+             'email'=> auth()->user()->email,
+             'displayname'=>auth()->user()->display_name,
+             'avatar'=> auth()->user()->avatar
+         ]);
+        }
+        else{
+            return response()->json([
+                'status'=>'failure',
+            ]);
         }
     }
 
+
+
+
+
+    
 
     public function login1(Request $request){
         $dataCheckLogin=[
@@ -64,3 +79,5 @@ class login_Controller extends Controller
 
    
 }
+
+

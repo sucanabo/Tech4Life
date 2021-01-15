@@ -16,7 +16,7 @@
         </div>
     @endif
     <form method="get" action="series/create" style="margin-bottom:10px">
-    <button type="submit" class="btn btn-primary btn-rounded btn-sm"><i class="fas fa-plus"></i> Add a category</button>
+    <button type="submit" class="btn btn-primary btn-rounded btn-sm"><i class="fas fa-plus"></i> Add a Series</button>
     </form>
 
     <table class="table">

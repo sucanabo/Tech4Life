@@ -15,7 +15,7 @@ class post_clip_controller extends Controller
             $post_clip = new post_clip;
             $post_clip->user_id= $request -> user_id;
             $post_clip->post_id= $request -> post_id;
-            if (post_clip::where('post_id',$request -> post_id )->Where('user_id', $request -> user_id)->delete()){
+            if (post_clip::where('post_id',$request->post_id )->Where('user_id', $request -> user_id)->delete()){
                 
                     return response()->json([
                       'code'=> 200,

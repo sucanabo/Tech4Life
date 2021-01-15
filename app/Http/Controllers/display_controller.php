@@ -20,7 +20,12 @@ class display_controller extends Controller
     public function index()
     {
         //
-        return view ('admin/home/index');
+        $total_user = DB::table('users')->count('id');
+        $total_series = DB::table('series')->count('id');
+        $total_posts = DB::table('post')->count('id');
+        $total_view = DB::table('post')->sum('view');
+        $top_four = DB::table('post')->orderBy('view','desc')->limit(4)->get();
+        return view('admin/home/index',['users'=>$total_user,'series'=>$total_series,'posts'=>$total_posts,'views'=>$total_view,'top_four'=>$top_four]);
     }
 
    

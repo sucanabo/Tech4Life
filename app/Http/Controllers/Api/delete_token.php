@@ -13,7 +13,7 @@ class delete_token extends Controller
 {
     //
     public function deleteToken(Request $request){
-       $token = $request -> header('token');
+       $token = $request ->token;
        $checkToken =sessionUser::where('token',$token)->first();
        if(!empty($checkToken)){
           $checkToken->delete();
@@ -21,7 +21,7 @@ class delete_token extends Controller
         
         return response()->json([
             'code'=> 200,
-            'message'=> 'Delete sucess'
+            'status'=> 'success'
         ],200);
         
     }

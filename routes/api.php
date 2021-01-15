@@ -32,7 +32,7 @@ Route::get("post", "App\Http\Controllers\Api\post_controller@index");
 //notifications
 Route::get("notifications", "App\Http\Controllers\Api\user_controller@notifications");
 
-Route::get("logout", "App\Http\Controllers\Api\logout_Controller@checkLogout");
+Route::post("logout", "App\Http\Controllers\Api\delete_token@deleteToken");
 
 Route::post("login1", "App\Http\Controllers\Api\login_Controller@login1");
 
