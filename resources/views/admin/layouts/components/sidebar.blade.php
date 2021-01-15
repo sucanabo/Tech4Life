@@ -54,11 +54,11 @@
                                         class="hide-menu"> Notifications
                                     </span></a>
                             </li>
-                            <li class="sidebar-item"><a href="#" class="sidebar-link"><span
+                            <li class="sidebar-item"><a href="{{asset('admin/post_report')}}" class="sidebar-link"><span
                                             class="hide-menu"> Post_report
                                         </span></a>
                             </li>
-                            <li class="sidebar-item"><a href="#" class="sidebar-link"><span
+                            <li class="sidebar-item"><a href="{{asset('admin/user_report')}}" class="sidebar-link"><span
                                             class="hide-menu"> User_report
                                         </span></a>
                             </li>
@@ -69,11 +69,7 @@
                                     class="users">Members
                                 </span></a>
                         </li>
-                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="images"
-                            aria-expanded="false"><i data-feather="message-circle" class="feather-icon"></i><span
-                                class="hide-menu">Images
-                            </span></a>
-                    </li>
+                       
                 </li>
                         <li class="list-divider"></li>
                         <li class="nav-small-cap"><span class="hide-menu">Extra</span></li>

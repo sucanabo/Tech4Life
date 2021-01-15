@@ -15,9 +15,13 @@
             {{session('thongbao')}}
         </div>
     @endif
+
+
+    
     <form method="get" action="users/create" style="margin-bottom:10px">
-    <button type="submit" class="btn btn-primary btn-rounded btn-sm"><i class="fas fa-plus"></i> Add a category</button>
+    <button type="submit" class="btn btn-primary btn-rounded btn-sm"><i class="fas fa-plus"></i> Add a Memmber</button>
     </form>
+    
 
     <table class="table">
         <thead class="bg-primary text-white">
@@ -58,6 +62,7 @@
   
         </tbody>     
     </table>
-    
+    {{ $user->links() }}
 </div>
+
 @endsection

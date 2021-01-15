@@ -19,7 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::get("user", "App\Http\Controllers\Api\user_controller@index");
 
-Route::post("register", "App\Http\Controllers\Api\RegisterController@store");
+Route::post("register", "App\Http\Controllers\Api\RegisterController@register");
 //login_token
 Route::post("login", "App\Http\Controllers\Api\login_Controller@login");
 //show_token
@@ -32,3 +32,19 @@ Route::get("post", "App\Http\Controllers\Api\post_controller@index");
 Route::get("searchpost/{search}","App\Http\Controllers\Api\post_controller@searchpost");
 //notifications
 Route::get("notifications", "App\Http\Controllers\Api\user_controller@notifications");
+
+Route::post("logout", "App\Http\Controllers\Api\delete_token@deleteToken");
+
+Route::post("login1", "App\Http\Controllers\Api\login_Controller@login1");
+
+Route::get("check", "App\Http\Controllers\Api\logout_Controller@check");
+
+Route::delete("delete_token", "App\Http\Controllers\Api\delete_token@deleteToken");
+
+Route::post("follow_user", "App\Http\Controllers\Api\user_follow_controller@follow_user");
+
+Route::post("post_report", "App\Http\Controllers\Api\post_report_controller@post_report");
+
+Route::post("post_clip", "App\Http\Controllers\Api\post_clip_controller@post_clip");
+
+Route::post("up_vote", "App\Http\Controllers\Api\user_vote_cotroller@up_vote");

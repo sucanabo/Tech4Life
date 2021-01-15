@@ -25,26 +25,45 @@ class RegisterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function register(Request $request)
     {
-        //
-        $UserCreate = User::create([
-            'username'=>$request->username,
-            'password'=>bcrypt($request->password),
-            'email'=>$request->email,
-            'phone_number'=>$request->phone_number,
-            'display_name'=>$request->display_name,
-            'avatar'=>$request->avatar,
-            'view'=>$request->view,
-            'gender'=>$request->gender,
-            'status'=>$request->status,
-            'permission'=>$request->permission,
+        $this->validate($request,[
+            'username'=>'required',
+            'password'=>'required|min:6',
+            'email'=>'required|email',
+            'display_name'=>'required',
+           
+            
+        ],
+        [
+            'username.required'=>'Bạn chưa nhập Username',
+            'display_name.required'=>'Bạn chưa nhập Display_name',
+        
+    
+            'email.required'=>'Bạn chưa nhập Email',
+            'email.email'=>'Email phải có  @ ',
+            'password.min'=>'Password không được nhỏ hơn 6 ký tự',
         ]);
 
-        return response()->json([
-            'code'=> 201,
-            'data'=> $UserCreate
-        ],201);
+        $check=User::where('username',$request->username)->where('email',$request->email)->first();
+            if(empty($check)){
+            $User=new User;
+            $User->username=$request->username;
+            $User->password =bcrypt($request->password) ;
+            $User->email =$request->email; 
+            $User->phone_number ='0774740192'; 
+            $User->display_name =$request->display_name; 
+            $User->avatar ='1.jpg'; 
+            $User->view = 1; 
+            $User->gender = 1; 
+            $User->status = 1; 
+            $User->permission =0; 
+            $User->save();
+            return "success";
+        }
+         else{
+            return "failure";
+         }       
     }
 
     /**

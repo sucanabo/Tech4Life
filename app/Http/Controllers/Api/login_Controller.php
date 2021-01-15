@@ -14,11 +14,13 @@ class login_Controller extends Controller
     //
     public function login(Request $request){
         $dataCheckLogin=[
-            'email' => $_POST['email'],
-            'password' => $_POST['password'],
+            'email' => $request->email,
+            'password' => $request->password,
         ];
         //xác thực user đã có tài khoản hay chưa
-        if( auth()->attempt($dataCheckLogin) ){
+        if( auth()->attempt($dataCheckLogin) )
+        {
+            $check = User::where('id',auth()->id())->first();
             $checkTokenExit = sessionUser::where('user_id',auth()->id())->first();
             if(empty($checkTokenExit)){
                 $userSession = sessionUser::create([
@@ -27,22 +29,55 @@ class login_Controller extends Controller
                     'token_expried' => date('Y-m-d H:i:s', strtotime('+30 day')),
                     'refresh_token_expried' => date('Y-m-d H:i:s', strtotime('+360 day')),
                     'user_id' => auth()->id() 
-                ]);
-                return "success";
-            }else{
-                $userSession = $checkTokenExit;
-                return "success";
+                ]);             
             }
-        }else{
-            return "failure";
+            else{
+                $userSession = $checkTokenExit;
+            } 
+        $data = sessionUser::select('token')->where('user_id','=',auth()->user()->id)->first();
+
+         return response()->json([
+             'status'=>'success',
+             'token'=>$data->token,
+             'username'=> auth()->user()->username,
+             'email'=> auth()->user()->email,
+             'displayname'=>auth()->user()->display_name,
+             'avatar'=> auth()->user()->avatar
+         ]);
+        }
+        else{
+            return response()->json([
+                'status'=>'failure',
+            ]);
+        }
+    }
+
+
+
+
+
+    
+
+    public function login1(Request $request){
+        $dataCheckLogin=[
+            'email' => $request['email'],
+            'password' => $request['password'],
+        ];
+        //xác thực user đã có tài khoản hay chưa
+        if( auth()->attempt($dataCheckLogin) ){
+            $userSession = 1;
+        }
+        else{
+                $userSession = 0;
         }
         
-        // return response()->json([
-        //     'code'=> 200,
-        //     'data'=> $userSession
-        // ],200);
-        
+        return response()->json([
+            'code'=> 200,
+            'data'=> $userSession
+        ],200);
     }
 
    
 }
+
+

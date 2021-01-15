@@ -4,14 +4,13 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\user_report;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-class display_controller extends Controller
+use Illuminate\Support\Str;
+use Illuminate\Support\Arr;
+class user_report_controller extends Controller
 {
-    //
-     //
-    
     /**
      * Display a listing of the resource.
      *
@@ -20,15 +19,10 @@ class display_controller extends Controller
     public function index()
     {
         //
-        $total_user = DB::table('users')->count('id');
-        $total_series = DB::table('series')->count('id');
-        $total_posts = DB::table('post')->count('id');
-        $total_view = DB::table('post')->sum('view');
-        $top_four = DB::table('post')->orderBy('view','desc')->limit(4)->get();
-        return view('admin/home/index',['users'=>$total_user,'series'=>$total_series,'posts'=>$total_posts,'views'=>$total_view,'top_four'=>$top_four]);
+        $user_report = user_report::paginate(15);
+        return view('admin/user_report/index',['user'=>$user_report]);   
     }
 
-   
     /**
      * Show the form for creating a new resource.
      *
