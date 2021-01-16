@@ -32,6 +32,7 @@
                 <th>Email</th>
                 <th>Phone_Number</th>
                 <th>Avatar</th>
+                <th>Ban</th>
                 <th>Detail</th>
                 <th>Edit</th>
                 <th>Delete</th>
@@ -47,7 +48,18 @@
                 <td>{{$us -> email}}</td>
                 <td>{{$us -> phone_number}}</td>
                 <td> <img style="height:100px;width:100px" src="{{ URL::asset('img') }}/{{$us -> avatar}}" alt="wrapkit"></td>
+              
+                @if($us -> status == 0)
                 <td class="d-inline-block float-right">
+                    <a href="users/update_unlock/{{$us -> id}}"><button type="submit" class="btn btn-primary btn-rounded btn-sm"><i class="fas fa-lock"></i> </button></a>
+                </td>
+                @endif
+                @if($us -> status == 1)
+                <td class="d-inline-block float-right">
+                    <a href="users/update_lock/{{$us -> id}}"><button type="submit" class="btn btn-primary btn-rounded btn-sm"><i class="fas fa-unlock"></i> </button></a>
+                </td>
+                @endif
+                <td >
                     <a href="users/detail/{{$us -> id}}"><button type="submit" class="btn btn-primary btn-rounded btn-sm"><i class="fas fa-eye"></i> </button></a>
                 </td>
                 <td> 

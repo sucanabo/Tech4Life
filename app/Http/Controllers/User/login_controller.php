@@ -34,17 +34,17 @@ class login_controller extends Controller
        var_dump($request->email,$request->password);
        if(Auth::attempt(['email'=>$request->email,'password'=>$request->password])){
            //true
-            return redirect("user/followings");
+            return redirect("/");
        }
        else{
         //false
-        return redirect('user/login')->with('thongbao','Đăng nhập không thành công');
+        return redirect('login')->with('thongbao','Đăng nhập không thành công');
     }
     }
 
     public function checkLogout(){
         Auth::logout();
-        return redirect('user/followings');
+        return redirect('/');
     }
     /**
      * Show the form for creating a new resource.

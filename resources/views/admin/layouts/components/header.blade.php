@@ -12,7 +12,7 @@
                     <!-- ============================================================== -->
                     <div class="navbar-brand">
                         <!-- Logo icon -->
-                        <a href="index.html">
+                        <a href="{{asset('admin/index')}}">
                             <b class="logo-icon">
                                 <!-- Dark Logo icon -->
                                 <img src="{{asset('layout_admin/assets/images/logo-icon.png')}}" alt="homepage" class="dark-logo" />

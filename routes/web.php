@@ -48,6 +48,12 @@ use App\Http\Controllers\category_controller;
             Route::DELETE('delete/{id}', 'App\Http\Controllers\post_controller@destroy');
         
             Route::get('edit/{id}', 'App\Http\Controllers\post_controller@edit');
+
+            Route::get('update_lock/{id}', 'App\Http\Controllers\post_controller@update_lock');
+
+            Route::get('update_unlock/{id}', 'App\Http\Controllers\post_controller@update_unlock');
+
+            Route::get('edit/{id}', 'App\Http\Controllers\post_controller@edit');
         
             Route::POST('edit/{id}', 'App\Http\Controllers\post_controller@update');
         });
@@ -82,6 +88,10 @@ use App\Http\Controllers\category_controller;
 
             route::post('edit/{id}','App\Http\Controllers\user_controller@update');
 
+            route::get('update_lock/{id}','App\Http\Controllers\user_controller@update_lock');
+
+            route::get('update_unlock/{id}','App\Http\Controllers\user_controller@update_unlock');
+
             route::get('delete/{id}','App\Http\Controllers\user_controller@destroy');
         });
 
@@ -95,6 +105,10 @@ use App\Http\Controllers\category_controller;
             route::get('show/{id}','App\Http\Controllers\series_controller@show');
 
             route::get('edit/{id}','App\Http\Controllers\series_controller@edit');
+
+            route::get('update_lock/{id}','App\Http\Controllers\series_controller@update_lock');
+
+            route::get('update_unlock/{id}','App\Http\Controllers\series_controller@update_unlock');
 
             route::post('edit/{id}','App\Http\Controllers\series_controller@update');
 
@@ -162,26 +176,43 @@ use App\Http\Controllers\category_controller;
 
 
         route::get('research','App\Http\Controllers\research_controller@search');
+
         route::post('research','App\Http\Controllers\research_controller@getSearchAjax')->name('search');
     });
 
 
    
    
+        route::get('/','App\Http\Controllers\User\followings_controller@index');
 
-    Route::group(['prefix'=>'user'],function(){
         route::get('write_post','App\Http\Controllers\User\write_post_controller@index');
-        route::post('create_post','App\Http\Controllers\User\write_post_controller@createPost');
-        route::get('post_detail/{id}','App\Http\Controllers\User\post_detail_controller@show');
-        route::get('followings','App\Http\Controllers\User\followings_controller@index');
-        route::get('login','App\Http\Controllers\User\login_controller@index');
-        route::get('register','App\Http\Controllers\User\register_controller@index');
-        route::post('checkLogin','App\Http\Controllers\User\login_controller@checkLogin');
-        route::get('checkLogout','App\Http\Controllers\User\login_controller@checkLogout');
-        route::get('post_clip/{id}','App\Http\Controllers\User\post_clip_controller@createPostClip');
-    });   
 
-    Route::get('test', 'App\Http\Controllers\User\test_controller@index');
-    Route::get('ajax', 'App\Http\Controllers\User\followings_controller@get_home');
+        route::post('create_post','App\Http\Controllers\User\write_post_controller@createPost');
+
+        route::get('post_detail/{id}','App\Http\Controllers\User\post_detail_controller@show');
+
+        route::get('login','App\Http\Controllers\User\login_controller@index');
+
+        route::get('register','App\Http\Controllers\User\register_controller@index');
+
+        route::get('follow_user/{id}','App\Http\Controllers\User\follow_user_controller@createUserFollow');
+
+        route::post('checkLogin','App\Http\Controllers\User\login_controller@checkLogin');
+
+        route::post('comment/{id}','App\Http\Controllers\User\comment_controller@comment');
+
+        route::get('checkLogout','App\Http\Controllers\User\login_controller@checkLogout');
+
+        route::get('post_clip/{id}','App\Http\Controllers\User\post_clip_controller@createPostClip');
+
+        route::post('search','App\Http\Controllers\User\search_controller@search');
+
+        route::get('register','App\Http\Controllers\User\register_controller@index');
+
+        route::post('update_register','App\Http\Controllers\User\register_controller@update_register');
+
+        Route::get('test', 'App\Http\Controllers\User\test_controller@index');
+
+        Route::get('ajax', 'App\Http\Controllers\User\followings_controller@get_home');
 
     

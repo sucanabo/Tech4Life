@@ -37,7 +37,6 @@
                     <option selected="">Choose...</option>
                     <option value="1">0</option>
                     <option value="2">1</option>
-                    <option value="3">2</option>
                 </select>
             </div>
             <div class="form-group mb-4 p-0">

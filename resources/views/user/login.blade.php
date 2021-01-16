@@ -19,7 +19,7 @@
             <div class="form-title text-center mt-5 mb-5">
                 <h3>Login to Viblo</h3>
             </div>
-            <form class="mt-4" action="{{URL::asset('user/checkLogin') }}" method="post">
+            <form class="mt-4" action="{{URL::asset('checkLogin') }}" method="post">
                 @csrf
                 <div class="input-group mb-5">
                     <div class="input-group-prepend">
@@ -40,7 +40,7 @@
          
             <div class="d-flex justify-content-between mt-3 mb-3">
                 <a href="">Forgot your password?</a>
-                <a href="">Create account</a>
+                <a href="{{asset('register')}}">Create account</a>
             </div>
             <div class="d-flex align-items-center justify-content-between mt-4 mb-4">
                 <hr class="flex-fill m-0">

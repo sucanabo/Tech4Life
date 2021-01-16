@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class comment extends Model
 {
     use HasFactory;
-    protected $table="comment";
+    protected $table="comments";
 
     public function User(){
         return $this->belongsTo('App\Models\User','user_id','id');

@@ -20,8 +20,9 @@ class followings_controller extends Controller
         //
         $post = post::paginate(10);
         $users = DB::table('users')->limit(5)->get();
-        
-        return view("user/followings",['post'=>$post,'user'=>$users]);
+        $top_post = DB::table('post')->orderBy('created_at','desc')->limit(3)->get();
+        $top_series = DB::table('series')->orderBy('created_at','desc')->limit(3)->get();
+        return view("user/followings",['post'=>$post,'user'=>$users,'top_series'=>$top_series,'top_post'=>$top_post]);
     }
 
    

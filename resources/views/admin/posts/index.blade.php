@@ -25,6 +25,7 @@
                 <th>User_id </th>
                 <th>Title </th>
                 <th>Status </th>
+                <th>Ban</th>
                 <th>Detail</th>
                 <th>Edit</th>
                 <th>Delete</th>
@@ -38,7 +39,21 @@
                 <td>{{$p -> id}}</td>
                 <td>{{$p -> user_id}}</td>
                 <td>{{$p -> title}}</td>
-                <td>{{$p -> status}}</td>
+                @if($p->status==1)
+                    <td>Active</td>
+                @else
+                    <td>Un_Active</td>
+                @endif
+                @if($p -> status == 1)
+                <td>
+                    <a href="posts/update_lock/{{$p -> id}}"><button type="submit" class="btn btn-primary btn-rounded btn-sm"><i class="fas fa-unlock"></i> </button></a>
+                </td>
+                @endif
+                @if($p -> status == 0)
+                <td>
+                    <a href="posts/update_unlock/{{$p -> id}}"><button type="submit" class="btn btn-primary btn-rounded btn-sm"><i class="fas fa-lock"></i> </button></a>
+                </td>
+                @endif
                 <td>
                     <a href="posts/show/{{$p -> id}}"><button type="submit" class="btn btn-primary btn-rounded btn-sm"><i class="fas fa-eye"></i> </button></a>
                 </td>

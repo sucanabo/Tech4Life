@@ -14,7 +14,13 @@ class UserFollow extends Migration
     public function up()
     {
         //
-       
+        Schema::create('user_follow', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('user_follwing_id');
+            $table->timestamps();
+        });
     }
 
     /**

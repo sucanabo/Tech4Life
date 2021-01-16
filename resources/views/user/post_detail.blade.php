@@ -25,7 +25,7 @@
                                     class="fas fa-caret-down"></i></button>
                         </div>
                         <div class="clip mb-4">
-                        <a  href="{{ URL::asset('user/post_clip') }}/{{$post->id}}" ><button id="clip-btn" class="el-button post-actions__clip el-button--default" data-toggle="tooltip"
+                        <a  href="{{ URL::asset('post_clip') }}/{{$post->id}}" ><button id="clip-btn" class="el-button post-actions__clip el-button--default" data-toggle="tooltip"
                                 title="Clip this post"><i class="fas fa-paperclip"></i></button></a>
                         </div>
                         <div class="social-sharing mb-2 social-sharing--horizontal social-sharing--small">
@@ -160,28 +160,42 @@
                     <div class="sticky-sidebar">
                         <div class="sticky-sidebar__inner">
                             <div class="post-index hidden-sm-down">
-                                <div class="section-title-line align-items-lg-baseline">
-                                    <h4 class="text-uppercase">Table of contents</h4>
-                                    <hr class="section-title__filler ml-3">
-                                </div>
-                                <ul class="content-outline list-unstyled mb-5">
-                                    <li class="content-outline__item content-outline__item--level-1">
-                                        <a href="#" class="link active">Content 1</a>
-                                    </li>
-
-                                    <li class="content-outline__item content-outline__item--level-1">
-                                        <a href="#" class="link">Content 2</a>
-                                    </li>
-                                    <li class="content-outline__item content-outline__item--level-1">
-                                        <a href="#" class="link">Content 3</a>
-                                    </li>
-                                    <li class="content-outline__item content-outline__item--level-2">
-                                        <a href="#" class="link">Content 3.1</a>
-                                    </li>
-                                    <li class="content-outline__item content-outline__item--level-3">
-                                        <a href="#" class="link">Content 3.1.1</a>
-                                    </li>
-                                </ul>
+                            <div class="main-feed__sidebar__top-organizations">
+                                    <div class="section-title d-flex justify-content-center align-items-lg-baseline">
+                                        <a href="/organizations">
+                                            <h4 class="text-uppercase m-0">Top organizations</h4>
+                                        </a>
+                                        <hr class="section-title__filler ml-3">
+                                    </div>
+                                    @foreach($top_post as $x)
+                                    <div class="sidebar__feed-item">
+                                        <a href="{{asset('post_detail')}}/{{$x->id}}" class="link word-break">
+                                            <h4>{{$x->title}}</h4>
+                                        </a>
+                                        <div class="sidebar__feed-item__info w-100">
+                                            <div class="stats text-nowrap">
+                                                <div class="points stats-item text-nowrap d-flex" data-toggle="tooltip"
+                                                    title="Score">
+                                                    <div class="carets">
+                                                        <i class="fas fa-caret-up"></i>
+                                                        <i class="fas fa-caret-down"></i>
+                                                    </div>
+                                                    <span class="text-muted">12</span>
+                                                </div>
+                                                <span class="stat-item text-muted" data-toggle="tooltip"
+                                                    title="Answers: 30"><i class="fas fa-check"></i>30</span>
+                                                <span class="stat-item text-muted" data-toggle="tooltip"
+                                                    title="Clips: 300"><i class="fas fa-paperclip"></i></i>300</span>
+                                                <span class="stat-item text-muted" data-toggle="tooltip"
+                                                    title="Comments: 100"><i class="fas fa-comments"></i>100</span>
+                                            </div>
+                                        </div>
+                                        <div class="sidebar__feed-item__subtitle">
+                                            <a href="#" class="link link--plain text-muted">Felix Dinh</a>
+                                        </div>
+                                    </div>
+                                    @endforeach
+                                  
                                 <div class="main-feed__sidebar__top-organizations">
                                     <div class="section-title d-flex justify-content-center align-items-lg-baseline">
                                         <a href="/organizations">
@@ -189,13 +203,15 @@
                                         </a>
                                         <hr class="section-title__filler ml-3">
                                     </div>
+                                    @foreach($top_series as $t)  
                                     <div class="top-organization__container">
+                                        
                                         <div class="top-organization__item d-flex">
                                             <div class="top-organization__img">
                                                 <a href="#"><img src="{{asset('layout_user/img/organization/sunLab.jpg')}}" alt="sunLab"></a>
                                             </div>
                                             <div class="top-organization__info">
-                                                <a href="#" class="word-break">Sun * R&D Lab</a>
+                                                <a href="#" class="word-break">{{$t->title}}</a>
                                                 <div class="stats text-nowrap">
                                                     <span class="stat-item text-muted" data-toggle="tooltip"
                                                         title="Posts: 30"><i class="fas fa-pencil-alt"></i>30</span>
@@ -208,48 +224,12 @@
                                             </div>
 
                                         </div>
-                                        <div class="top-organization__item d-flex">
-                                            <div class="top-organization__img">
-                                                <a href="#"><img src="{{asset('layout_user/img/organization/nghethuatcoding.png')}}"
-                                                        alt="nghethuatcoding"></a>
-                                            </div>
-                                            <div class="top-organization__info">
-                                                <a href="#" class="word-break">Nghệ thuật Coding</a>
-                                                <div class="stats text-nowrap">
-                                                    <span class="stat-item text-muted" data-toggle="tooltip"
-                                                        title="Posts: 18"><i class="fas fa-pencil-alt"></i>18</span>
-                                                    <span class="stat-item text-muted" data-toggle="tooltip"
-                                                        title="Members: 2"><i class="fas fa-users"></i>2</span>
-                                                    <span class="stat-item text-muted" data-toggle="tooltip"
-                                                        title="Followers: 172"><i
-                                                            class="fas fa-user-plus"></i>172</span>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                        <div class="top-organization__item d-flex">
-                                            <div class="top-organization__img">
-                                                <a href="#"><img src="{{asset('layout_user/img/organization/sunCubeBranch.png')}}"
-                                                        alt="sunCubeBranch"></a>
-                                            </div>
-                                            <div class="top-organization__info">
-                                                <a href="#" class="word-break">
-                                                    Sun* Cebu Branch / Awesome Ars Academia Cebu
-                                                </a>
-                                                <div class="stats text-nowrap">
-                                                    <span class="stat-item text-muted" data-toggle="tooltip"
-                                                        title="Posts: 14"><i class="fas fa-pencil-alt"></i>14</span>
-                                                    <span class="stat-item text-muted" data-toggle="tooltip"
-                                                        title="Members: 21"><i class="fas fa-users"></i>21</span>
-                                                    <span class="stat-item text-muted" data-toggle="tooltip"
-                                                        title="Followers: 51"><i class="fas fa-user-plus"></i>51</span>
-                                                </div>
-                                            </div>
-
-                                        </div>
+                                        
                                     </div>
+                                     @endforeach
                                 </div>
                             </div>
+                           
                         </div>
                     </div>
                 </div>
@@ -261,18 +241,26 @@
                     <div class="post-section__related">
                         <h3 class="post-section__title">Related</h3>
                         <div class="post-section__container">
+                        @foreach($post_relate as $x)
                             <div class="post-section__item">
                                 <div class="card shadow-sm">
                                     <div class="card-body">
-                                        <div class="post-card__title "><a href="#" class="link link--plain">Tìm hiểu
-                                                về Amazon web services</a></div>
-                                        <div class="post-card__author"><a class="link text-primary" href="/user">Nguyen
-                                                Quang Huy</a></div>
-                                        <span class="text-muted"> 12 min read</span>
+                                        <div class="post-card__title "><a href="{{asset('post_detail')}}/{{$x->id}}" class="link link--plain">{{$x->title}}</a></div>
+                                        <div class="post-card__author"><a class="link text-primary" href="/user">
+                                        <?php
+                                            $data = DB::table('users')->select('username')->where('id','=',$x->user_id)->get();
+                                            foreach($data as $row)
+                                            {
+                                                foreach($row as $key=>$value){
+                                                    echo "<b>$value</b>";
+                                                }
+                                            }
+                                        ?></a></div>
+                                        <span class="text-muted"> {{$x->created_at}}</span>
                                         <div class="d-flex">
                                             <div class="stats">
                                                 <span class="stat-item text-muted" data-toggle="tooltip"
-                                                    title="Views: 1K"><i class="far fa-eye mr-1"></i>1K</span>
+                                                    title="Views: 1K"><i class="far fa-eye mr-1"></i>{{$x->view}}</span>
                                                 <span class="stat-item text-muted" data-toggle="tooltip"
                                                     title="Clips: 153"><i
                                                         class="fas fa-paperclip mr-1"></i></i>153</span>
@@ -290,111 +278,32 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="post-section__item">
-                                <div class="card shadow-sm">
-                                    <div class="card-body">
-                                        <div class="post-card__title "><a href="#" class="link link--plain">Tìm hiểu
-                                                về Amazon web services</a></div>
-                                        <div class="post-card__author"><a class="link text-primary" href="/user">Nguyen
-                                                Quang Huy</a></div>
-                                        <span class="text-muted"> 12 min read</span>
-                                        <div class="d-flex">
-                                            <div class="stats">
-                                                <span class="stat-item text-muted" data-toggle="tooltip"
-                                                    title="Views: 1K"><i class="far fa-eye mr-1"></i>1K</span>
-                                                <span class="stat-item text-muted" data-toggle="tooltip"
-                                                    title="Clips: 153"><i
-                                                        class="fas fa-paperclip mr-1"></i></i>153</span>
-                                                <span class="stat-item text-muted" data-toggle="tooltip"
-                                                    title="Comments: 50"><i class="fas fa-comments mr-1"></i>50</span>
-                                            </div>
-                                            <div class="points">
-                                                <div class="carets mr-2">
-                                                    <i class="fas fa-caret-up voted"></i>
-                                                    <i class="fas fa-caret-down"></i>
-                                                </div>
-                                                <span class="text-muted">234</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="post-section__item">
-                                <div class="card shadow-sm">
-                                    <div class="card-body">
-                                        <div class="post-card__title "><a href="#" class="link link--plain">Tìm hiểu
-                                                về Amazon web services</a></div>
-                                        <div class="post-card__author"><a class="link text-primary" href="/user">Nguyen
-                                                Quang Huy</a></div>
-                                        <span class="text-muted"> 12 min read</span>
-                                        <div class="d-flex">
-                                            <div class="stats">
-                                                <span class="stat-item text-muted" data-toggle="tooltip"
-                                                    title="Views: 1K"><i class="far fa-eye mr-1"></i>1K</span>
-                                                <span class="stat-item text-muted" data-toggle="tooltip"
-                                                    title="Clips: 153"><i
-                                                        class="fas fa-paperclip mr-1"></i></i>153</span>
-                                                <span class="stat-item text-muted" data-toggle="tooltip"
-                                                    title="Comments: 50"><i class="fas fa-comments mr-1"></i>50</span>
-                                            </div>
-                                            <div class="points">
-                                                <div class="carets mr-2">
-                                                    <i class="fas fa-caret-up voted"></i>
-                                                    <i class="fas fa-caret-down"></i>
-                                                </div>
-                                                <span class="text-muted">234</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="post-section__item">
-                                <div class="card shadow-sm">
-                                    <div class="card-body">
-                                        <div class="post-card__title "><a href="#" class="link link--plain">Tìm hiểu
-                                                về Amazon web services</a></div>
-                                        <div class="post-card__author"><a class="link text-primary" href="/user">Nguyen
-                                                Quang Huy</a></div>
-                                        <span class="text-muted"> 12 min read</span>
-                                        <div class="d-flex">
-                                            <div class="stats">
-                                                <span class="stat-item text-muted" data-toggle="tooltip"
-                                                    title="Views: 1K"><i class="far fa-eye mr-1"></i>1K</span>
-                                                <span class="stat-item text-muted" data-toggle="tooltip"
-                                                    title="Clips: 153"><i
-                                                        class="fas fa-paperclip mr-1"></i></i>153</span>
-                                                <span class="stat-item text-muted" data-toggle="tooltip"
-                                                    title="Comments: 50"><i class="fas fa-comments mr-1"></i>50</span>
-                                            </div>
-                                            <div class="points">
-                                                <div class="carets mr-2">
-                                                    <i class="fas fa-caret-up voted"></i>
-                                                    <i class="fas fa-caret-down"></i>
-                                                </div>
-                                                <span class="text-muted">234</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                           @endforeach  
                         </div>
 
                     </div>
                     <div class="post-section__more">
                         <h3 class="post-section__title">More from author</h3>
                         <div class="post-section__container">
+                        @foreach($post_more_author as $x)
                             <div class="post-section__item">
                                 <div class="card shadow-sm">
                                     <div class="card-body">
-                                        <div class="post-card__title "><a href="#" class="link link--plain">Tìm hiểu
-                                                về Amazon web services</a></div>
-                                        <div class="post-card__author"><a class="link text-primary" href="/user">Nguyen
-                                                Quang Huy</a></div>
-                                        <span class="text-muted"> 12 min read</span>
+                                        <div class="post-card__title "><a href="{{asset('post_detail')}}/{{$x->id}}" class="link link--plain">{{$x->title}}</a></div>
+                                        <div class="post-card__author"><a class="link text-primary" href="/user"> <?php
+                                            $data = DB::table('users')->select('username')->where('id','=',$x->user_id)->get();
+                                            foreach($data as $row)
+                                            {
+                                                foreach($row as $key=>$value){
+                                                    echo "<b>$value</b>";
+                                                }
+                                            }
+                                        ?></a></div>
+                                        <span class="text-muted"> {{$x->created_at}}</span>
                                         <div class="d-flex">
                                             <div class="stats">
                                                 <span class="stat-item text-muted" data-toggle="tooltip"
-                                                    title="Views: 1K"><i class="far fa-eye mr-1"></i>1K</span>
+                                                    title="Views: 1K"><i class="far fa-eye mr-1"></i>{{$x->view}}</span>
                                                 <span class="stat-item text-muted" data-toggle="tooltip"
                                                     title="Clips: 153"><i
                                                         class="fas fa-paperclip mr-1"></i></i>153</span>
@@ -412,94 +321,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="post-section__item">
-                                <div class="card shadow-sm">
-                                    <div class="card-body">
-                                        <div class="post-card__title "><a href="#" class="link link--plain">Tìm hiểu
-                                                về Amazon web services</a></div>
-                                        <div class="post-card__author"><a class="link text-primary" href="/user">Nguyen
-                                                Quang Huy</a></div>
-                                        <span class="text-muted"> 12 min read</span>
-                                        <div class="d-flex">
-                                            <div class="stats">
-                                                <span class="stat-item text-muted" data-toggle="tooltip"
-                                                    title="Views: 1K"><i class="far fa-eye mr-1"></i>1K</span>
-                                                <span class="stat-item text-muted" data-toggle="tooltip"
-                                                    title="Clips: 153"><i
-                                                        class="fas fa-paperclip mr-1"></i></i>153</span>
-                                                <span class="stat-item text-muted" data-toggle="tooltip"
-                                                    title="Comments: 50"><i class="fas fa-comments mr-1"></i>50</span>
-                                            </div>
-                                            <div class="points">
-                                                <div class="carets mr-2">
-                                                    <i class="fas fa-caret-up voted"></i>
-                                                    <i class="fas fa-caret-down"></i>
-                                                </div>
-                                                <span class="text-muted">234</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="post-section__item">
-                                <div class="card shadow-sm">
-                                    <div class="card-body">
-                                        <div class="post-card__title "><a href="#" class="link link--plain">Tìm hiểu
-                                                về Amazon web services</a></div>
-                                        <div class="post-card__author"><a class="link text-primary" href="/user">Nguyen
-                                                Quang Huy</a></div>
-                                        <span class="text-muted"> 12 min read</span>
-                                        <div class="d-flex">
-                                            <div class="stats">
-                                                <span class="stat-item text-muted" data-toggle="tooltip"
-                                                    title="Views: 1K"><i class="far fa-eye mr-1"></i>1K</span>
-                                                <span class="stat-item text-muted" data-toggle="tooltip"
-                                                    title="Clips: 153"><i
-                                                        class="fas fa-paperclip mr-1"></i></i>153</span>
-                                                <span class="stat-item text-muted" data-toggle="tooltip"
-                                                    title="Comments: 50"><i class="fas fa-comments mr-1"></i>50</span>
-                                            </div>
-                                            <div class="points">
-                                                <div class="carets mr-2">
-                                                    <i class="fas fa-caret-up voted"></i>
-                                                    <i class="fas fa-caret-down"></i>
-                                                </div>
-                                                <span class="text-muted">234</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="post-section__item">
-                                <div class="card shadow-sm">
-                                    <div class="card-body">
-                                        <div class="post-card__title "><a href="#" class="link link--plain">Tìm hiểu
-                                                về Amazon web services</a></div>
-                                        <div class="post-card__author"><a class="link text-primary" href="/user">Nguyen
-                                                Quang Huy</a></div>
-                                        <span class="text-muted"> 12 min read</span>
-                                        <div class="d-flex">
-                                            <div class="stats">
-                                                <span class="stat-item text-muted" data-toggle="tooltip"
-                                                    title="Views: 1K"><i class="far fa-eye mr-1"></i>1K</span>
-                                                <span class="stat-item text-muted" data-toggle="tooltip"
-                                                    title="Clips: 153"><i
-                                                        class="fas fa-paperclip mr-1"></i></i>153</span>
-                                                <span class="stat-item text-muted" data-toggle="tooltip"
-                                                    title="Comments: 50"><i class="fas fa-comments mr-1"></i>50</span>
-                                            </div>
-                                            <div class="points">
-                                                <div class="carets mr-2">
-                                                    <i class="fas fa-caret-up voted"></i>
-                                                    <i class="fas fa-caret-down"></i>
-                                                </div>
-                                                <span class="text-muted">234</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                         @endforeach   
+                            
 
                     </div>
                 </div>
@@ -511,11 +334,21 @@
                                 <li id="default-comment__tab" class="tab-item active"
                                     onclick="openTab(event,'write-tab')">Write</li>
                             </ul>
+                        <form action="{{URL::asset('comment') }}/{{$post->id}}" method="post">
+                            @csrf
                             <div class="tab__content">
                                 <div class="tab__pane" id="write-tab">
                                     <div class="comment__form">
                                         <div class=" avatar--md">
-                                            <img src="{{asset('layout_user/img/avartar/pi.jpg')}}" alt="pi">
+                                        <img src="{{ URL::asset('img') }}/<?php
+                                        $data = DB::table('users')->select('avatar')->where('id','=',$post->id)->get();
+                                            foreach($data as $row)
+                                            {
+                                                foreach($row as $key=>$value){
+                                                  echo $value;
+                                                }
+                                            }
+                                        ?>" alt="pi">
                                         </div>
                                         <div class="editor-lite">
                                             <textarea name="comment__editor" id="basic__editor" cols="30" rows="10" placeholder="Write some respone..."></textarea>
@@ -523,130 +356,62 @@
                                     </div>
                                 </div>
                                 <div class="post-comment d-flex justify-content-end">
-                                    <a href="#"
-                                        class="post-comment-btn el-button btn btn-sm btn-primary el-button--primary is-disabled">Post
-                                        comment</a>
+                                    <button type="submit" class="post-comment-btn el-button btn btn-sm btn-primary el-button--primary is-disabled">Post
+                                        comment</button>
                                 </div>
 
                             </div>
+                        </form>    
                         </div>
                     </div>
                     <div class="comment-list">
+                    @foreach($comment as $a)
                         <div class="comment-item">
                             <div class="comment-item__info">
                                 <div class="user--inline d-inline-flex flex-shrink-0">
                                     <a href="" class="d-flex mr-3">
                                         <div class="d-inline-block avatar--sm">
-                                            <img src="{{asset('layout_user/img/avartar/pi.jpg')}}" alt="avatar">
+                                        <img src="{{ URL::asset('img') }}/<?php
+                                        $data = DB::table('users')->select('avatar')->where('id','=',$a->user_id)->get();
+                                            foreach($data as $row)
+                                            {
+                                                foreach($row as $key=>$value){
+                                                  echo $value;
+                                                }
+                                            }
+                                        ?>" alt="avatar">
                                         </div>
                                     </a>
                                     <span>
-                                        <a href="/user" class="mr-3 el-popover__reference">Dinh Loc Phuc</a>
+                                        <a href="#" class="mr-3 el-popover__reference">
+                                        <?php
+                                        $data = DB::table('users')->select('username')->where('id','=',$a->user_id)->get();
+                                            foreach($data as $row)
+                                            {
+                                                foreach($row as $key=>$value){
+                                                  echo $value;
+                                                }
+                                            }
+                                        ?>
+                                        </a>
                                     </span>
-                                    <span class="text-muted">@sucanabo</span>
+                                    <span class="text-muted">@<?php
+                                        $data = DB::table('users')->select('username')->where('id','=',$a->user_id)->get();
+                                            foreach($data as $row)
+                                            {
+                                                foreach($row as $key=>$value){
+                                                  echo $value;
+                                                }
+                                            }
+                                        ?>
+                                    </span>
                                 </div>
                                 <div class="comment__time">
-                                    <span>in less than a minute</span>
+                                    <span>{{$a->created_at}}</span>
                                 </div>
                             </div>
                             <div class="comment-item__content">
-                                render ra comment dc editor
-                            </div>
-                            <div class="comment-item__interactive">
-                                <div class="d-flex text-muted">
-                                    <div class="score">
-                                        <button class="icon-btn vote"><i class="fas fa-chevron-up  voted-up"></i></i></button>
-                                        <span class="comment-points text-muted">0</span>
-                                        <button class="icon-btn vote"><i class="fas fa-chevron-down"></i></button>
-                                    </div>
-                                    <div class="text-muted mr-2 ml-2">|</div>
-                                    <a href="" class="mr-3 cursor-pointer link" data-toggle="tooltip" title="Reply"><span>Reply</span></a>
-                                    <a href="" class="mr-3 cursor-pointer link" data-toggle="tooltip" title="Share a link to this comment"><span>Share</span></a>
-                                    <div class="comment__menu ml-05 el-dropdown">
-                                        <span class="el-dropdown-selfdefine"><i class="fas fa-ellipsis-h icon--small"></i></span>
-                                        <ul class="el-dropdown-menu el-popper publish-dropdown el-dropdown-menu--wide el-dropdown-menu--medium"
-                                            data-toggle="tooltip" title="Show more options">
-                                            <li><a href="publish/post">
-                                                    <span class="mr-3"><i class="far fa-flag"></i></span>Report</a>
-                                            </li>
-                                            <li><a href="question/ask">
-                                                    <span class="mr-3"><i class="fas fa-magic"></i></span>Hightlighting code
-                                                    blocks</a>
-                                                </a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                
-                                
-                            </div>
-                        </div>
-                        <div class="comment-item">
-                            <div class="comment-item__info">
-                                <div class="user--inline d-inline-flex flex-shrink-0">
-                                    <a href="" class="d-flex mr-3">
-                                        <div class="d-inline-block avatar--sm">
-                                            <img src="{{asset('layout_user/img/avartar/pi.jpg')}}" alt="avatar">
-                                        </div>
-                                    </a>
-                                    <span>
-                                        <a href="/user" class="mr-3 el-popover__reference">Dinh Loc Phuc</a>
-                                    </span>
-                                    <span class="text-muted">@sucanabo</span>
-                                </div>
-                                <div class="comment__time">
-                                    <span>in less than a minute</span>
-                                </div>
-                            </div>
-                            <div class="comment-item__content">
-                                render ra comment dc editor
-                            </div>
-                            <div class="comment-item__interactive">
-                                <div class="d-flex text-muted">
-                                    <div class="score">
-                                        <button class="icon-btn vote"><i class="fas fa-chevron-up"></i></i></button>
-                                        <span class="comment-points text-muted">0</span>
-                                        <button class="icon-btn vote"><i class="fas fa-chevron-down  voted-down"></i></button>
-                                    </div>
-                                    <div class="text-muted mr-2 ml-2">|</div>
-                                    <a href="" class="mr-3 cursor-pointer link" data-toggle="tooltip" title="Reply"><span>Reply</span></a>
-                                    <a href="" class="mr-3 cursor-pointer link" data-toggle="tooltip" title="Share a link to this comment"><span>Share</span></a>
-                                    <div class="comment__menu ml-05 el-dropdown">
-                                        <span class="el-dropdown-selfdefine"><i class="fas fa-ellipsis-h icon--small"></i></span>
-                                        <ul class="el-dropdown-menu el-popper publish-dropdown el-dropdown-menu--wide el-dropdown-menu--medium"
-                                            data-toggle="tooltip" title="Show more options">
-                                            <li><a href="publish/post">
-                                                    <span class="mr-3"><i class="far fa-flag"></i></span>Report</a>
-                                            </li>
-                                            <li><a href="question/ask">
-                                                    <span class="mr-3"><i class="fas fa-magic"></i></span>Hightlighting code
-                                                    blocks</a>
-                                                </a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                
-                                
-                            </div>
-                        </div>
-                        <div class="comment-item">
-                            <div class="comment-item__info">
-                                <div class="user--inline d-inline-flex flex-shrink-0">
-                                    <a href="" class="d-flex mr-3">
-                                        <div class="d-inline-block avatar--sm">
-                                            <img src="{{asset('layout_user/img/avartar/pi.jpg')}}" alt="avatar">
-                                        </div>
-                                    </a>
-                                    <span>
-                                        <a href="/user" class="mr-3 el-popover__reference">Dinh Loc Phuc</a>
-                                    </span>
-                                    <span class="text-muted">@sucanabo</span>
-                                </div>
-                                <div class="comment__time">
-                                    <span>in less than a minute</span>
-                                </div>
-                            </div>
-                            <div class="comment-item__content">
-                                render ra comment dc editor
+                                {!!$a->content!!}
                             </div>
                             <div class="comment-item__interactive">
                                 <div class="d-flex text-muted">
@@ -676,6 +441,7 @@
                                 
                             </div>
                         </div>
+                    @endforeach    
                     </div>
                 </div>
             </div>
@@ -684,7 +450,7 @@
         <div class="post-actions--res">
             <div class="d-flex justify-content-between">
                 <div class="post-action--res__left d-flex align-items-center">
-                    <span><a href="/user"><img src="{{asset('layout_user/img/avartar/pi.jpg')}}" alt="avatar"
+                    <span><a href="#"><img src="{{asset('layout_user/img/avartar/pi.jpg')}}" alt="avatar"
                         class="avatar--lg"></a>
                     </span>
                     <div class="votes--bottom d-flex">
@@ -693,8 +459,9 @@
                         <button data-toggle="tool-tip" title="Down vote" class="el-button el-button--text"><i class="fas fa-arrow-down text-muted"></i></button>
                     </div>
                 </div>
+                 
                 <div class="post-action--res__right d-flex">
-                        <button href="#" class=" el-button post-actions__clip el-button--default"
+                        <button href="{{asset('post_clip')}}/{{$post->id}}" class=" el-button post-actions__clip el-button--default"
                             title="Clip this post"><i  href="#" class="fas fa-paperclip"></i></button>
                         <button href="#" class="el-button post-actions__clip el-button--default"
                             title="Share a link to this page on Facebook">
