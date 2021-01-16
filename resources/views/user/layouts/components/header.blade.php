@@ -4,11 +4,11 @@
     <header class="main-navbar main-navbar__group py-1">
         <nav class="main-navbar__container container px-md-0">
             <div class="main-navbar__left">
-                <a href="./index.html" class="main-navbar_logo mr-lg-5 d-block">
+                <a href="{{asset('/')}}" class="main-navbar_logo mr-lg-5 d-block">
                     <img src="https://cdn.viblo.asia/_nuxt/img/fbfe575.svg" alt="logo">
                 </a>
                 <ul class="main-menu ">
-                    <li class="main-menu__item"><a href="" class="link">
+                    <li class="main-menu__item"><a href="{{asset('/')}}" class="link">
                             <div class="el-badge badge-new">
                                 Post
                                 <!-- <sup class="el-badge__content el-badge dot fixed"></sup> -->
@@ -32,12 +32,17 @@
                 </ul>
             </div>
             <div class="main-navbar__right">
+            
                 <div class="sb mr-1 flex-fill">
-                    <input type="text" placeholder="Search Viblo" class="sb__input" />
-                    <button class="btn btn-primary">
+                <form  action="{{URL::asset('search') }}" method="post">
+                @csrf
+                    <input type="text" name="search" placeholder="Search Viblo" class="sb__input" />
+                    <button class="btn btn-primary" type="submit">
                         <i class="fa fa-search"></i>
                     </button>
+                </form>    
                 </div>
+           
                 <div class="main-navbar__group">
                     <span class="flyout announcement-flyout mr-1 ">
                         <div class="el-badge">
@@ -197,7 +202,7 @@
                                 </div>
                                 <hr>
                                 <div class="user-menu__item">
-                                    <a href="checkLogout" class="link link--plain">
+                                    <a href="{{asset('checkLogout')}}" class="link link--plain">
                                         <span><i class="fas fa-sign-out-alt" ></i></span> Sign out
                                     </a>
                                 </div>
@@ -210,7 +215,7 @@
                 </div>
                 @endif
                 @else
-                 <b><a href="login">Sign in / Sign up</a></b>
+                 <b><a href="{{asset('login')}}">Sign in / Sign up</a></b>
              @endif   
             </div>
         </nav>

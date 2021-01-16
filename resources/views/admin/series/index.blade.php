@@ -26,6 +26,7 @@
                 <th>Title</th>
                 <th>User_id</th>
                 <th>Status</th>
+                <th>Ban</th>
                 <th>Detail</th>
                 <th>Edit</th>
                 <th>Delete</th>
@@ -42,6 +43,16 @@
                     <td>Active</td>
                 @else
                     <td>Un_Active</td>
+                @endif
+                @if($x->status==1)
+                <td >
+                    <a href="series/update_lock/{{$x -> id}}"><button type="submit" class="btn btn-primary btn-rounded btn-sm"><i class="fas fa-unlock"></i> </button></a>
+                </td>
+                @endif
+                @if($x->status==0)
+                <td >
+                    <a href="series/update_unlock/{{$x -> id}}"><button type="submit" class="btn btn-primary btn-rounded btn-sm"><i class="fas fa-lock"></i> </button></a>
+                </td>
                 @endif
                 <td >
                     <a href="series/show/{{$x -> id}}"><button type="submit" class="btn btn-primary btn-rounded btn-sm"><i class="fas fa-eye"></i> </button></a>

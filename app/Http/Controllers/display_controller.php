@@ -25,7 +25,11 @@ class display_controller extends Controller
         $total_posts = DB::table('post')->count('id');
         $total_view = DB::table('post')->sum('view');
         $top_four = DB::table('post')->orderBy('view','desc')->limit(4)->get();
-        return view('admin/home/index',['users'=>$total_user,'series'=>$total_series,'posts'=>$total_posts,'views'=>$total_view,'top_four'=>$top_four]);
+        $notification = DB::table('notification')->orderBy('created_at','desc')->limit(1)->get();
+        $user_report = DB::table('user_report')->orderBy('created_at','desc')->limit(1)->get();
+        $post_report = DB::table('post_report')->orderBy('created_at','desc')->limit(1)->get();
+        return view('admin/home/index',['users'=>$total_user,'series'=>$total_series,'posts'=>$total_posts,'views'=>$total_view,
+        'noti'=>$notification,'top_four'=>$top_four,'post_report'=>$post_report,'user_report'=>$user_report]);
     }
 
    

@@ -19,7 +19,7 @@ class write_post_controller extends Controller
     public function index()
     {
         //
-        return view("user/write-post");
+        return view('user/write_post');
     }
 
     /**
@@ -67,7 +67,7 @@ class write_post_controller extends Controller
             $post->image_title=$image;
         }
         $post->save();
-        return redirect('user/followings');
+        return redirect('followings');
     }
 
     /**

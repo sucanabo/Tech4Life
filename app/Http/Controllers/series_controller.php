@@ -22,6 +22,24 @@ class series_controller extends Controller
         return view('admin/series/index',['series'=>$series]);
     }
 
+
+    public function update_lock( $id)
+    {
+        $User=series::find($id);
+        $User->status = 0;
+        $User->save();
+        return redirect('admin/series')->with('thongbao','Lock thành công');
+    }
+
+    public function update_unlock( $id)
+    {
+        $User=series::find($id);
+        $User->status = 1;
+        $User->save();
+        return redirect('admin/series')->with('thongbao','UnLock thành công');
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *

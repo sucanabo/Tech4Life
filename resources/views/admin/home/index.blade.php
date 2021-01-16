@@ -13,12 +13,42 @@
                                     <div class="d-inline-flex align-items-center">
                                         <h2 class="text-dark mb-1 font-weight-medium">{{$users}}</h2>
                                         <span
-                                            class="badge bg-primary font-12 text-white font-weight-medium badge-pill ml-2 d-lg-block d-md-none">+18.33%</span>
+                                            class="badge bg-primary font-12 text-white font-weight-medium badge-pill ml-2 d-lg-block d-md-none">Up  </span>
                                     </div>
                                     <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Member</h6>
                                 </div>
                                 <div class="ml-auto mt-md-3 mt-lg-0">
                                     <span class="opacity-7 text-muted"><i class="fa fa-users" ></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex d-lg-flex d-md-block align-items-center">
+                                <div>
+                                    <h2 class="text-dark mb-1 font-weight-medium">{{$views}}</h2>
+                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">View</h6>
+                                </div>
+                                <div class="ml-auto mt-md-3 mt-lg-0">
+                                    <span class="opacity-7 text-muted"><i class="fa fa-eye" ></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card border-right">
+                        <div class="card-body">
+                            <div class="d-flex d-lg-flex d-md-block align-items-center">
+                                <div>
+                                    <div class="d-inline-flex align-items-center">
+                                        <h2 class="text-dark mb-1 font-weight-medium">{{$posts}}</h2>
+                                        <span
+                                            class="badge bg-danger font-12 text-white font-weight-medium badge-pill ml-2 d-md-none d-lg-block">Up Post</span>
+                                    </div>
+                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Posts</h6>
+                                </div>
+                                <div class="ml-auto mt-md-3 mt-lg-0">
+                                    <span class="opacity-7 text-muted"><i class="fa fa-id-card" ></i></span>
                                 </div>
                             </div>
                         </div>
@@ -38,36 +68,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card border-right">
-                        <div class="card-body">
-                            <div class="d-flex d-lg-flex d-md-block align-items-center">
-                                <div>
-                                    <div class="d-inline-flex align-items-center">
-                                        <h2 class="text-dark mb-1 font-weight-medium">{{$posts}}</h2>
-                                        <span
-                                            class="badge bg-danger font-12 text-white font-weight-medium badge-pill ml-2 d-md-none d-lg-block">-18.33%</span>
-                                    </div>
-                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Posts</h6>
-                                </div>
-                                <div class="ml-auto mt-md-3 mt-lg-0">
-                                    <span class="opacity-7 text-muted"><i class="fa fa-id-card" ></i></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex d-lg-flex d-md-block align-items-center">
-                                <div>
-                                    <h2 class="text-dark mb-1 font-weight-medium">{{$views}}</h2>
-                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">View</h6>
-                                </div>
-                                <div class="ml-auto mt-md-3 mt-lg-0">
-                                    <span class="opacity-7 text-muted"><i class="fa fa-eye" ></i></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
+                    
                 </div>
                 <!-- *************************************************************** -->
                 <!-- End First Cards -->
@@ -227,10 +229,10 @@
                                             </a>
                                         </div>
                                         <div class="ml-3 mt-2">
-                                            <h5 class="text-dark font-weight-medium mb-2">New Product Sold!</h5>
-                                            <p class="font-14 mb-2 text-muted">John Musa just purchased <br> Cannon 5M
-                                                Camera.
-                                            </p>
+                                            <h5 class="text-dark font-weight-medium mb-2">User Report!</h5>
+                                            @foreach($user_report as $x)    
+                                            <p class="font-14 mb-2 text-muted">{{$x->reason}}</p>
+                                             @endforeach    
                                             <span class="font-weight-light font-14 text-muted">10 Minutes Ago</span>
                                         </div>
                                     </div>
@@ -242,9 +244,10 @@
                                             </a>
                                         </div>
                                         <div class="ml-3 mt-2">
-                                            <h5 class="text-dark font-weight-medium mb-2">New Support Ticket</h5>
-                                            <p class="font-14 mb-2 text-muted">Richardson just create support <br>
-                                                ticket</p>
+                                            <h5 class="text-dark font-weight-medium mb-2">Report Post !</h5>
+                                            @foreach($post_report as $x)    
+                                            <p class="font-14 mb-2 text-muted">{{$x->reason}}</p>
+                                             @endforeach    
                                             <span class="font-weight-light font-14 text-muted">25 Minutes Ago</span>
                                         </div>
                                     </div>
@@ -255,12 +258,13 @@
                                             </a>
                                         </div>
                                         <div class="ml-3 mt-2">
-                                            <h5 class="text-dark font-weight-medium mb-2">Notification Pending Order!
+                                            <h5 class="text-dark font-weight-medium mb-2">Notification !
                                             </h5>
-                                            <p class="font-14 mb-2 text-muted">One Pending order from Ryne <br> Doe</p>
+                                        @foreach($noti as $x)    
+                                            <p class="font-14 mb-2 text-muted">{{$x->title}}</p>
+                                        @endforeach    
                                             <span class="font-weight-light font-14 mb-1 d-block text-muted">2 Hours
                                                 Ago</span>
-                                            <a href="javascript:void(0)" class="font-14 border-bottom pb-1 border-info">Load More</a>
                                         </div>
                                     </div>
                                 </div>

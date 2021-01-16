@@ -25,7 +25,11 @@
                 <td>{{$cate -> id}}</td>
                 <td>{{$cate -> name}}</td>
                 <td>{{$cate -> image}}</td>
-                <td>{{$cate -> status}}</td>
+                @if($cate->status==1)
+                    <td>Active</td>
+                @else
+                    <td>Un_Active</td>
+                @endif
                 <td>{{$cate -> owned_by}}</td>
 
                 <td>

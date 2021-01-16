@@ -34,7 +34,7 @@ class login_controller extends Controller
        var_dump($request->email,$request->password);
        if(Auth::attempt(['email'=>$request->email,'password'=>$request->password])){
            //true
-            return redirect("followings");
+            return redirect("/");
        }
        else{
         //false
@@ -44,7 +44,7 @@ class login_controller extends Controller
 
     public function checkLogout(){
         Auth::logout();
-        return redirect('followings');
+        return redirect('/');
     }
     /**
      * Show the form for creating a new resource.

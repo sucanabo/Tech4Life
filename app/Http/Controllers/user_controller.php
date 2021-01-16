@@ -129,7 +129,24 @@ class user_controller extends Controller
 
     }
 
-   
+    public function update_lock( $id)
+    {
+        $User=User::find($id);
+        $User->status = 0;
+        $User->save();
+        return redirect('admin/users')->with('thongbao','Lock thành công');
+    }
+
+    public function update_unlock( $id)
+    {
+        $User=User::find($id);
+        $User->status = 1;
+        $User->save();
+        return redirect('admin/users')->with('thongbao','UnLock thành công');
+    }
+    
+
+
     /**
      * Remove the specified resource from storage.
      *

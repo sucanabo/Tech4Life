@@ -26,15 +26,13 @@ class post_clip_controller extends Controller
         $post_clip = new post_clip;
         $post_clip->user_id= auth()->user()->id;
         $post_clip->post_id=$id;
-        if (post_clip::where('post_id',$id )->first()){
-            if(post_clip::where('user_id', auth()->user()->id )->first()){
-                $post_clip->delete();
-            } 
+        if (post_clip::where('user_id', auth()->user()->id )->Where('post_id', $id)->delete()){
+            return redirect("post_detail/$id"); 
         }
         else
         {
             $post_clip->save();
-            return redirect("user/followings"); 
+            return redirect("post_detail/$id");
         }  
     }
 

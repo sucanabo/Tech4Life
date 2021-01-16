@@ -34,6 +34,23 @@ class post_controller extends Controller
         return view('admin/posts/create');
     }
 
+
+    public function update_lock( $id)
+    {
+        $User=post::find($id);
+        $User->status = 0;
+        $User->save();
+        return redirect('admin/posts')->with('thongbao','Lock thành công');
+    }
+
+    public function update_unlock( $id)
+    {
+        $User=post::find($id);
+        $User->status = 1;
+        $User->save();
+        return redirect('admin/posts')->with('thongbao','UnLock thành công');
+    }
+
     /**
      * Store a newly created resource in storage.
      *

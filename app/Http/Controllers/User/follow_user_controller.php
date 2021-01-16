@@ -30,15 +30,16 @@ class follow_user_controller extends Controller
     {
         $user_follow = new user_follow;
         $user_follow->user_id= auth()->user()->id;
-        $user_follow->user_following_id=$id;
-        if (post_clip::where('post_id',$id )->first()){
-            if(post_clip::where('user_id', auth()->user()->id )->first()){
-                echo " bản ghi đã tồn tại ";
-            } 
+        $user_follow->user_follwing_id=$id;
+        $user_follow->status=1;
+        
+        if (user_follow::where('user_id', auth()->user()->id )->Where('user_follwing_id', $id)->delete()){
+            return redirect ('/');
         }
         else
         {
-            
+         $user_follow->save();
+         return redirect ('/');
         }  
     }
 

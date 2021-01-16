@@ -23,7 +23,7 @@ class PostClip extends Migration
             $table->timestamps();
         });
       
-    }
+    } 
 
     /**
      * Reverse the migrations.
