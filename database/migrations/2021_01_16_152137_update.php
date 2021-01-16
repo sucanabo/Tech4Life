@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UserFollow extends Migration
+class Update extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,9 @@ class UserFollow extends Migration
     public function up()
     {
         //
-       
+        Schema::table('post', function ($table) {
+            $table->dropColumn('vote');
+        });
     }
 
     /**
