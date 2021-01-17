@@ -59,10 +59,16 @@ class RegisterController extends Controller
             $User->status = 1; 
             $User->permission =0; 
             $User->save();
-            return "success";
+            return response()->json([
+                'code'=> 200,
+                'status'=> 'success'
+            ],200);
         }
          else{
-            return "failure";
+            return response()->json([
+                'code'=> 200,
+                'status'=> 'success'
+            ],200);   
          }       
     }
 
