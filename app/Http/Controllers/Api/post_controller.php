@@ -20,10 +20,9 @@ class post_controller extends Controller
         //
             //$post = post::all();
             $post = DB::select('
-            SELECT post.id,post.title, post.view, post.image_title,
+            SELECT post.id,post.title,post.vote, post.view, post.image_title,
                    post.created_at, users.display_name, users.avatar,
                    users.username,
-                   count(vote_post.post_id) as vote,
                    count(post_clip.post_id) as clipped,
                    count(comments.post_id) as comment,
                    post.content
@@ -37,6 +36,16 @@ class post_controller extends Controller
             ');
 
             return response()->json($post);
+    }
+        /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function getVote($id){
+        $data = DB::table('post')->where('id',$id)->get()->first();
+        return $data->vote;
     }
     public function searchpost($search){
         $post = DB::table('post')

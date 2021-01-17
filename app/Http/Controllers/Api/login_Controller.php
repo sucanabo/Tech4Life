@@ -44,6 +44,7 @@ class login_Controller extends Controller
              'displayname'=>auth()->user()->display_name,
              'avatar'=> auth()->user()->avatar,
              'id' => auth()->user()->id
+
          ]);
         }
         else{

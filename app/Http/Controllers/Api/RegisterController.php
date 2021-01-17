@@ -45,30 +45,46 @@ class RegisterController extends Controller
             'email.email'=>'Email phải có  @ ',
             'password.min'=>'Password không được nhỏ hơn 6 ký tự',
         ]);
-
+           
+            if($request->password == $request->confirm_password)
+            {
         $check=User::where('username',$request->username)->where('email',$request->email)->first();
             if(empty($check)){
-            $User=new User;
-            $User->username=$request->username;
-            $User->password =bcrypt($request->password) ;
-            $User->email =$request->email; 
-            $User->phone_number ='0774740192'; 
-            $User->display_name =$request->display_name; 
-            $User->avatar ='1.jpg'; 
-            $User->view = 1; 
-            $User->gender = 1; 
-            $User->status = 1; 
-            $User->permission =0; 
-            $User->save();
-            return response()->json([
-                'status'=>'success',
-            ]);
-        }
-         else{
-            return response()->json([
-                'status'=>'success',
-            ]);
-         }       
+                $User=new User;
+                $User->username=$request->username;
+                $User->password =bcrypt($request->password) ;
+                $User->email =$request->email; 
+                $User->phone_number ='0774740192'; 
+                $User->display_name =$request->display_name; 
+                $User->avatar ='1.jpg'; 
+                $User->view = 1; 
+                $User->gender = 1; 
+                $User->status = 1; 
+                $User->permission =0; 
+                $User->save();
+                return response()->json([
+                    'code'=> 200,
+                    'status'=> 'success'
+                ],200);
+                }
+                else if(!empty($check))
+                {
+                    {
+                    return response()->json([
+                        'code'=> 200,
+                        'status'=> 'no_add'
+                    ],200);   
+                    }       
+                }
+            }
+            else{
+                {
+                    return response()->json([
+                        'code'=> 200,
+                        'status'=> 'failure'
+                    ],200);   
+                    }       
+             }
     }
 
     /**
