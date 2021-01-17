@@ -62,7 +62,7 @@ return [
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
             'strict' => true,
-       'modes' => [
+            'modes' => [
             //'ONLY_FULL_GROUP_BY', // Disable this to allow grouping by one column
             'STRICT_TRANS_TABLES',
             'NO_ZERO_IN_DATE',
@@ -70,7 +70,7 @@ return [
             'ERROR_FOR_DIVISION_BY_ZERO',
             'NO_AUTO_CREATE_USER',
             'NO_ENGINE_SUBSTITUTION'
-        ],
+            ],
         ],
 
         'pgsql' => [
