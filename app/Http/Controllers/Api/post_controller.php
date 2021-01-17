@@ -84,9 +84,14 @@ class post_controller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id)
     {
-        //
+        $countView = DB::update('
+        UPDATE post
+        SET post.view = post.view +1
+        WHERE post.id = '.$id);
+
+        return response()->json($countView);
     }
 
     /**
