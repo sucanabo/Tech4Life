@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\post_clip;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 class RegisterController extends Controller
@@ -59,10 +60,14 @@ class RegisterController extends Controller
             $User->status = 1; 
             $User->permission =0; 
             $User->save();
-            return "success";
+            return response()->json([
+                'status'=>'success',
+            ]);
         }
          else{
-            return "failure";
+            return response()->json([
+                'status'=>'success',
+            ]);
          }       
     }
 
@@ -72,11 +77,7 @@ class RegisterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
-
+    
     /**
      * Update the specified resource in storage.
      *

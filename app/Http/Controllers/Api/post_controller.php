@@ -20,7 +20,7 @@ class post_controller extends Controller
         //
             //$post = post::all();
             $post = DB::select('
-            SELECT post.title, post.vote, post.view, post.image_title,
+            SELECT post.id, post.title, post.vote, post.view, post.image_title,
                    post.created_at, users.display_name, users.avatar,
                    users.username,
                    count(post_clip.post_id) as clipped,
@@ -88,4 +88,6 @@ class post_controller extends Controller
     {
         //
     }
+
+   
 }
