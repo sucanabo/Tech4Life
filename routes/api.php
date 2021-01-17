@@ -64,3 +64,8 @@ Route::post("up_vote", "App\Http\Controllers\Api\user_vote_cotroller@up_vote");
 Route::post("clipPost", "App\Http\Controllers\Api\postClip_controller@clipPost");
 //get clip_post
 Route::get("getClipPost", "App\Http\Controllers\Api\postClip_controller@getClipPost");
+
+//comment
+Route::get("getcomment/{id}", "App\Http\Controllers\Api\CommentController@getByPost");
+Route::get("getcomments", "App\Http\Controllers\Api\CommentController@getAll");
+Route::post("putcomment", "App\Http\Controllers\Api\CommentController@createComment");
