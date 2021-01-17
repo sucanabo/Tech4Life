@@ -18,21 +18,47 @@ class vote_controller extends Controller
     {
         return DB::select('select * from vote_post' );
     }
+    public function getVote(Request $request){
+        $data = DB::table('vote_post')->where('user_id',$request->user_id)->where('post_id',$request->post_id)->get()->first();
+        if($data != null){
+            return $data->status;
+        }
+        return 0;
+    }
     public function votePost(Request $request){
         $list_vote = DB::table('vote_post')->where('user_id',$request->user_id)->where('post_id',$request->post_id)->get()->first();
+        $post = DB::table('post')->where('id',$request->post_id)->first();
         if($list_vote !=null){
             if($list_vote->status != $request->status){
                 DB::table('vote_post')->where('id', $list_vote->id)->update(['status' => $request->status]);
+                if($request->status == "1"){
+                    DB::table('post')->where('id',$post->id)->update(['vote'=>$post->vote + 1]);
+                }
+                else if($request->status == "-1"){
+                    DB::table('post')->where('id',$post->id)->update(['vote'=>$post->vote - 1]);
+                }
                 return "update";
                 
             }
             else{
                 DB::table('vote_post')->where('id',$list_vote->id)->delete();
+                if($request->status == "1"){
+                    DB::table('post')->where('id',$post->id)->update(['vote'=>$post->vote - 1]);
+                }
+                else if($request->status == "-1"){
+                    DB::table('post')->where('id',$post->id)->update(['vote'=>$post->vote + 1]);
+                }
                 return "delete";
             }
         }
         
         DB::table('vote_post')->insert(['user_id'=>$request->user_id,'post_id' => $request->post_id, 'status' => $request->status]);
+        if($request->status == "1"){
+            DB::table('post')->where('id',$post->id)->update(['vote'=>$post->vote + 1]);
+        }
+        else if($request->status == "-1"){
+            DB::table('post')->where('id',$post->id)->update(['vote'=>$post->vote - 1]);
+        }
         return "insert";
         
     }
