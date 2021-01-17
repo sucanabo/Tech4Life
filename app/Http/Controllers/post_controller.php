@@ -77,7 +77,6 @@ class post_controller extends Controller
         $post->content= $request->content;
         $post->status= 1;
         $post->view= 1;
-        $post->vote= 1;
         $messages = [
             'image' => 'Định dạng không cho phép',
             'max' => 'Kích thước file quá lớn',

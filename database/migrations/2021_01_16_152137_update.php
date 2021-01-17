@@ -14,8 +14,8 @@ class Update extends Migration
     public function up()
     {
         //
-        Schema::table('user_follow', function ($table) {
-            $table->integer('status');
+        Schema::table('post', function ($table) {
+            $table->dropColumn('vote');
         });
     }
 

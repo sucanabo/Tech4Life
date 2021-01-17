@@ -378,7 +378,7 @@
                                                     class="border-top-0 text-center font-weight-medium text-muted px-2 py-4">
                                                     {{$t->view}}
                                                 </td>
-                                                <td class="font-weight-medium text-dark border-top-0 px-2 py-4">{{$t->vote}}
+                                                <td class="font-weight-medium text-dark border-top-0 px-2 py-4">
                                                 </td>
                                             </tr>
                                        @endforeach

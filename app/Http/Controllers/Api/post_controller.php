@@ -20,14 +20,16 @@ class post_controller extends Controller
         //
             //$post = post::all();
             $post = DB::select('
-            SELECT post.title, post.vote, post.view, post.image_title,
+            SELECT post.id,post.title, post.view, post.image_title,
                    post.created_at, users.display_name, users.avatar,
                    users.username,
+                   count(vote_post.post_id) as vote,
                    count(post_clip.post_id) as clipped,
                    count(comments.post_id) as comment,
                    post.content
                    
             FROM users, post
+                LEFT JOIN vote_post ON vote_post.post_id = post.id
                 LEFT JOIN post_clip ON post_clip.post_id = post.id
                 LEFT JOIN comments ON comments.post_id = post.id
             WHERE users.id = post.user_id
@@ -88,4 +90,6 @@ class post_controller extends Controller
     {
         //
     }
+
+   
 }

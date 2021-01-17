@@ -32,7 +32,12 @@ Route::get("post", "App\Http\Controllers\Api\post_controller@index");
 Route::get("searchpost/{search}","App\Http\Controllers\Api\post_controller@searchpost");
 //notifications
 Route::get("notifications", "App\Http\Controllers\Api\user_controller@notifications");
-
+//report
+Route::get("getpostreport", "App\Http\Controllers\Api\\report@getPostReport");
+Route::post("postpostreport", "App\Http\Controllers\Api\\report@postPostReport");
+//announcement
+Route::get("announcement","App\Http\Controllers\Api\announcement_controller@index");
+//=============
 Route::post("logout", "App\Http\Controllers\Api\delete_token@deleteToken");
 
 Route::post("login1", "App\Http\Controllers\Api\login_Controller@login1");
@@ -48,3 +53,8 @@ Route::post("post_report", "App\Http\Controllers\Api\post_report_controller@post
 Route::post("post_clip", "App\Http\Controllers\Api\post_clip_controller@post_clip");
 
 Route::post("up_vote", "App\Http\Controllers\Api\user_vote_cotroller@up_vote");
+
+//post clip_post
+Route::post("clipPost", "App\Http\Controllers\Api\postClip_controller@clipPost");
+//get clip_post
+Route::get("getClipPost", "App\Http\Controllers\Api\postClip_controller@getClipPost");

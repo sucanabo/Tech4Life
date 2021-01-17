@@ -1,15 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Http\Request;
+namespace App\Http\Controllers\Api;
+
 use App\Http\Controllers\Controller;
-use App\Models\post_clip;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Str;
-use Illuminate\Support\Arr;
-class postClip_controller extends Controller
+use Illuminate\Http\Request;
+use App\Models\announcement;
+
+class announcement_controller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,19 +15,7 @@ class postClip_controller extends Controller
      */
     public function index()
     {
-        //
-        $posts = post_clip::paginate(15);
-        return view('admin/post_clip/index',['post'=>$posts]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return announcement::all();
     }
 
     /**
@@ -51,17 +36,6 @@ class postClip_controller extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
     {
         //
     }
