@@ -32,7 +32,12 @@ Route::get("post", "App\Http\Controllers\Api\post_controller@index");
 Route::get("searchpost/{search}","App\Http\Controllers\Api\post_controller@searchpost");
 //notifications
 Route::get("notifications", "App\Http\Controllers\Api\user_controller@notifications");
-
+//report
+Route::get("getpostreport", "App\Http\Controllers\Api\\report@getPostReport");
+Route::post("postpostreport", "App\Http\Controllers\Api\\report@postPostReport");
+//announcement
+Route::get("announcement","App\Http\Controllers\Api\announcement_controller@index");
+//=============
 Route::post("logout", "App\Http\Controllers\Api\delete_token@deleteToken");
 
 Route::post("login1", "App\Http\Controllers\Api\login_Controller@login1");
