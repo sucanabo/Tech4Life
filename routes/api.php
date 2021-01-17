@@ -28,6 +28,8 @@ Route::get("series", "App\Http\Controllers\Api\series_Controller@getAPI");
 Route::post("refresh_token", "App\Http\Controllers\Api\series_Controller@refreshToken");
 //post
 Route::get("post", "App\Http\Controllers\Api\post_controller@index");
+//getvote
+Route::get("getvote/{id}","App\Http\Controllers\Api\post_controller@getVote");
 //searchpost
 Route::get("searchpost/{search}","App\Http\Controllers\Api\post_controller@searchpost");
 //notifications
@@ -37,6 +39,10 @@ Route::get("getpostreport", "App\Http\Controllers\Api\\report@getPostReport");
 Route::post("postpostreport", "App\Http\Controllers\Api\\report@postPostReport");
 //announcement
 Route::get("announcement","App\Http\Controllers\Api\announcement_controller@index");
+//vote
+Route::get("vote","App\Http\Controllers\Api\\vote_controller@index");
+Route::post("getuservote","App\Http\Controllers\Api\\vote_controller@getVote");
+Route::post("postvote","App\Http\Controllers\Api\\vote_controller@votePost");
 //=============
 Route::post("logout", "App\Http\Controllers\Api\delete_token@deleteToken");
 
