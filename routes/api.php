@@ -37,6 +37,10 @@ Route::get("getpostreport", "App\Http\Controllers\Api\\report@getPostReport");
 Route::post("postpostreport", "App\Http\Controllers\Api\\report@postPostReport");
 //announcement
 Route::get("announcement","App\Http\Controllers\Api\announcement_controller@index");
+//vote
+Route::get("vote","App\Http\Controllers\Api\\vote_controller@index");
+
+Route::post("postvote","App\Http\Controllers\Api\\vote_controller@votePost");
 //=============
 Route::post("logout", "App\Http\Controllers\Api\delete_token@deleteToken");
 
