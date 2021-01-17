@@ -58,3 +58,5 @@ Route::post("up_vote", "App\Http\Controllers\Api\user_vote_cotroller@up_vote");
 Route::post("clipPost", "App\Http\Controllers\Api\postClip_controller@clipPost");
 //get clip_post
 Route::get("getClipPost", "App\Http\Controllers\Api\postClip_controller@getClipPost");
+//update view
+Route::post("updateView/{id}", "App\Http\Controllers\Api\post_controller@update");
