@@ -26,22 +26,13 @@ class postClip_controller extends Controller
 
     public function getClipPost(){
          $listClipPost = DB::select('
-            SELECT post.id,post.title, post.view, post.image_title,
-                   post.created_at, users.display_name, users.avatar,
-                   users.username,
-                   count(vote_post.post_id) as vote,
-                   count(post_clip.post_id) as clipped,
-                   count(comments.post_id) as comment,
-                   post.content
-                   
-            FROM post_clip, users, post
-                LEFT JOIN vote_post ON vote_post.post_id = post.id
-                LEFT JOIN comments ON comments.post_id = post.id
-            WHERE users.id = post.user_id and post_clip.user_id = users.id and post_clip.post_id = post.id
-            GROUP BY post.id
+         SELECT post.id,post.title, post.view, post.image_title, post.created_at, users.display_name, users.avatar, users.username, count(vote_post.post_id) as vote, count(post_clip.post_id) as clipped, count(comments.post_id) as comment, post.content 
+         FROM post_clip, users, post 
+            LEFT JOIN vote_post ON vote_post.post_id = post.id 
+             LEFT JOIN comments ON comments.post_id = post.id 
+         WHERE post_clip.user_id = users.id and post_clip.post_id = post.id
+        GROUP BY post.id
             ');
-
-
 
         return response()->json($listClipPost);
       }
