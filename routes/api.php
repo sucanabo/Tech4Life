@@ -53,3 +53,8 @@ Route::post("post_report", "App\Http\Controllers\Api\post_report_controller@post
 Route::post("post_clip", "App\Http\Controllers\Api\post_clip_controller@post_clip");
 
 Route::post("up_vote", "App\Http\Controllers\Api\user_vote_cotroller@up_vote");
+
+//post clip_post
+Route::post("clipPost", "App\Http\Controllers\Api\postClip_controller@clipPost");
+//get clip_post
+Route::get("getClipPost", "App\Http\Controllers\Api\postClip_controller@getClipPost");
