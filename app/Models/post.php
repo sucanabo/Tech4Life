@@ -16,7 +16,9 @@ class post extends Model
     }
 
     // 1-n
-
+    public function  vote_post(){
+        return $this->hasMany('App\Models\vote_post','post_id','id');
+    }
      // 1-n
      public function  post_clip(){
         return $this->hasMany('App\Models\post_clip','post_id','id');

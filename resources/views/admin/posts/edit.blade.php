@@ -53,14 +53,9 @@
                 <textarea id="editor" class="form-control " type="text" name="content" value="{!!$post->content !!}"></textarea>
             </div>
            
-           
-            <div class="form-group p-0">
-                <label for="my-input">Vote :</label>
-                <input id="my-input" class="form-control " type="text" name="vote" value="{{ $post->vote }}">
-            </div>
             <div class="form-group p-0">
                 <label for="my-input">View :</label>
-                <input id="my-input" class="form-control " type="text" name="view" value="{{ $post->view }}">
+                <input id="my-input" class="form-control " type="enable" name="view" value="{{ $post->view }}">
             </div>
 
             <div class="form-group mb-4 p-0">

@@ -131,6 +131,10 @@ class User extends Authenticatable
         return $this->hasOne('App\Models\comment','user_id','id');
     }
     
+
+    public function vote_post(){
+        return $this->hasOne('App\Models\vote_post','user_id','id');
+    }
    
    
 }

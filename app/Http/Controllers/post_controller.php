@@ -77,7 +77,6 @@ class post_controller extends Controller
         $post->content= $request->content;
         $post->status= 1;
         $post->view= 1;
-        $post->vote= 1;
         $messages = [
             'image' => 'Định dạng không cho phép',
             'max' => 'Kích thước file quá lớn',
@@ -135,14 +134,12 @@ class post_controller extends Controller
         $this->validate($request,[
             'title'=>'required',
             'content'=>'required',
-            'vote'=>'required',
             'view'=>'required',
             'status'=>'required',
         ],
         [
             'title.required'=>'Bạn chưa nhập title',
             'content.required'=>'Bạn chưa nhập content',
-            'vote.required'=>'Bạn chưa nhập vote',
             'view.required'=>'Bạn chưa nhập view',
             'status.required'=>'Bạn chưa nhập status',
 
@@ -154,7 +151,6 @@ class post_controller extends Controller
         $post->content= $request->content;
         $post->status= $request->status;
         $post->view= $request->view;
-        $post->vote= $request->vote;
         $messages = [
             'image' => 'Định dạng không cho phép',
             'max' => 'Kích thước file quá lớn',
