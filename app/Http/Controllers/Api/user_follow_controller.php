@@ -13,10 +13,9 @@ class user_follow_controller extends Controller
     public function follow_user(Request $request){
     {
         $user_follow = new user_follow;
-        $user_follow->user_id= $request -> user_id;
-        $user_follow->post_id= $request -> post_id;
-        if (user_follow::where('post_id',$request -> post_id )->Where('user_id', $request -> user_id)->delete()){
-         
+        $user_follow->user_id= $request ->user_id;
+        $user_follow->user_follwing_id= $request ->user_follwing_id;
+        if (user_follow::where('user_id',$request->user_id)->Where('user_follwing_id',$request ->user_follwing_id)->delete()){
                 return response()->json([
                   'code'=> 200,
                   'message'=> 'Đã tồn tại'
