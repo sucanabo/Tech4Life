@@ -42,7 +42,8 @@ class login_Controller extends Controller
              'username'=> auth()->user()->username,
              'email'=> auth()->user()->email,
              'displayname'=>auth()->user()->display_name,
-             'avatar'=> auth()->user()->avatar
+             'avatar'=> auth()->user()->avatar,
+             'id'=> auth()->user()->id
          ]);
         }
         else{
