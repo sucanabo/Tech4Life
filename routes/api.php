@@ -71,3 +71,9 @@ Route::post("updateView/{id}", "App\Http\Controllers\Api\post_controller@update"
 Route::get("getcomment/{id}", "App\Http\Controllers\Api\CommentController@getByPost");
 Route::get("getcomments", "App\Http\Controllers\Api\CommentController@getAll");
 Route::post("putcomment", "App\Http\Controllers\Api\CommentController@createComment");
+
+//statistic post
+Route::get("statisticpost/{id}","App\Http\Controllers\Api\post_controller@statisticPost");
+
+//statistic view
+Route::get("statisticview/{id}","App\Http\Controllers\Api\post_controller@statisticView");

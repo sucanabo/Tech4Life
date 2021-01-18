@@ -105,5 +105,19 @@ class post_controller extends Controller
         //
     }
 
-   
+    public function statisticPost($id){
+        $countPost = DB::select('
+        SELECT count(post.id) as post
+        FROM post, users
+        WHERE post.user_id = users.id and users.id ='.$id);
+        return $countPost;
+    }
+    
+    public function statisticView($id){
+        $countPost = DB::select('
+        SELECT sum(post.view) as view
+        FROM post, users
+        WHERE post.user_id = users.id and users.id ='.$id);
+        return $countPost;
+    }
 }
