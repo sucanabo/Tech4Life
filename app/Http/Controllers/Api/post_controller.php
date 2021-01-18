@@ -20,7 +20,7 @@ class post_controller extends Controller
         //
             //$post = post::all();
             $post = DB::select('
-            SELECT post.id,post.title,post.vote, post.view, post.image_title,
+            SELECT post.user_id, post.id,post.title,post.vote, post.view, post.image_title,
                    post.created_at, users.display_name, users.avatar,
                    users.username,
                    count(post_clip.post_id) as clipped,
@@ -105,5 +105,19 @@ class post_controller extends Controller
         //
     }
 
-   
+    public function statisticPost($id){
+        $countPost = DB::select('
+        SELECT count(post.id) as post
+        FROM post, users
+        WHERE post.user_id = users.id and users.id ='.$id);
+        return $countPost;
+    }
+    
+    public function statisticView($id){
+        $countPost = DB::select('
+        SELECT sum(post.view) as view
+        FROM post, users
+        WHERE post.user_id = users.id and users.id ='.$id);
+        return $countPost;
+    }
 }
