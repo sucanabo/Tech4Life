@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\User;
-use App\Models\post;
+use App\Models\category_follow;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-class post_controller extends Controller
+
+class category_controller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,25 +17,9 @@ class post_controller extends Controller
      */
     public function index()
     {
-        //
-            //$post = post::all();
-            $post = DB::select('
-            SELECT post.id,post.title,post.vote, post.view, post.image_title,
-                   post.created_at, users.display_name, users.avatar,
-                   users.username,
-                   count(post_clip.post_id) as clipped,
-                   count(comments.post_id) as comment,
-                   post.content
-                   
-            FROM users, post
-                LEFT JOIN vote_post ON vote_post.post_id = post.id
-                LEFT JOIN post_clip ON post_clip.post_id = post.id
-                LEFT JOIN comments ON comments.post_id = post.id
-            WHERE users.id = post.user_id
-            GROUP BY post.id
-            ');
+        $category = DB::select('SELECT * FROM category');
 
-            return response()->json($post);
+        return response()->json($category);
     }
         /**
      * Display the specified resource.
@@ -43,27 +27,25 @@ class post_controller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function getVote($id){
-        $data = DB::table('post')->where('id',$id)->get()->first();
-        return $data->vote;
-    }
-    public function searchpost($search){
-        $post = DB::table('post')
-        ->join('users', 'post.user_id', '=', 'users.id')
-        ->where('title','like','%'.$search.'%')
-        ->select('post.*', 'users.display_name', 'users.avatar')
-        ->get();
-        return response()->json($post);
-    }
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function follow(Request $request)
     {
-        //
+        $category = new category_follow;
+        $category->user_id= $request -> user_id;
+        $category->category_id= $request -> category_id;
+        if (category_follow::where('user_id',$request->user_id )->Where('category_id', $request -> category_id)->delete()){
+            
+            return response()->json([
+                'status'=> 'unfollowed'
+            ],200);
+            
+        }
+        else
+        {
+          $category->save();
+          return response()->json([
+            'status'=> 'followed'
+        ],200);
+        }  
     }
 
     /**

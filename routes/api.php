@@ -71,3 +71,9 @@ Route::post("updateView/{id}", "App\Http\Controllers\Api\post_controller@update"
 Route::get("getcomment/{id}", "App\Http\Controllers\Api\CommentController@getByPost");
 Route::get("getcomments", "App\Http\Controllers\Api\CommentController@getAll");
 Route::post("putcomment", "App\Http\Controllers\Api\CommentController@createComment");
+
+//following
+Route::get("category", "App\Http\Controllers\Api\category_controller@index");
+Route::post("followcategory", "App\Http\Controllers\Api\category_controller@follow");
+
+//category
